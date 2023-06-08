@@ -2,7 +2,7 @@
   <td :class="getColClasses(props)">
     <slot v-bind:row="row">
       <div v-if="props.type === 'btn'" class="text-center">
-        <btn size="xs" class="btn-primary min-w-[80px]" @click="handleClick">{{ props.btnText || props.field }}</btn>
+        <btn class="btn-primary min-w-[80px]" @click="handleClick">{{ props.btnText || props.field }}</btn>
       </div>
       <div v-if="props.type === 'boolean'" class="text-center">
         <div class="badge" :class="displayValue ? 'badge-success' : ''">{{ displayValue ? "Yes" : "No" }}</div>
@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { getObjectValue, toDateFormat, getColClasses } from "../../utils/helpers";
+import btn from "../button/s-btn.vue";
 
 const props = defineProps({
   row: {

@@ -10,6 +10,4 @@ export default {
   },
 };
 
-export { SCard } from "./components/card";
-export { SBtn } from "./components/button";
-export { SAppbar } from "./components/appbar";
+export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead } from "./components";

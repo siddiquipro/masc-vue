@@ -19,10 +19,26 @@
       <SBtn class="btn-ghost" icon="mdi:about"> About </SBtn>
       <SBtn class="btn-ghost" icon="mdi:contact"> Contact </SBtn>
     </SAppbar>
+
+    <SCard title="Table" compact>
+      <STable :cols="cols" :data="data"></STable>
+    </SCard>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const data: any[] = [];
+for (let i = 1; i <= 10; i++) {
+  data.push({ name: `Name ${i}`, email: `name_${i}@example.com`, new: i % 2 ? true : false, date: new Date() });
+}
+
+const cols = [
+  { field: "name", label: "Name" },
+  { field: "name", label: "Email" },
+  { field: "new", label: "New User?", type: "boolean" },
+  { field: "date", label: "Date", type: "date" },
+];
+</script>
 
 <style>
 html,

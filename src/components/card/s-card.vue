@@ -8,12 +8,21 @@
       </div>
     </div>
 
-    <div class="p-4 flex flex-col gap-2 card-body">
+    <div class="flex flex-col gap-2" :class="compact ? '' : 'p-4'">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps(["title"]);
+const props = defineProps({
+  title: {
+    type: String,
+    default: "",
+  },
+  compact: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>

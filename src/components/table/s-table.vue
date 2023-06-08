@@ -21,7 +21,14 @@
         </tr>
       </tbody>
     </table>
-    <Pagination v-if="meta" :meta="meta" @onPageChange="pageChanged" @onPerPageChange="perPageChanged" />
+    <Pagination
+      v-if="meta"
+      :total="meta.total"
+      :perPage="meta.perPage"
+      :page="meta.page"
+      @onPageChange="pageChanged"
+      @onPerPageChange="perPageChanged"
+    />
   </div>
 </template>
 
@@ -30,12 +37,23 @@ import TableHead from "./TableHead.vue";
 import TableColumn from "./TableColumn.vue";
 import Pagination from "./Pagination.vue";
 import { computed } from "vue";
+import type { PropType } from "vue";
+
+interface ICol {
+  field: string;
+  label: string;
+  center: boolean;
+  type: string;
+  display: string;
+  btnText: string;
+  onClick: Function;
+}
 
 const emits = defineEmits(["onPageChange", "onPerPageChange"]);
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Array as PropType<any[]>,
     default: [],
   },
   meta: {
@@ -43,7 +61,7 @@ const props = defineProps({
     default: null,
   },
   cols: {
-    type: Array,
+    type: Array as PropType<ICol[]>,
     default: [],
   },
   onRowSelect: {
