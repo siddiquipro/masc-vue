@@ -16,7 +16,7 @@ export default defineConfig({
       fileName: (format) => `masc-vue.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", ""],
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "main.css") return "masc-vue.css";
