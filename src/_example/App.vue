@@ -23,10 +23,34 @@
     <SCard title="Table" compact>
       <STable :cols="cols" :data="data"></STable>
     </SCard>
+
+    <SCard title="Modal">
+      <div class="flex gap-4">
+        <SBtn @click="ds.open = true">Open Modal</SBtn>
+        <SBtn @click="ds.openRight = true">Open Right Side Modal</SBtn>
+
+        <SModal title="Hello Modal" v-model="ds.open" footer>
+          <div class="w-full min-w-[400px] p-6">
+            <p>This is modal content</p>
+          </div>
+        </SModal>
+
+        <SModal title="Hello Modal" v-model="ds.openRight" footer position="right">
+          <div class="w-full p-6 flex-1">
+            <p>This is modal on the right</p>
+            <p>This is modal content</p>
+          </div>
+        </SModal>
+      </div>
+    </SCard>
   </div>
 </template>
 
 <script setup lang="ts">
+import { reactive } from "vue";
+
+const ds = reactive({ open: false, openRight: false });
+
 const data: any[] = [];
 for (let i = 1; i <= 10; i++) {
   data.push({ name: `Name ${i}`, email: `name_${i}@example.com`, new: i % 2 ? true : false, date: new Date() });

@@ -1,4 +1,5 @@
 import * as components from "./components";
+import "vue-final-modal/style.css";
 import { App } from "vue";
 
 export default {
@@ -10,4 +11,4 @@ export default {
   },
 };
 
-export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead } from "./components";
+export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal } from "./components";
