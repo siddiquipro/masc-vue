@@ -14,7 +14,7 @@
       <p class="">Card Body</p>
     </SCard>
 
-    <SAppbar title="Awesome App" class="rounded" left>
+    <SAppbar title="Awesome App" class="rounded">
       <SBtn class="btn-ghost" icon="mdi:home"> Home </SBtn>
       <SBtn class="btn-ghost" icon="mdi:about"> About </SBtn>
       <SBtn class="btn-ghost" icon="mdi:contact"> Contact </SBtn>

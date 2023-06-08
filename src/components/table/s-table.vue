@@ -39,7 +39,7 @@ import Pagination from "./Pagination.vue";
 import { computed } from "vue";
 import type { PropType } from "vue";
 
-interface ICol {
+export interface ICol {
   field: string;
   label: string;
   center: boolean;

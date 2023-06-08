@@ -1,4 +1,7 @@
 {
   "include": ["src/**/*"],
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
   "exclude": ["node_modules", "src/_example", "**/*.cy.ts", "**/*.spec.ts", "**/__tests__/**/*"]
 }
