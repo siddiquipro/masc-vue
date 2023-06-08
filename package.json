@@ -1,18 +1,34 @@
 {
-  "name": "masc",
-  "private": true,
-  "version": "0.0.1",
+  "name": "masc-vue",
+  "version": "0.0.5",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/masc-vue.umd.js",
+  "module": "./dist/masc-vue.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/masc-vue.es.js",
+      "require": "./dist/masc-vue.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "build": "vue-tsc && vite build  && npm run build:types",
+    "build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types",
+    "build:styles": "postcss src/css/index.css -o dist/index.css",
+    "preview": "vite preview",
+    "release": "npm run build && npm publish --access=public "
   },
   "dependencies": {
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
+    "@types/node": "^20.2.5",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "daisyui": "^3.0.3",

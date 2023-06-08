@@ -1,6 +1,8 @@
 import * as components from "./components";
 import { App } from "vue";
 
+
+
 export default {
   install(app: App) {
     const entries = Object.entries(components.default);
@@ -9,3 +11,7 @@ export default {
     });
   },
 };
+
+
+export { SCard } from "./components/card";
+export { SBtn } from "./components/button";
