@@ -43,6 +43,15 @@
         </SModal>
       </div>
     </SCard>
+
+    <SCard title="Icon">
+      <p>Icons can be used from iconify : <a class="link link-primary" href="https://icones.js.org/">https://icones.js.org/</a></p>
+
+      <div class="flex gap-4">
+        <SIcon icon="mdi:home" class="text-xl" />
+        <SIcon icon="prime:android" class="text-xl" />
+      </div>
+    </SCard>
   </div>
 </template>
 

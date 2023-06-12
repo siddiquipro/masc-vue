@@ -11,4 +11,4 @@ export default {
   },
 };
 
-export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal } from "./components";
+export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal, SIcon } from "./components";
