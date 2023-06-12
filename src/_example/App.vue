@@ -52,11 +52,28 @@
         <SIcon icon="prime:android" class="text-xl" />
       </div>
     </SCard>
+
+    <SCard title="Loading">
+      <div class="flex">
+        <SBtn @click="startLoading">Start Loading</SBtn>
+      </div>
+    </SCard>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
+import { useLoading, useModal, wait } from "../index";
+
+async function startLoading() {
+  const loader = useLoading().show();
+  await wait(5000);
+  loader.hide();
+}
+
+async function openConfirm() {
+  const modal = useModal();
+}
 
 const ds = reactive({ open: false, openRight: false });
 
