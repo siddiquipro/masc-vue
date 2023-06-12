@@ -34,7 +34,8 @@ class Notify {
   }
 
   getMsg(msg: any) {
-    if (!msg) return "There's been an error, please try again.";
+    const defaultMsg = "There's been an error, please try again.";
+    if (!msg) return defaultMsg;
     if (typeof msg === "string") return msg;
 
     if (!Array.isArray(msg) && typeof msg === "object" && msg.response) msg = msg.response;
@@ -43,8 +44,7 @@ class Notify {
     if (msg.data && typeof msg.data.msg === "string") return msg.data.msg;
     if (msg.data && typeof msg.data.message === "string") return msg.data.message;
     if (msg.data && typeof msg.data.error === "string") return msg.data.error;
-
-    return "There's been an error, please try again.";
+    return defaultMsg;
   }
 }
 

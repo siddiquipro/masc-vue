@@ -14,6 +14,8 @@
       <p class="">Card Body</p>
     </SCard>
 
+    <alertVue></alertVue>
+
     <SAppbar title="Awesome App" class="rounded">
       <SBtn class="btn-ghost" icon="mdi:home"> Home </SBtn>
       <SBtn class="btn-ghost" icon="mdi:about"> About </SBtn>
@@ -54,8 +56,15 @@
     </SCard>
 
     <SCard title="Loading">
-      <div class="flex">
+      <div class="flex gap-4">
         <SBtn @click="startLoading">Start Loading</SBtn>
+      </div>
+    </SCard>
+
+    <SCard title="Modal Alert and Confirm">
+      <div class="flex gap-4">
+        <SBtn @click="openAlert">Open Alert</SBtn>
+        <SBtn @click="openConfirm">Open Confirm</SBtn>
       </div>
     </SCard>
   </div>
@@ -63,7 +72,8 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { useLoading, useModal, wait } from "../index";
+import { useLoading, useNotify, wait } from "../index";
+import alertVue from "./components/alert.vue";
 
 async function startLoading() {
   const loader = useLoading().show();
@@ -72,7 +82,13 @@ async function startLoading() {
 }
 
 async function openConfirm() {
-  const modal = useModal();
+  const notify = useNotify();
+  notify.confirm("This is message for confirmation?", "Confirmation Message");
+}
+
+async function openAlert() {
+  const notify = useNotify();
+  notify.alert("This is the message for alert", "Alert Title");
 }
 
 const ds = reactive({ open: false, openRight: false });

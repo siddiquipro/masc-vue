@@ -13,7 +13,7 @@ export default {
 };
 
 export { useLoading } from "./composables/useLoading";
-export { useModal } from "./composables/useModal";
+export { useNotify } from "./composables/useNotify";
 export { wait } from "./utils/helpers";
 
 export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal, SIcon } from "./components";
