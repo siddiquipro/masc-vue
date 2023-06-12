@@ -19,6 +19,9 @@ Import all(❌ not recommended):
 ```ts
 // main.ts
 import masc from "masc-vue";
-import { createApp, defineComponent } from "vue";
-app.use(daisyui); // register all components expect icons
+import { createApp } from "vue";
+import App from "./App.vue";
+
+const app = createApp(App);
+app.use(masc); // register all components
 ```
