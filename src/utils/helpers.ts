@@ -25,4 +25,8 @@ export function getObjectValue(obj: any, prop: string) {
   }
 }
 
+export function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default { getColClasses, toDateFormat, getObjectValue };

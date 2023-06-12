@@ -8,7 +8,7 @@ export function removeElement(el: any) {
   }
 }
 
-export function createComponent(component: any, props: any, parentContainer: any, slots = {}) {
+export function createComponent(component: any, props: any, parentContainer: any = null, slots = {}) {
   const vNode = h(component, props, slots);
   const container = document.createElement("div");
 
