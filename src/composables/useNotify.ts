@@ -2,6 +2,7 @@
 
 import { useModal } from "./useModal";
 import { useLoading } from "./useLoading";
+import { useToast } from "./useToast";
 
 class Notify {
   toast = useToast();
