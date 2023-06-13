@@ -2,7 +2,7 @@
 
 import { useModal } from "./useModal";
 import { useLoading } from "./useLoading";
-import { useToast } from "./useToast";
+import { useToast } from "vue-toast-notification";
 
 class Notify {
   toast = useToast();

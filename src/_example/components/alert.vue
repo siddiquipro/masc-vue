@@ -1,54 +1,24 @@
 <template>
   <SCard title="Alerts">
     <div class="flex gap-4">
-      <SBtn @click="addMsg()"> Info</SBtn>
-      <SBtn @click="addMsg('success')">Success</SBtn>
-      <SBtn @click="addMsg('error')">Error</SBtn>
-      <SBtn @click="addMsg('warning')">Warning</SBtn>
+      <SBtn @click="showData()"> Info</SBtn>
+      <SBtn @click="showData('success')">Success</SBtn>
+      <SBtn @click="showData('error')">Error</SBtn>
+      <SBtn @click="showData('warning')">Warning</SBtn>
     </div>
   </SCard>
-  <div class="toast toast-end z-10">
-    <div class="alert shadow-md max-w-sm w-full" v-for="x in ds.msgs" :class="getClass(x)">
-      <SIcon v-if="x.icon" :icon="x.icon"></SIcon>
-      <div class="flex flex-wrap">{{ x.msg }}</div>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { useNotify } from "../../index";
+const toast = useNotify();
 
-interface interfaceRow {
-  icon: string;
-  type: string;
-  msg: string;
-}
+function showData(type: string = "info") {
+  if (type === "info") return toast.info(`This is a toast info message`);
+  if (type === "success") return toast.success(`This is a toast success message`);
+  if (type === "error") return toast.error(`This is a toast error message`);
+  if (type === "warning") return toast.warning(`This is a toast warning message <br/> Hello World again`);
 
-const msgs: interfaceRow[] = [];
-
-const ds = reactive({ msgs: msgs });
-
-function getClass(row: interfaceRow) {
-  const cls = [];
-  if (row.type === "info") cls.push("alert-info");
-  else if (row.type === "success") cls.push("alert-success");
-  else if (row.type === "error") cls.push("alert-error");
-  return cls.join(" ");
-}
-
-function getIcon(type: string) {
-  if (type === "info") return "mdi:information-outline";
-  if (type === "success") return "mdi:check-circle-outline";
-  if (type === "error") return "mdi:close-circle-outline";
-
-  return "mdi:information-outline";
-}
-
-function addMsg(type = "info") {
-  ds.msgs.push({
-    type,
-    msg: `This is a ${type} message and its cool and awesome and some random and stupid code for everyone to make sense and i dont know what`,
-    icon: getIcon(type),
-  });
+  return toast.error(`Invalid type passed...`);
 }
 </script>

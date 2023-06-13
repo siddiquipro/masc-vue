@@ -1,6 +1,6 @@
 {
   "name": "masc-vue",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "files": [
     "dist"
@@ -24,7 +24,8 @@
     "release": "npm run build && npm publish --access=public "
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-toast-notification": "3"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
