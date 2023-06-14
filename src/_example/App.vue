@@ -16,26 +16,13 @@
 
     <alertVue></alertVue>
 
+    <stable />
+
     <SAppbar title="Awesome App" class="rounded">
       <SBtn class="btn-ghost" icon="mdi:home"> Home </SBtn>
       <SBtn class="btn-ghost" icon="mdi:about"> About </SBtn>
       <SBtn class="btn-ghost" icon="mdi:contact"> Contact </SBtn>
     </SAppbar>
-
-    <SCard title="Table" compact>
-      <STable :cols="cols" :data="data">
-        <template #email="x">
-          <td>
-            <div>{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
-          </td>
-        </template>
-        <template #new="x">
-          <td>
-            <div v-if="x.row.new">Yes</div>
-          </td>
-        </template>
-      </STable>
-    </SCard>
 
     <SCard title="Modal">
       <div class="flex gap-4">
@@ -85,6 +72,7 @@
 import { reactive } from "vue";
 import { useLoading, useNotify, wait } from "../index";
 import alertVue from "./components/alert.vue";
+import stable from "./components/stable.vue";
 
 async function startLoading() {
   const loader = useLoading().show();
@@ -103,18 +91,6 @@ async function openAlert() {
 }
 
 const ds = reactive({ open: false, openRight: false });
-
-const data: any[] = [];
-for (let i = 1; i <= 10; i++) {
-  data.push({ name: `Name ${i}`, email: `name_${i}@example.com`, new: i % 2 ? true : false, date: new Date() });
-}
-
-const cols = [
-  { field: "name", label: "Name" },
-  { field: "email", label: "Email" },
-  { field: "new", label: "New User?", type: "boolean" },
-  { field: "date", label: "Date", type: "date" },
-];
 </script>
 
 <style>

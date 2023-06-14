@@ -24,6 +24,7 @@
     "release": "npm run build && npm publish --access=public "
   },
   "dependencies": {
+    "tippy.js": "^6.3.7",
     "vue": "^3.2.47",
     "vue-toast-notification": "3"
   },

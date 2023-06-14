@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full overflow-x-auto">
     <table class="table w-full" :class="props.bordered ? 'bordered' : ''">
       <thead>
         <tr>
