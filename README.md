@@ -49,7 +49,7 @@ Importing components locally
 import { SCard, SBtn , useNotify} from "masc-vue";
 
 //notify comes with alert, confirm as modals promises
-//and info, success, warning, error
+//and info, success, warning, error as toast messages
 const notify = useNotify();
 
 function openToast(){

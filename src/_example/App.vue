@@ -26,7 +26,12 @@
       <STable :cols="cols" :data="data">
         <template #email="x">
           <td>
-            <div>{{ x.row.email }} of {{ x.row.name }}</div>
+            <div>{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
+          </td>
+        </template>
+        <template #new="x">
+          <td>
+            <div v-if="x.row.new">Yes</div>
           </td>
         </template>
       </STable>
