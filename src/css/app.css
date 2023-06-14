@@ -7,3 +7,8 @@
 .fade-leave-to {
   opacity: 0;
 }
+
+.v-toast__item .v-toast__text {
+  padding: 1em 1em;
+  line-height: 1.3;
+}

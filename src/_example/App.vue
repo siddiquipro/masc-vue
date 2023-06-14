@@ -23,7 +23,13 @@
     </SAppbar>
 
     <SCard title="Table" compact>
-      <STable :cols="cols" :data="data"></STable>
+      <STable :cols="cols" :data="data">
+        <template #email="x">
+          <td>
+            <div>{{ x.row.email }} of {{ x.row.name }}</div>
+          </td>
+        </template>
+      </STable>
     </SCard>
 
     <SCard title="Modal">
@@ -100,7 +106,7 @@ for (let i = 1; i <= 10; i++) {
 
 const cols = [
   { field: "name", label: "Name" },
-  { field: "name", label: "Email" },
+  { field: "email", label: "Email" },
   { field: "new", label: "New User?", type: "boolean" },
   { field: "date", label: "Date", type: "date" },
 ];
