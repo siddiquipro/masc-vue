@@ -15,7 +15,7 @@
     </SCard>
 
     <alertVue></alertVue>
-
+    <sform />
     <stable />
 
     <SAppbar title="Awesome App" class="rounded">
@@ -73,6 +73,7 @@ import { reactive } from "vue";
 import { useLoading, useNotify, wait } from "../index";
 import alertVue from "./components/alert.vue";
 import stable from "./components/stable.vue";
+import sform from "./components/sform.vue";
 
 async function startLoading() {
   const loader = useLoading().show();
