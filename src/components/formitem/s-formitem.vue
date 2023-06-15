@@ -1,6 +1,6 @@
 <template>
   <div class="flex" :class="wrapperClass">
-    <div class="lab pl-2" v-if="label">
+    <div class="lab" v-if="label">
       <span class="font-semibold text-sm">{{ label }} </span>
     </div>
     <div class="flex-1" :class="inputClass">
@@ -10,6 +10,7 @@
       <SelectField v-else-if="type === 'select'" v-bind="$attrs" :readonly="readonly" />
       <RadioField v-else-if="type === 'radio'" v-bind="$attrs" :readonly="readonly" />
       <DateField v-else-if="type === 'date'" v-bind="$attrs" :readonly="readonly" />
+      <SearchField v-else-if="type === 'search'" v-bind="$attrs" :readonly="readonly" />
       <TextField v-else v-bind="$attrs" :type="type" :readonly="readonly" />
     </div>
   </div>
@@ -23,6 +24,7 @@ import BoolField from "./s-bool-field.vue";
 import RadioField from "./s-radio-field.vue";
 import DateField from "./s-date-field.vue";
 import CheckboxField from "./s-checkbox-field.vue";
+import SearchField from "./s-search-field.vue";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -53,7 +55,7 @@ const inputClass = computed(() => {
   const cls = [];
   if (props.readonly) cls.push("readonly");
   if (props.horizontal) return cls.join(" ");
-  if (!noBorderFor.includes(props.type)) cls.push("border rounded-sm");
+  if (!noBorderFor.includes(props.type)) cls.push("");
   return cls.join(" ");
 });
 
@@ -65,8 +67,21 @@ const wrapperClass = computed(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .lab {
   flex: 0 0 35%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline-width: 1px;
+  outline-offset: 0;
+}
+
+.input,
+.textarea,
+.select {
+  font-weight: 400;
 }
 </style>

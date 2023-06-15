@@ -1,8 +1,7 @@
 <template>
-  <form class="border overflow-hidden flex rounded nofocus hover:border-primary" @submit.prevent="searchNow()">
-    <input v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
-
-    <div class="flex items-center gap-1">
+  <form class="block relative w-full" @submit.prevent="searchNow()">
+    <input v-model="value" :placeholder="placeholder" class="w-full input input-bordered" ref="input" />
+    <div class="flex items-center gap-1 absolute right-2 top-0">
       <sBtn type="button" class="search-icon" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
       <sBtn type="sbmit" class="search-icon" icon="mdi:search" />
     </div>

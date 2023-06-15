@@ -1,10 +1,10 @@
 <template>
   <div class="w-full">
     <div @click="openModal">
-      <div class="h-10 input w-full cursor-pointer rounded-none bar items-center">
+      <a class="input input-bordered w-full cursor-pointer flex justify-between items-center">
         <span> {{ toDateFormat(selValue) }}</span>
         <icon icon="mdi:calendar-month"></icon>
-      </div>
+      </a>
     </div>
     <Modal v-model="ds.open">
       <VueDatePicker v-model="ds.date" inline auto-apply :enable-time-picker="false" @update:model-value="handleDate" />
@@ -16,6 +16,7 @@
 import { reactive } from "vue";
 import { useVModel } from "@vueuse/core";
 import Modal from "../modal/s-modal.vue";
+import icon from "../icon/icon.vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { toDateFormat } from "../../utils/helpers";

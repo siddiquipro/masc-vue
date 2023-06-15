@@ -1,12 +1,5 @@
 <template>
-  <textarea
-    v-model="value"
-    :placeholder="placeholder"
-    class="textarea w-full"
-    :type="props.type"
-    :class="bordered ? 'input-bordered' : 'rounded-none'"
-    :readonly="props.readonly"
-  />
+  <textarea v-model="value" :placeholder="placeholder" class="textarea textarea-bordered w-full" :type="props.type" :readonly="props.readonly" />
 </template>
 
 <script setup lang="ts">

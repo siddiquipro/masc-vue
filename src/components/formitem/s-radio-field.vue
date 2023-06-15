@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-4" :class="rows ? 'flex-col' : ''">
+  <div class="flex flex-wrap gap-4" :class="rows ? 'flex-col' : ''">
     <div v-for="r in options" class="flex gap-2">
       <input type="radio" :name="key" :id="key + r.value" :value="r.value" class="radio radio-primary" v-model="selValue" />
       <label :for="key + r.value" class="cursor-pointer">{{ r.text }} </label>

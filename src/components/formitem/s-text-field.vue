@@ -1,5 +1,5 @@
 <template>
-  <input v-model="value" :placeholder="placeholder" class="input w-full" ref="input" :type="props.type" :class="getClasses" />
+  <input v-model="value" :placeholder="placeholder" class="input w-full input-bordered" ref="input" :type="props.type" :class="getClasses" />
 </template>
 
 <script setup lang="ts">
@@ -37,7 +37,6 @@ const input = ref<HTMLElement | null>(null);
 const getClasses = computed(() => {
   const cls = [];
   if (props.right) cls.push("text-right");
-  cls.push(props.bordered ? "input-bordered" : "rounded-none");
   return cls.join(" ");
 });
 
