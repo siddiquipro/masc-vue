@@ -1,34 +1,39 @@
 {
   "name": "masc-vue",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "type": "module",
   "files": [
     "dist"
   ],
   "main": "./dist/masc-vue.umd.js",
   "module": "./dist/masc-vue.es.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/masc-vue.es.js",
       "require": "./dist/masc-vue.umd.js"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
     }
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build  && npm run build:types",
-    "build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types",
+    "b": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build",
     "build:styles": "postcss src/css/index.css -o dist/index.css",
     "preview": "vite preview",
     "release": "npm run build && npm publish --access=public "
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "tippy.js": "^6.3.7",
+    "vue-toast-notification": "3"
   },
   "devDependencies": {
-    "tippy.js": "^6.3.7",
-    "vue-toast-notification": "3",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "@iconify/vue": "^4.1.1",
     "@types/node": "^20.2.5",
     "@vitejs/plugin-vue": "^4.1.0",
@@ -39,6 +44,7 @@
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
+    "vite-plugin-dts": "^2.3.0",
     "vue-final-modal": "^4.4.2",
     "vue-tsc": "^1.4.2"
   }
