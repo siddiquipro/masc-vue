@@ -3,7 +3,7 @@
     <STable :cols="cols" :data="data">
       <template #email="x">
         <td>
-          <div v-tooltip="`This is a good example to check and update`">{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
+          <div v-tooltip="`This is a example tooltip`">{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
         </td>
       </template>
       <template #new="x">

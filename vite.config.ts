@@ -16,7 +16,7 @@ export default defineConfig({
       fileName: (format) => `masc-vue.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue", ""],
+      external: ["vue", "vue-toast-notification", "tippy.js"],
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "main.css") return "masc-vue.css";
@@ -25,6 +25,8 @@ export default defineConfig({
         exports: "named",
         globals: {
           vue: "Vue",
+          "tippy.js": "tippy.js",
+          "vue-toast-notification": "vue-toast-notification",
         },
       },
     },

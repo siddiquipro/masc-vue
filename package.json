@@ -1,6 +1,6 @@
 {
   "name": "masc-vue",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "type": "module",
   "files": [
     "dist"
@@ -24,11 +24,11 @@
     "release": "npm run build && npm publish --access=public "
   },
   "dependencies": {
-    "tippy.js": "^6.3.7",
-    "vue": "^3.2.47",
-    "vue-toast-notification": "3"
+    "vue": "^3.2.47"
   },
   "devDependencies": {
+    "tippy.js": "^6.3.7",
+    "vue-toast-notification": "3",
     "@iconify/vue": "^4.1.1",
     "@types/node": "^20.2.5",
     "@vitejs/plugin-vue": "^4.1.0",

@@ -3,14 +3,12 @@ import "vue-final-modal/style.css";
 import "vue-toast-notification/dist/theme-sugar.css";
 import "./css/app.css";
 import { App } from "vue";
+
 import tooltip from "./directives/tooltip";
 
 export default {
-  install(app: App, options: any = {}) {
+  install(app: App) {
     app.directive("tooltip", tooltip);
-
-    if (options.noComponents) return true;
-
     const entries = Object.entries(components.default);
     entries.forEach(([componentName, component]) => {
       app.component(componentName, component);
