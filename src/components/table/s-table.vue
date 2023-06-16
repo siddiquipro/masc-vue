@@ -16,7 +16,7 @@
         </tr>
         <tr v-if="cols && cols.length > 0 && (!data || data.length == 0)">
           <td :colspan="cols.length" class="text-center">
-            <div class="py-3">There's no data</div>
+            <div class="py-3">{{ props.noDataText }}</div>
           </td>
         </tr>
       </tbody>
@@ -41,12 +41,12 @@ import type { PropType } from "vue";
 
 export interface ICol {
   field: string;
-  label: string;
-  center: boolean;
-  type: string;
-  display: string;
-  btnText: string;
-  onClick: Function;
+  label?: string;
+  center?: boolean;
+  type?: string;
+  display?: string;
+  btnText?: string;
+  onClick?: Function;
 }
 
 const emits = defineEmits(["onPageChange", "onPerPageChange"]);
@@ -71,6 +71,10 @@ const props = defineProps({
   bordered: {
     type: Boolean,
     default: true,
+  },
+  noDataText: {
+    type: String,
+    default: `There's no data`,
   },
 });
 

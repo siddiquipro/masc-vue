@@ -1,6 +1,6 @@
 {
   "name": "masc-vue",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "type": "module",
   "files": [
     "dist"
