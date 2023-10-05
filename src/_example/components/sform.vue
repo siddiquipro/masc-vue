@@ -1,5 +1,5 @@
 <template>
-  <SCard title="Form">
+  <SCard title="Form" class="relative">
     <div v-for="col in config.columns">
       <sFormitem :label="col.label" :type="col.type" :options="opts" v-model="ds[col.field]" />
     </div>
@@ -46,8 +46,6 @@ const config = {
     { field: "select", label: "This is label for type SELECT", type: "select", info: "", errorMsg: "", validation: "", classes: "" },
   ],
 };
-
-console.log(config);
 
 // ordering of cols
 // horizontal
