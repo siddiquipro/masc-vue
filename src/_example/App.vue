@@ -96,4 +96,8 @@ html,
 body {
   background-color: #ebf1f5;
 }
+
+.btn {
+  min-height: initial;
+}
 </style>
