@@ -2,13 +2,15 @@
   <s-btn class="btn-primary h-10" @click="isOpen = true">Open</s-btn>
 
   <dialog class="modal" :class="isOpen ? 'modal-open' : ''">
-    <div class="w-2/3 flex h-full flex-col" :class="isRight ? 'modal-right' : 'modal-left'">
+    <div class="w-[500px] flex h-full flex-col" :class="isRight ? 'modal-right' : 'modal-left'">
       <div class="flex justify-between px-4 py-2 border-b">
         <div class="text-xl font-semibold">Hello Title</div>
         <s-btn class="btn-ghost btn-sm text-xl btn-circle" @click="isOpen = false" icon="mdi:close" />
       </div>
 
-      <div class="flex-1"></div>
+      <div class="flex-1 overflow-y-auto">
+        <p v-for="x in 100" :key="x">Hello World {{ x }}</p>
+      </div>
 
       <div class="flex justify-end gap-4 border-t px-4 py-2">
         <s-btn class="btn-ghost h-10" @click="isOpen = false"> Close</s-btn>
@@ -34,8 +36,8 @@ const isRight = ref(true);
   height: 100vh;
   max-height: 100%;
   border-radius: 0;
-  transition: transform 0.25s ease-in-out;
-  opacity: 0;
+  transition: all 0.35s;
+
   background-color: white;
 }
 .modal-right {
@@ -50,7 +52,6 @@ const isRight = ref(true);
 
 .modal-open .modal-left,
 .modal-open .modal-right {
-  opacity: 1;
   transform: translate(0);
 }
 </style>
