@@ -6,6 +6,8 @@ import { SModal } from "./modal";
 import { SIcon } from "./icon";
 import { SFormitem } from "./formitem";
 
-export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem };
+const sField = SFormitem;
 
-export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem };
+export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem, sField };
+
+export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem, sField };
