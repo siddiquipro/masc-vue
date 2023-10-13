@@ -1,10 +1,6 @@
 <template>
   <BaseLayout>
     <div class="grid gap-4 p-4">
-      <s-card title="Dialog Options">
-        <CheckDialog />
-      </s-card>
-
       <SCard title="Buttons">
         <div class="flex gap-4">
           <SBtn class="btn-xs" icon="mdi:content-save"> X-Small </SBtn>
@@ -77,7 +73,6 @@ import stable from "./components/stable.vue";
 import sform from "./components/sform.vue";
 import sdropdown from "./components/sdropdown.vue";
 import BaseLayout from "./layouts/BaseLayout.vue";
-import CheckDialog from "./layouts/CheckDialog.vue";
 
 async function startLoading() {
   const loader = useLoading().show();

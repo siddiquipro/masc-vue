@@ -1,11 +1,5 @@
 <template>
-  <VueFinalModal
-    class="flex justify-center items-center data-modal"
-    :content-class="contentClass"
-    v-model="ds.open"
-    overlayTransition="vfm-fade"
-    :content-transition="contentTransition"
-  >
+  <BaseModal v-model="ds.open" :position="props.position">
     <div class="flex items-center justify-between pl-4 pr-2 py-2 border-b" v-if="props.title">
       <div class="text-lg flex-1 font-semibold">{{ title }}</div>
       <a class="btn btn-ghost btn-circle btn-sm" @click="updateParent(false)" v-if="props.closeIcon">
@@ -23,14 +17,14 @@
       </div>
       <sBtn class="btn-primary px-10" @click="handleSuccess">{{ props.confirmBtnText }}</sBtn>
     </div>
-  </VueFinalModal>
+  </BaseModal>
 </template>
 
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { reactive, watch, computed } from "vue";
-import { VueFinalModal } from "vue-final-modal";
+import { reactive, watch } from "vue";
 import sBtn from "../button/s-btn.vue";
+import BaseModal from "./base-modal.vue";
 
 const emits = defineEmits(["update:modelValue", "close", "message"]);
 const props = defineProps({
@@ -95,16 +89,6 @@ const props = defineProps({
 });
 const ds = reactive({ open: props.modelValue, confirm: false });
 
-const contentClass = computed(() => {
-  if (props.position === "right") return "absolute right-0 h-full bg-base-100 space-y-2 w-[70%] flex flex-col";
-  return "flex flex-col rounded shadow-2xl rounded bg-base-100";
-});
-
-const contentTransition = computed(() => {
-  if (props.position === "right") return "vfm-slide-right";
-  return "vfm-slide-down";
-});
-
 async function handleSuccess() {
   if (typeof props.onConfirm === "function") return await props.onConfirm();
   ds.confirm = true;
@@ -119,11 +103,6 @@ function updateParent(val: boolean) {
   if (!val) emits("close", ds.confirm);
   emits("update:modelValue", val);
 }
-
-// function closeOnOutside() {
-//   if (props.persist) return false;
-//   ds.open = false;
-// }
 
 watch(() => props.modelValue, updateOpen);
 watch(() => ds.open, updateParent);

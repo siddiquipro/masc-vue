@@ -7,7 +7,9 @@
       </a>
     </div>
     <Modal v-model="ds.open">
-      <VueDatePicker v-model="ds.date" inline auto-apply :enable-time-picker="false" @update:model-value="handleDate" />
+      <div class="w-full">
+        <VueDatePicker v-model="ds.date" inline auto-apply :enable-time-picker="false" @update:model-value="handleDate" />
+      </div>
     </Modal>
   </div>
 </template>

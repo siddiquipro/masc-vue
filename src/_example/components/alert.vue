@@ -1,10 +1,10 @@
 <template>
   <SCard title="Alerts">
     <div class="flex gap-4">
-      <SBtn @click="showData()"> Info</SBtn>
-      <SBtn @click="showData('success')">Success</SBtn>
-      <SBtn @click="showData('error')">Error</SBtn>
-      <SBtn @click="showData('warning')">Warning</SBtn>
+      <SBtn class="px-10 btn-info" @click="showData()"> Info</SBtn>
+      <SBtn class="px-10 btn-success" @click="showData('success')">Success</SBtn>
+      <SBtn class="px-10 btn-warning" @click="showData('error')">Error</SBtn>
+      <SBtn class="px-10 btn-error" @click="showData('warning')">Warning</SBtn>
     </div>
   </SCard>
 </template>

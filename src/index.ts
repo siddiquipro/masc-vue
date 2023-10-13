@@ -1,5 +1,4 @@
 import * as components from "./components";
-import "vue-final-modal/style.css";
 import "./css/app.css";
 import { App } from "vue";
 

@@ -1,19 +1,7 @@
 <template>
   <dialog class="modal" :class="isOpen && isReady ? 'modal-open' : ''">
     <div class="flex flex-col bg-base-100" :class="modalBoxClass">
-      <div class="flex justify-between px-4 py-2 border-b">
-        <div class="text-xl font-semibold">Hello Title</div>
-        <s-btn class="btn-ghost btn-sm text-xl btn-circle" @click="isOpen = false" icon="mdi:close" />
-      </div>
-
-      <div class="flex-1 overflow-y-auto">
-        <p v-for="x in 10" :key="x">Hello World {{ x }}</p>
-      </div>
-
-      <div class="flex justify-end gap-4 border-t px-4 py-2">
-        <s-btn class="btn-ghost h-10" @click="isOpen = false"> Close</s-btn>
-        <s-btn class="btn-primary px-10 h-10">Save</s-btn>
-      </div>
+      <slot></slot>
     </div>
     <div class="modal-backdrop bg-black bg-opacity-30" @click="isOpen = false"></div>
   </dialog>
@@ -83,6 +71,8 @@ onMounted(() => init());
   padding: 0;
   border-radius: 0.25rem;
   max-height: 100vh;
+  max-width: initial;
+  width: initial;
   transition: all 0.3s;
   transform: translateY(100%);
 }

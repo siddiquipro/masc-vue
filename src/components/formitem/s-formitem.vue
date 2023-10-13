@@ -1,7 +1,7 @@
 <template>
   <div class="flex" :class="wrapperClass">
     <div class="lab" v-if="label">
-      <span class="font-semibold text-sm">{{ label }} </span>
+      <span class="font-semibold text-sm text-base-content text-opacity-80">{{ label }} </span>
     </div>
     <div class="flex-1" :class="inputClass">
       <TextareaField v-if="type === 'textarea'" v-bind="$attrs" :readonly="readonly" />
@@ -60,7 +60,7 @@ const inputClass = computed(() => {
 });
 
 const wrapperClass = computed(() => {
-  if (!props.horizontal) return "flex-col gap-1";
+  if (!props.horizontal) return "flex-col gap-2";
   const cls = ["items-center"];
   if (props.type == "box") cls.push("border-b");
   return cls.join(" ");
