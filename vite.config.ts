@@ -17,7 +17,7 @@ export default defineConfig({
       fileName: (format) => `masc-vue.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue", "tippy.js", "vue-toast-notification", "@vueuse/core"],
+      external: ["vue", "tippy.js", "@vueuse/core"],
       output: {
         exports: "named",
         globals: {

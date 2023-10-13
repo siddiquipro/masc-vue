@@ -34,8 +34,7 @@
     "floating-vue": "2.0.0-beta.24",
     "sass": "^1.68.0",
     "tippy.js": "^6.3.7",
-    "vue": "^3.3.4",
-    "vue-toast-notification": "3"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",

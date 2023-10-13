@@ -26,9 +26,6 @@ dependencies:
   vue:
     specifier: ^3.3.4
     version: 3.3.4
-  vue-toast-notification:
-    specifier: '3'
-    version: 3.1.1(vue@3.3.4)
 
 devDependencies:
   '@iconify/vue':
@@ -1721,15 +1718,6 @@ packages:
       de-indent: 1.0.2
       he: 1.2.0
     dev: true
-
-  /vue-toast-notification@3.1.1(vue@3.3.4):
-    resolution: {integrity: sha512-DXEE38NxXFCNinKI+MyZBMWsaqE9Lwxg9GkMVkzKXY1ACCeNztBXuUiSvKMe36dnnYd1qnlP+cWNSvHlkt5xNA==}
-    engines: {node: '>=12.15.0'}
-    peerDependencies:
-      vue: ^3.0
-    dependencies:
-      vue: 3.3.4
-    dev: false
 
   /vue-tsc@1.8.15(typescript@5.2.2):
     resolution: {integrity: sha512-4DoB3LUj7IToLmggoCxRiFG+QU5lem0nv03m1ocqugXA9rSVoTOEoYYaP8vu8b99Eh+/cCVdYOeIAQ+RsgUYUw==}

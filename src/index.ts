@@ -1,6 +1,5 @@
 import * as components from "./components";
 import "vue-final-modal/style.css";
-import "vue-toast-notification/dist/theme-sugar.css";
 import "./css/app.css";
 import { App } from "vue";
 
