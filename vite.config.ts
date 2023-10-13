@@ -1,15 +1,25 @@
-import { defineConfig } from "vite";
+import { BuildOptions, defineConfig } from "vite";
 import { resolve } from "path";
 
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
+
+const isWeb = process.env.WEB;
+console.log("Building Mode :::::::::::::::::: ", isWeb ? "Website" : "Library");
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 3000,
   },
-  build: {
+  build: getBuildConfig(),
+  plugins: [vue(), dts({ insertTypesEntry: true })],
+});
+
+function getBuildConfig(): BuildOptions {
+  if (isWeb) return {};
+
+  return {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "masc-vue",
@@ -25,6 +35,5 @@ export default defineConfig({
         },
       },
     },
-  },
-  plugins: [vue(), dts({ insertTypesEntry: true })],
-});
+  };
+}
