@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div @click="openModal">
-      <a class="input input-bordered w-full cursor-pointer flex justify-between items-center">
+      <a class="input w-full cursor-pointer flex justify-between items-center">
         <span> {{ toDateFormat(selValue) }}</span>
         <icon icon="mdi:calendar-month"></icon>
       </a>

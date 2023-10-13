@@ -2,7 +2,7 @@
   <div class="bar p-2 bg-base-300 text-sm" v-if="paginate">
     <div class="flex items-center gap-2">
       <div>Rows per page</div>
-      <select class="select select-bordered w-28 h-8" v-model="paginate.perPage" @change="perPageChanged(paginate.perPage)">
+      <select class="select w-28 h-8" v-model="paginate.perPage" @change="perPageChanged(paginate.perPage)">
         <option v-for="p in perPages" :value="p">{{ p }}</option>
       </select>
     </div>

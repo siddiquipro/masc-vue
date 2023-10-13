@@ -1,5 +1,5 @@
 <template>
-  <input v-model="value" :placeholder="placeholder" class="input w-full input-bordered" ref="input" :type="props.type" :class="getClasses" />
+  <input v-model="value" :placeholder="placeholder" class="input w-full" ref="input" :type="props.type" :class="getClasses" />
 </template>
 
 <script setup lang="ts">

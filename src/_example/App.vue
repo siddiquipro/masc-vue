@@ -7,9 +7,11 @@
 
       <SCard title="Buttons">
         <div class="flex gap-4">
-          <SBtn class="btn-sm" icon="mdi:content-save"> Small Button </SBtn>
-          <SBtn icon="mdi:content-save"> Normal Button </SBtn>
-          <SBtn loading class="btn-primary"> Loading Button </SBtn>
+          <SBtn class="btn-xs" icon="mdi:content-save"> X-Small </SBtn>
+          <SBtn class="btn-sm" icon="mdi:home"> Small </SBtn>
+          <SBtn icon="mdi:menu"> Normal </SBtn>
+          <SBtn class="btn-lg" icon="mdi:content-save"> Large </SBtn>
+          <SBtn loading class="btn-primary"> Loading </SBtn>
           <SBtn class="btn-primary" href="http://google.com" target="_blank" icon="mdi:link"> Button as Link </SBtn>
         </div>
       </SCard>
@@ -107,6 +109,9 @@ body {
 }
 
 :root {
+  --b1: 0 0% 100%;
+  --b2: 0 0% 90%;
+  --b3: 0 0% 80%;
   --p: 256.2 60% 58.8%;
   --pf: 256.1 59.8% 51.2%;
   --pc: 0 0% 100%;

@@ -1,10 +1,8 @@
 <template>
-  <form class="block relative w-full" @submit.prevent="searchNow()">
-    <input v-model="value" :placeholder="placeholder" class="w-full input input-bordered" ref="input" />
-    <div class="flex items-center gap-1 absolute right-2 top-0">
-      <sBtn type="button" class="search-icon" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
-      <sBtn type="sbmit" class="search-icon" icon="mdi:search" />
-    </div>
+  <form class="block relative w-full has-addons" @submit.prevent="searchNow()">
+    <sBtn type="sbmit" class="left-0 input-icon opacity-70" icon="mdi:search" />
+    <input v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
+    <sBtn type="button" class="right-0 input-icon" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
   </form>
 </template>
 
@@ -60,17 +58,17 @@ const value = useVModel(props, "modelValue", emits);
 </script>
 
 <style scoped>
-.search-icon {
-  height: 30px;
-  font-size: 1.5rem;
-  padding: 0;
-  width: 30px;
-  background: transparent;
-  border: 0;
-  color: grey;
+.has-addons input {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.search-icon:hover {
-  color: #222;
+.input-icon {
+  position: absolute;
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
 }
 </style>
