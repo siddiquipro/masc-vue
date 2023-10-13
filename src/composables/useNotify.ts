@@ -1,28 +1,27 @@
-// useNotify;
-
 import { useModal } from "./useModal";
 import { useLoading } from "./useLoading";
-import { useToast, ToastProps } from "vue-toast-notification";
+import { useToast } from "./useToast";
 
 class Notify {
-  toast = useToast({ duration: 5000 });
+  toast = useToast();
   modal = useModal();
   loading = useLoading();
 
-  success(msg: any, options: ToastProps = {}) {
-    this.toast.success(this.getMsg(msg), options);
+  success(msg: any, options = {}) {
+    const opts = { ...options, type: "success", msg: this.getMsg(msg) };
+    this.toast.open(opts);
   }
 
-  info(msg: any, options: ToastProps = {}) {
-    this.toast.info(this.getMsg(msg), options);
+  info(msg: any, options = {}) {
+    this.toast.open({ ...options, type: "info", msg: this.getMsg(msg) });
   }
 
-  warning(msg: any, options: ToastProps = {}) {
-    this.toast.warning(this.getMsg(msg), options);
+  warning(msg: any, options = {}) {
+    this.toast.open({ ...options, type: "warning", msg: this.getMsg(msg) });
   }
 
-  error(msg: any, options: ToastProps = {}) {
-    this.toast.error(this.getMsg(msg), options);
+  error(msg: any, options = {}) {
+    this.toast.open({ ...options, type: "error", msg: this.getMsg(msg) });
   }
 
   async confirm(msg: any, title = "Confirm", confirmBtnText = "Confirm") {

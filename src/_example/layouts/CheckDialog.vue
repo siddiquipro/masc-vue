@@ -2,7 +2,7 @@
   <div>
     <div class="flex gap-4 items-end">
       <s-field type="select" v-model="position" label="Modal Position" :options="options" class="w-96" />
-      <s-btn @click="isOpen = true">Open Sidebar</s-btn>
+      <s-btn @click="isOpen = true">Open Dialog</s-btn>
     </div>
 
     <Drawer :position="position" v-model="isOpen" />

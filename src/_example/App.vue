@@ -105,4 +105,29 @@ body {
 .btn {
   min-height: initial;
 }
+
+:root {
+  --p: 207.1 60.8% 52.9%;
+  --pf: 210 79% 46%;
+  --pc: 0 0% 100%;
+  --n: 0 0% 87%;
+  --nf: 0 0% 75%;
+  --nc: 0 0% 25%;
+  --su: 122 39% 49%;
+  --suc: 0 0% 100%;
+  --er: 0 100% 60%;
+  --erc: 0 0% 100%;
+  --wa: 33.5 100% 49.2%;
+  --wac: 0 0% 100%;
+  --rounded-box: 0.25rem;
+  --rounded-btn: 0.25rem;
+  --rounded-badge: 0.25rem;
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-text-case: auto;
+  --btn-focus-scale: 0.95;
+  --border-btn: initial;
+  --tab-border: initial;
+  --tab-radius: initial;
+}
 </style>

@@ -60,7 +60,7 @@ const inputClass = computed(() => {
 });
 
 const wrapperClass = computed(() => {
-  if (!props.horizontal) return "flex-col";
+  if (!props.horizontal) return "flex-col gap-1";
   const cls = ["items-center"];
   if (props.type == "box") cls.push("border-b");
   return cls.join(" ");

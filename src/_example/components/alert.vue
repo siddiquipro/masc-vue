@@ -10,9 +10,6 @@
 </template>
 
 <script setup lang="ts">
-//to use notify, import from masc
-// import { useNotify } from "masc-vue";
-
 import { useNotify } from "../../index";
 const toast = useNotify();
 
