@@ -1,5 +1,12 @@
 import dayjs from "dayjs";
 
+export function getRegExpression(type: string) {
+  const regExp = {
+    email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+  } as any;
+  return regExp[type];
+}
+
 export function getColClasses(props: any) {
   const cls = [];
   if (props.center) cls.push("text-center");
