@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { useDateFormat } from "@vueuse/core";
 
 export function getRegExpression(type: string) {
   const regExp = {
@@ -16,7 +16,9 @@ export function getColClasses(props: any) {
 
 export function toDateFormat(value: string, format = "MMM D, YYYY", defValue = "") {
   if (value && value !== "00000000") {
-    return dayjs(value).format(format);
+    const formatted = useDateFormat(value, format);
+    console.log(formatted);
+    return formatted.value;
   } else {
     return defValue;
   }
