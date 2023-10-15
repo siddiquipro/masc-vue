@@ -42,4 +42,12 @@
   .btn-circle .btn-lg {
     @apply w-14 h-14;
   }
+
+  .dropdown-content {
+    @apply min-w-full z-10;
+  }
+
+  .dropdown-menu {
+    @apply bg-base-100 mt-2 divide-y rounded-md  shadow-2xl ring-1 ring-black ring-opacity-10 focus:outline-none;
+  }
 }

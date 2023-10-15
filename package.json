@@ -1,6 +1,6 @@
 {
   "name": "masc-vue",
-  "version": "0.0.19",
+  "version": "0.0.21",
   "type": "module",
   "files": [
     "dist"
@@ -26,19 +26,17 @@
     "build:web": "vue-tsc && cross-env WEB=true vite build",
     "build:styles": "postcss src/css/index.css -o dist/index.css",
     "preview": "vite preview",
-    "release": "npm run build && npm publish --access=public "
+    "release": "pnpm run build && npm publish --access=public "
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
     "@vuepic/vue-datepicker": "^7.0.0",
     "@vueuse/core": "^10.4.1",
-    "cross-env": "^7.0.3",
-    "floating-vue": "2.0.0-beta.24",
-    "sass": "^1.68.0",
     "tippy.js": "^6.3.7",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "sass": "^1.68.0",
     "@iconify/vue": "^4.1.1",
     "@types/node": "^20.8.2",
     "@vitejs/plugin-vue": "^4.4.0",
