@@ -2,7 +2,7 @@
   <SCard title="Form" class="relative">
     <sForm class="grid gap-4" :data="ds.obj" v-slot="{ clearError }" @submit="onSubmit">
       <div v-for="col in config.columns">
-        <sFormitem
+        <sField
           :label="col.label"
           :type="col.type"
           :help="col.help"
@@ -24,7 +24,7 @@
 <script lang="ts" setup>
 import { useNotify } from "../..";
 import sForm from "../../components/form/s-form.vue";
-import sFormitem from "../../components/formitem/s-formitem.vue";
+import sField from "../../components/formitem/s-field.vue";
 
 import { reactive } from "vue";
 

@@ -1,3 +1,3 @@
-import SFormitem from "./s-formitem.vue";
-export default { SFormitem };
-export { SFormitem };
+import SField from "./s-field.vue";
+export default { SField };
+export { SField };

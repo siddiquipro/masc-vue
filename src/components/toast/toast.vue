@@ -1,8 +1,8 @@
 <template>
-  <div class="toast z-50">
+  <div class="fixed z-50 grid gap-2 bottom-6 right-6 w-auto">
     <transition-group name="list" appear>
-      <div class="alert p-3" :class="getClass(x.type)" v-for="x in messages" :key="x.id">
-        <Icon :icon="getIcon(x.type)" class="text-2xl" />
+      <div class="p-3 alert" :class="getClass(x.type)" v-for="x in messages" :key="x.id">
+        <Icon :icon="getIcon(x.type)" class="text-3xl" />
         <div class="max-w-sm w-full whitespace-pre-wrap leading-[1.2]" v-html="x.message"></div>
         <button class="btn btn-sm btn-circle btn-ghost" @click="closeToast(x.id)" aria-hidden="true">
           <Icon icon="mdi:close" class="text-xl cursor-pointer" />
@@ -62,38 +62,34 @@ const getIcon = (type: typeToast) => {
 const ToastConfig = {
   info: {
     class: "alert-info",
-    icon: "mdi:alert-circle-outline",
+    icon: "mdi:information",
   },
   success: {
     class: "alert-success",
-    icon: "mdi:check-circle-outline",
+    icon: "mdi:check-circle",
   },
   warning: {
     class: "alert-warning",
-    icon: "mdi:alert-circle-outline",
+    icon: "mdi:alert-circle",
   },
   error: {
     class: "alert-error",
-    icon: "mdi:alert-circle-outline",
+    icon: "mdi:close-circle",
   },
 };
 </script>
 
 <style>
 /* list transitions */
-.list-enter-from,
-.list-leave-to {
-  transform: translateX(100%);
-}
-.list-enter-active {
-  transform: translateX(0);
-  transition: all 0.4s ease;
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.25s ease;
 }
 
-.list-leave-active {
-  transition: all 0.4s ease;
-}
-.list-move {
-  transition: all 0.3s ease;
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
 }
 </style>

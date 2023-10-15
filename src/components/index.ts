@@ -4,10 +4,8 @@ import SAppbar from "./appbar/s-appbar.vue";
 import { STable, SPagination, STableColumn, STableHead } from "./table";
 import { SModal } from "./modal";
 import { SIcon } from "./icon";
-import { SFormitem } from "./formitem";
+import { SField } from "./formitem";
 
-const sField = SFormitem;
+export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SField };
 
-export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem, sField };
-
-export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SFormitem, sField };
+export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, STableHead, SModal, SIcon, SField };

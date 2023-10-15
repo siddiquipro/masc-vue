@@ -18,4 +18,4 @@ export { useLoading } from "./composables/useLoading";
 export { useNotify } from "./composables/useNotify";
 export { wait } from "./utils/helpers";
 
-export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal, SIcon, SFormitem } from "./components";
+export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, STableHead, SModal, SIcon, SField } from "./components";

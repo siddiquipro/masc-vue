@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import sField from "../../components/formitem/s-formitem.vue";
+import sField from "../../components/formitem/s-field.vue";
 import { ref } from "vue";
 const date = ref("2021-09-01");
 </script>
