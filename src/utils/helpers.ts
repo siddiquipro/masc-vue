@@ -1,26 +1,8 @@
-import { useDateFormat } from "@vueuse/core";
-
 export function getRegExpression(type: string) {
   const regExp = {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   } as any;
   return regExp[type];
-}
-
-export function getColClasses(props: any) {
-  const cls = [];
-  if (props.center) cls.push("text-center");
-  if (props.type === "boolean") cls.push("text-center");
-  return cls.join(" ");
-}
-
-export function toDateFormat(value: string | Date, format = "MMM D, YYYY", defValue = "") {
-  if (value && value !== "00000000") {
-    const formatted = useDateFormat(value, format);
-    return formatted.value;
-  } else {
-    return defValue;
-  }
 }
 
 export function getObjectValue(obj: any, prop: string) {
@@ -33,8 +15,14 @@ export function getObjectValue(obj: any, prop: string) {
   }
 }
 
-export function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+export function genRandom() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
 }
 
-export default { getColClasses, toDateFormat, getObjectValue };
+export function isDefined(value: any) {
+  return typeof value !== "undefined";
+}
+
+export function useWait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

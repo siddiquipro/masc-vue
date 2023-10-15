@@ -1,6 +1,5 @@
 import STable from "./s-table.vue";
-import SPagination from "./Pagination.vue";
-import STableColumn from "./TableColumn.vue";
-import STableHead from "./TableHead.vue";
-export default { STable, SPagination, STableColumn, STableHead };
-export { STable, SPagination, STableColumn, STableHead };
+import SPagination from "./s-pagination.vue";
+import STableColumn from "./s-table-column.vue";
+export default { STable, SPagination, STableColumn };
+export { STable, SPagination, STableColumn };

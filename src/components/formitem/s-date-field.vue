@@ -59,7 +59,7 @@ import { ref, computed } from "vue";
 import { onClickOutside, useVModel } from "@vueuse/core";
 import icon from "../icon/icon.vue";
 import utilDate from "./date";
-import { toDateFormat } from "../../utils/helpers";
+import { formatDate } from "../../utils/formatters";
 
 const emits = defineEmits(["update:modelValue"]);
 
@@ -96,7 +96,7 @@ const daysOfWeek = computed(() => utilDate.getWeekdayNames());
 const months = computed(() => utilDate.getMonthNames());
 const years = computed(() => utilDate.getYears());
 
-const displayFormat = computed(() => toDateFormat(selValue.value, props.format));
+const displayFormat = computed(() => formatDate(selValue.value, props.format));
 
 const rowClass = (date: any) => {
   if (date.date.getMonth() !== currentMonth.value) return "text-sm text-base-content text-opacity-50";
@@ -133,7 +133,7 @@ const isDateSelected = (date: any) => {
 
 const selectDate = (date: any) => {
   selectedDate.value = new Date(date.date);
-  selValue.value = toDateFormat(selectedDate.value, "YYYY-MM-DD");
+  selValue.value = formatDate(selectedDate.value, "YYYY-MM-DD");
   close();
 };
 

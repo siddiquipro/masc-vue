@@ -7,7 +7,7 @@
       </a>
     </div>
     <slot>
-      <div class="min-h-[6rem] grid items-center">
+      <div class="min-h-[6rem] min-w-[20rem] grid items-center">
         <div class="p-4" v-html="props.msg"></div>
       </div>
     </slot>

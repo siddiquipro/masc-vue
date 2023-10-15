@@ -25,7 +25,7 @@
     @apply h-6;
   }
 
-  .btn-circle .btn-xs {
+  .btn-circle.btn-xs {
     @apply w-6 h-6;
   }
 

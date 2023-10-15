@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-base-100 border rounded">
+  <div class="bg-base-100 border rounded s-card">
     <div class="bar px-4 py-2 border-b gap-6">
       <div class="font-semibold" v-html="props.title"></div>
       <slot name="full"></slot>

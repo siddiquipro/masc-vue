@@ -9,7 +9,8 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted } from "vue";
-import { promiseTimeout, useVModel } from "@vueuse/core";
+import { useVModel } from "@vueuse/core";
+import { useWait } from "../../utils/helpers";
 
 const emits = defineEmits(["update:modelValue"]);
 const props = defineProps({
@@ -37,7 +38,7 @@ const modalBoxClass = computed(() => {
 const isOpen = useVModel(props, "modelValue", emits);
 
 const init = async () => {
-  await promiseTimeout(10);
+  await useWait(10);
   isReady.value = true;
 };
 

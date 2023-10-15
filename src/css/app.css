@@ -2,6 +2,7 @@
   --b1: 0 0% 100%;
   --b2: 0 0% 90%;
   --b3: 0 0% 80%;
+  --bc: 0 0% 20%;
   --p: 256.2 60% 58.8%;
   --pf: 256.1 59.8% 51.2%;
   --pc: 0 0% 100%;
@@ -26,4 +27,33 @@
   --border-btn: initial;
   --tab-border: initial;
   --tab-radius: initial;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* table css */
+.s-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
+  font-size: 0.9em;
+  color: hsl(var(--bc) / 0.85);
+}
+
+.s-table thead {
+  background-color: hsl(var(--b3) / 0.25);
+}
+
+.s-table td,
+.s-table th {
+  border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
+  padding: 5px;
+}
+
+.s-card .s-table th {
+  font-weight: 600;
 }

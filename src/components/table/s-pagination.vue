@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center font-semibold px-4 py-2 text-sm gap-4">
+  <nav class="flex items-center font-semibold px-4 py-1 text-sm gap-4">
     <div>Total: {{ total }}</div>
     <div class="w-32">
       <select class="select select-sm w-full" :value="perPage" @change="perPageChanged">

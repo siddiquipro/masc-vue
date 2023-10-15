@@ -69,7 +69,7 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { useLoading, useNotify, wait } from "../index";
+import { useLoading, useNotify, useWait } from "../index";
 import dateInput from "./components/date-input.vue";
 import alertVue from "./components/alert.vue";
 import stable from "./components/stable.vue";
@@ -79,7 +79,7 @@ import BaseLayout from "./layouts/BaseLayout.vue";
 
 async function startLoading() {
   const loader = useLoading().show();
-  await wait(5000);
+  await useWait(5000);
   loader.hide();
 }
 
