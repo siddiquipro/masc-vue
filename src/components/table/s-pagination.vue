@@ -104,15 +104,3 @@ const visiblePages = computed(() => {
   return elements;
 });
 </script>
-
-<style scoped>
-.c-page-no {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  display: block;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-}
-</style>

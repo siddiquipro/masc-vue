@@ -68,7 +68,6 @@ function clearError(prop: string | null = null) {
 
 function onSubmit() {
   const valid = validateForm(props.data);
-  valid ? console.log("Form is valid") : console.log("Form is invalid");
   if (!valid) return;
   emits("submit", props.data);
 }

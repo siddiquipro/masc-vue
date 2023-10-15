@@ -27,7 +27,7 @@ function getBuildConfig(): BuildOptions {
       fileName: (format) => `masc-vue.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue", "tippy.js", "@vueuse/core"],
+      external: ["vue", "tippy.js", "@vueuse/core", "@iconify/vue"],
       output: {
         exports: "named",
         globals: {

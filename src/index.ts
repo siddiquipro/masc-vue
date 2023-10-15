@@ -1,4 +1,5 @@
 import * as components from "./components";
+import "./css/index.css";
 import "./css/app.css";
 import { App } from "vue";
 
@@ -19,4 +20,4 @@ export { useNotify } from "./composables/useNotify";
 export { useWait, getObjectValue } from "./utils/helpers";
 export { formatBoolean, formatDate } from "./utils/formatters";
 
-export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, SModal, SIcon, SField } from "./components";
+export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, SModal, SIcon, SField, SForm } from "./components";

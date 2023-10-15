@@ -57,6 +57,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { onClickOutside, useVModel } from "@vueuse/core";
+import sBtn from "../button/s-btn.vue";
 import icon from "../icon/icon.vue";
 import utilDate from "./date";
 import { formatDate } from "../../utils/formatters";

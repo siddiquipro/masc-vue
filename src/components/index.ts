@@ -5,7 +5,8 @@ import { STable, SPagination, STableColumn } from "./table";
 import { SModal } from "./modal";
 import { SIcon } from "./icon";
 import { SField } from "./formitem";
+import { SForm } from "./form";
 
-export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField };
+export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm };
 
-export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField };
+export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm };

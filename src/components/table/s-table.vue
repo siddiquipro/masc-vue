@@ -126,12 +126,10 @@ function onFilter(val: any) {
 
 function pageChanged(val: number) {
   metaData.value.page = val;
-  console.log("pageChanged", val);
   emits("onPageChange", val);
 }
 
 function perPageChanged(val: number) {
-  console.log("perPageChanged", val);
   metaData.value.perPage = val;
   metaData.value.page = 1;
   emits("onPerPageChange", val);
