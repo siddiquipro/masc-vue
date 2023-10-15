@@ -1,6 +1,6 @@
 <template>
   <div class="w-full overflow-x-auto">
-    <table class="table w-full" :class="props.bordered ? 'bordered' : ''">
+    <table class="table w-full">
       <thead>
         <tr>
           <TableHead v-for="col in cols" v-bind="col"></TableHead>
@@ -20,15 +20,14 @@
           </td>
         </tr>
       </tbody>
+      <tfoot v-if="meta">
+        <tr>
+          <td :colspan="cols.length" class="text-base-content p-0 border-t">
+            <Pagination :total="meta.total" :perPage="meta.perPage" :page="meta.page" @onPageChange="pageChanged" @onPerPageChange="perPageChanged" />
+          </td>
+        </tr>
+      </tfoot>
     </table>
-    <Pagination
-      v-if="meta"
-      :total="meta.total"
-      :perPage="meta.perPage"
-      :page="meta.page"
-      @onPageChange="pageChanged"
-      @onPerPageChange="perPageChanged"
-    />
   </div>
 </template>
 
@@ -89,10 +88,14 @@ function onRowClick(row: any, index: number) {
 }
 
 function pageChanged(val: number) {
+  props.meta.page = val;
   emits("onPageChange", val);
 }
 
 function perPageChanged(val: number) {
+  //on per page change, reset page to 1
+  props.meta.page = 1;
+  props.meta.perPage = val;
   emits("onPerPageChange", val);
 }
 </script>

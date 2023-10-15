@@ -19,7 +19,9 @@
     @apply px-3 focus:outline-none focus-visible:outline-none focus-within:outline-none ring-1 ring-base-300 focus:ring-primary;
   }
 
-  .btn-xs {
+  .btn-xs,
+  .input-xs,
+  .select-xs {
     @apply h-6;
   }
 
@@ -27,7 +29,9 @@
     @apply w-6 h-6;
   }
 
-  .btn-sm {
+  .btn-sm,
+  .input-sm,
+  .select-sm {
     @apply h-8;
   }
 

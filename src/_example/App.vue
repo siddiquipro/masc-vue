@@ -11,6 +11,7 @@
           <SBtn class="btn-primary" href="http://google.com" target="_blank" icon="mdi:link"> Button as Link </SBtn>
         </div>
       </SCard>
+
       <SCard title="Card Title">
         <p class="font-semibold">Date Picker</p>
         <dateInput></dateInput>

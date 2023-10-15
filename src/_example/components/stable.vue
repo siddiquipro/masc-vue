@@ -1,9 +1,9 @@
 <template>
   <SCard title="Table" compact>
-    <STable :cols="cols" :data="data">
+    <STable :cols="cols" :data="data" :meta="meta">
       <template #email="x">
         <td>
-          <div v-tooltip="`This is a example tooltip`">{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
+          <div v-tooltip="`tooltip for ${x.row.name}`">{{ x.row.email.toUpperCase() }} of {{ x.row.name }}</div>
         </td>
       </template>
       <template #new="x">
@@ -16,10 +16,24 @@
 </template>
 
 <script setup lang="ts">
-const data: any[] = [];
-for (let i = 1; i <= 10; i++) {
-  data.push({ name: `Name ${i}`, email: `name_${i}@example.com`, new: i % 2 ? true : false, date: new Date() });
-}
+import { ref, computed } from "vue";
+
+const data = computed(() => {
+  const start = Number(meta.value.page || 1);
+  const count = Number(meta.value.perPage || 10);
+
+  const startCount = (start - 1) * count;
+
+  const rows = [];
+  for (let i = 1; i <= count; i++) {
+    const x = startCount + i;
+    rows.push({ name: `Name ${x}`, email: `name_${x}@example.com`, new: i % 2 ? true : false, date: new Date() });
+  }
+
+  return rows;
+});
+
+const meta = ref({ total: 100, perPage: 10, page: 1 });
 
 const cols = [
   { field: "name", label: "Name" },
