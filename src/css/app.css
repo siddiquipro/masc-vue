@@ -33,6 +33,10 @@ html {
   scrollbar-gutter: stable;
 }
 
+body {
+  background-color: #ebf1f5;
+}
+
 /* table css */
 .s-table {
   display: table;

@@ -6,7 +6,8 @@ import { SModal } from "./modal";
 import { SIcon } from "./icon";
 import { SField } from "./formitem";
 import { SForm } from "./form";
+import { SDropdown } from "./dropdown";
 
-export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm };
+export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm, SDropdown };
 
-export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm };
+export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm, SDropdown };
