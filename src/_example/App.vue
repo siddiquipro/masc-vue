@@ -12,7 +12,8 @@
         </div>
       </SCard>
       <SCard title="Card Title">
-        <p class="">Card Body</p>
+        <p class="font-semibold">Date Picker</p>
+        <dateInput></dateInput>
       </SCard>
 
       <sdropdown></sdropdown>
@@ -68,6 +69,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import { useLoading, useNotify, wait } from "../index";
+import dateInput from "./components/date-input.vue";
 import alertVue from "./components/alert.vue";
 import stable from "./components/stable.vue";
 import sform from "./components/sform.vue";

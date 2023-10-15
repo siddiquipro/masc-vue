@@ -14,10 +14,9 @@ export function getColClasses(props: any) {
   return cls.join(" ");
 }
 
-export function toDateFormat(value: string, format = "MMM D, YYYY", defValue = "") {
+export function toDateFormat(value: string | Date, format = "MMM D, YYYY", defValue = "") {
   if (value && value !== "00000000") {
     const formatted = useDateFormat(value, format);
-    console.log(formatted);
     return formatted.value;
   } else {
     return defValue;
