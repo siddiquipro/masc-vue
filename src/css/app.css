@@ -29,10 +29,6 @@
   --tab-radius: initial;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
-
 body {
   background-color: #ebf1f5;
 }
