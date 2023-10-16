@@ -4,7 +4,7 @@
       <s-table-column field="name" label="Name" filterable />
       <s-table-column field="email" label="Email" />
       <s-table-column field="new" label="New User?" type="boolean" />
-      <s-table-column field="date" label="Date" type="date" />
+      <s-table-column field="date" label="Date" type="date" class="text-center" />
       <s-table-column v-slot="props">
         <s-btn class="btn-xs w-full" @click="onEdit(props.row)">Edit</s-btn>
       </s-table-column>
