@@ -1,6 +1,6 @@
 {
   "name": "masc-vue",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "files": [
     "dist"
@@ -14,9 +14,9 @@
       "import": "./dist/masc-vue.es.js",
       "require": "./dist/masc-vue.umd.js"
     },
-    "./dist/*.css": {
-      "import": "./dist/*.css",
-      "require": "./dist/*.css"
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "scripts": {
