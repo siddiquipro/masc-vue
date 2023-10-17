@@ -1,7 +1,7 @@
 <template>
   <div class="datepicker relative w-full">
     <div class="relative w-full ignore">
-      <input type="text" readonly :value="displayFormat" v-bind="$attrs" @focus="open" class="input ignore w-full pr-10" />
+      <input type="text" readonly :class="getClasses" :value="displayFormat" v-bind="$attrs" @focus="open" class="input ignore w-full pr-10" />
       <div class="h-full w-10 flex items-center justify-center absolute top-0 right-0 cursor-pointer ignore" @click="open">
         <icon icon="mdi:calendar-month" class="opacity-75"></icon>
       </div>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, PropType } from "vue";
 import { onClickOutside, useVModel } from "@vueuse/core";
 import sBtn from "../button/s-btn.vue";
 import icon from "../icon/icon.vue";
@@ -76,6 +76,10 @@ const props = defineProps({
   readonly: {
     type: Boolean,
     default: false,
+  },
+  size: {
+    type: String as PropType<"xs" | "sm" | "lg">,
+    default: "",
   },
 });
 
@@ -159,6 +163,15 @@ const nextMonth = () => {
   currentYear.value = newDate.getFullYear();
   currentMonth.value = newDate.getMonth();
 };
+
+const getClasses = computed(() => {
+  const cls = [];
+  if (props.size === "xs") cls.push("input-xs");
+  if (props.size === "sm") cls.push("input-sm");
+  if (props.size === "lg") cls.push("input-lg");
+
+  return cls.join(" ");
+});
 </script>
 
 <style>

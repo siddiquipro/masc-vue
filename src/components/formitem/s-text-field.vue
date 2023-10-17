@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, PropType } from "vue";
 import { whenever, useVModel } from "@vueuse/core";
 
 const props = defineProps({
@@ -30,6 +30,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  size: {
+    type: String as PropType<"xs" | "sm" | "lg">,
+    default: "",
+  },
 });
 
 const input = ref<HTMLElement | null>(null);
@@ -37,6 +41,11 @@ const input = ref<HTMLElement | null>(null);
 const getClasses = computed(() => {
   const cls = [];
   if (props.right) cls.push("text-right");
+
+  if (props.size === "xs") cls.push("input-xs");
+  if (props.size === "sm") cls.push("input-sm");
+  if (props.size === "lg") cls.push("input-lg");
+
   return cls.join(" ");
 });
 

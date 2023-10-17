@@ -1,8 +1,8 @@
 <template>
   <SCard title="Form" class="relative">
-    <sForm class="grid gap-4" :data="ds.obj" v-slot="{ reset }" @submit="onSubmit">
+    <sForm class="grid gap-4" v-slot="{ reset }" @submit="onSubmit">
       <div v-for="col in config.columns">
-        <sField :label="col.label" :type="col.type" :help="col.help" :options="opts" :required="col.required" v-model="ds.obj[col.field]" />
+        <sField :options="opts" v-bind="col" size="sm" v-model="ds.obj[col.field]" />
       </div>
 
       <sField label="Age" type="number" v-model="ds.user.name.age" :validator="onValidate" required />
@@ -23,7 +23,7 @@ import sField from "../../components/formitem/s-field.vue";
 import { reactive } from "vue";
 
 const notify = useNotify();
-const ds: any = reactive({ obj: {}, user: { name: { age: "" } } });
+const ds: any = reactive({ obj: { boolean: null, checkbox: [] }, user: { name: { age: "" } } });
 
 const opts: any[] = [];
 for (let i = 1; i <= 10; i++) {
@@ -41,9 +41,12 @@ const config = {
     {
       field: "texta",
       help: "Please provide something useful",
-      label: "This is label for type TEXT",
+      label: "Name",
       required: true,
       type: "text",
+
+      pattern: "^[a-z0-9_-]{3,16}$",
+      patternMessage: "The name must be between 3 and 16 characters long",
     },
     {
       field: "email",
@@ -53,12 +56,12 @@ const config = {
       type: "email",
     },
     // { field: "search", label: "This is label for type SEARCH", type: "search" },
-    // { field: "textareab", label: "This is label for type TEXTAREA", type: "textarea" },
-    // { field: "radioc", label: "This is label for type RADIO", type: "radio" },
-    // { field: "dated", label: "This is label for type DATE", type: "date" },
-    // { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean" },
-    // { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox" },
-    // { field: "select", label: "This is label for type SELECT", required: true, type: "select" },
+    { field: "textareab", label: "This is label for type TEXTAREA", type: "textarea", hello: "world" },
+    { field: "radioc", label: "This is label for type RADIO", type: "radio" },
+    { field: "dated", label: "This is label for type DATE", type: "date" },
+    { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean" },
+    { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox" },
+    { field: "select", label: "This is label for type SELECT", required: true, type: "select" },
   ],
 };
 

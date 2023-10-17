@@ -1,13 +1,13 @@
 <template>
   <form class="block relative w-full has-addons" @submit.prevent="searchNow()">
     <sBtn type="sbmit" class="left-0 input-icon opacity-70" icon="mdi:search" />
-    <input v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
+    <input :class="getClasses" v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
     <sBtn type="button" class="right-0 input-icon" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
   </form>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, PropType, computed } from "vue";
 import { useVModel } from "@vueuse/core";
 import sBtn from "../button/s-btn.vue";
 
@@ -30,6 +30,10 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
+    default: "",
+  },
+  size: {
+    type: String as PropType<"xs" | "sm" | "lg">,
     default: "",
   },
 });
@@ -55,6 +59,16 @@ function clearValue() {
 onMounted(() => setFocus());
 
 const value = useVModel(props, "modelValue", emits);
+
+const getClasses = computed(() => {
+  const cls = [];
+
+  if (props.size === "xs") cls.push("input-xs");
+  if (props.size === "sm") cls.push("input-sm");
+  if (props.size === "lg") cls.push("input-lg");
+
+  return cls.join(" ");
+});
 </script>
 
 <style scoped>

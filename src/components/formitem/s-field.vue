@@ -7,14 +7,23 @@
       </span>
     </div>
     <div class="flex-1" :class="fieldClass">
-      <TextareaField v-model="dataValue" v-if="type === 'textarea'" v-bind="$attrs" :size="size" :readonly="readonly" />
-      <BoolField v-model="dataValue" v-else-if="type === 'boolean'" v-bind="$attrs" :size="size" :readonly="readonly" />
-      <CheckboxField v-model="dataValue" v-else-if="type === 'checkbox'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
-      <SelectField v-model="dataValue" v-else-if="type === 'select'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
-      <RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
-      <DateField v-model="dataValue" v-else-if="type === 'date'" v-bind="$attrs" :size="size" :readonly="readonly" />
-      <SearchField v-model="dataValue" v-else-if="type === 'search'" v-bind="$attrs" :size="size" :readonly="readonly" />
-      <TextField v-model="dataValue" v-else v-bind="$attrs" :type="type" :size="size" :readonly="readonly" />
+      <TextareaField v-model="dataValue" v-if="type === 'textarea'" v-bind="bProps" />
+
+      <BoolField v-model="dataValue" v-else-if="type === 'boolean'" v-bind="bProps" />
+
+      <CheckboxField v-model="dataValue" v-else-if="type === 'checkbox'" v-bind="bProps" :options="options" />
+
+      <SelectField v-model="dataValue" v-else-if="type === 'select'" v-bind="bProps" :options="options" />
+
+      <RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="bProps" :options="options">
+        <slot></slot>
+      </RadioField>
+
+      <DateField v-model="dataValue" v-else-if="type === 'date'" v-bind="bProps" />
+
+      <SearchField v-model="dataValue" v-else-if="type === 'search'" v-bind="bProps" />
+
+      <TextField v-model="dataValue" v-else v-bind="bProps" :type="type" />
     </div>
     <div class="-mt-1">
       <div class="text-[0.85em] text-base-content text-opacity-80 help-text" v-if="props.help" v-text="props.help" />
@@ -32,7 +41,7 @@ import RadioField from "./s-radio-field.vue";
 import DateField from "./s-date-field.vue";
 import CheckboxField from "./s-checkbox-field.vue";
 import SearchField from "./s-search-field.vue";
-import { PropType, computed, inject, onMounted, ref, watch } from "vue";
+import { PropType, computed, inject, onMounted, ref, watch, useAttrs } from "vue";
 import { formContextKey } from "../form/constants";
 import { useVModel } from "@vueuse/core";
 import { validateData } from "./validator";
@@ -66,11 +75,15 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  required: {
+    type: Boolean,
+    default: false,
+  },
   readonly: {
     type: Boolean,
     default: false,
   },
-  required: {
+  disabled: {
     type: Boolean,
     default: false,
   },
@@ -79,7 +92,7 @@ const props = defineProps({
     default: () => [],
   },
   size: {
-    type: String as PropType<"xs" | "sm" | "lg" | "">,
+    type: String as PropType<"xs" | "sm" | "lg">,
     default: "",
   },
   pattern: {
@@ -95,6 +108,16 @@ const props = defineProps({
     default: null,
   },
 });
+
+const attrs = useAttrs();
+
+const bProps = computed(() => ({
+  ...attrs,
+  size: props.size,
+  disabled: props.disabled,
+  readonly: props.readonly,
+  required: props.required,
+}));
 
 const initialValue = props.modelValue;
 const dataValue = useVModel(props, "modelValue");

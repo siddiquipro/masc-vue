@@ -10,13 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, PropType } from "vue";
 import { useVModel } from "@vueuse/core";
 const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
   modelValue: {
-    type: [Boolean, String, Array],
+    type: [String, Array, Boolean, Number],
   },
   text: {
     type: String,
@@ -35,7 +35,7 @@ const props = defineProps({
     default: true,
   },
   size: {
-    type: String,
+    type: String as PropType<"xs" | "sm" | "lg">,
     default: "",
   },
 });

@@ -33,8 +33,12 @@ function requiredCheck(props: any, value: any) {
 function validatePattern(props: any, value: any) {
   const { pattern } = props;
   if (!pattern) return true;
-  const regEx = getRegExpression(pattern);
-  if (regEx.test(value)) return true;
+  try {
+    const regEx = new RegExp(pattern);
+    if (regEx.test(value)) return true;
+  } catch (error) {
+    console.error('Invalid pattern provided in "pattern" prop ', error);
+  }
   return false;
 }
 
