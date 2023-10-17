@@ -3,9 +3,9 @@
     <div class="grid gap-4 p-4">
       <SCard title="Buttons">
         <div class="flex gap-4">
-          <SBtn class="btn-xs" icon="mdi:content-save"> X-Small </SBtn>
+          <SBtn size="xs" icon="mdi:content-save"> X-Small </SBtn>
           <SBtn class="btn-sm" icon="mdi:home"> Small </SBtn>
-          <SBtn icon="mdi:menu"> Normal </SBtn>
+          <SBtn icon="mdi:menu" iconRight="mdi:home" iconClass="text-xl text-primary"> Normal </SBtn>
           <SBtn class="btn-lg" icon="mdi:content-save"> Large </SBtn>
           <SBtn loading class="btn-primary"> Loading </SBtn>
           <SBtn class="btn-primary" href="http://google.com" target="_blank" icon="mdi:link"> Button as Link </SBtn>
@@ -119,44 +119,3 @@ async function openAlert() {
 
 const ds = reactive({ open: false, right: false, left: false, top: false, bottom: false });
 </script>
-
-<style>
-html,
-body {
-  background-color: #ebf1f5;
-}
-
-.btn {
-  min-height: initial;
-}
-
-:root {
-  --b1: 0 0% 100%;
-  --b2: 0 0% 90%;
-  --b3: 0 0% 80%;
-  --p: 256.2 60% 58.8%;
-  --pf: 256.1 59.8% 51.2%;
-  --pc: 0 0% 100%;
-  --n: 0 0% 87%;
-  --nf: 0 0% 75%;
-  --nc: 0 0% 25%;
-  --su: 122 39% 49%;
-  --suc: 0 0% 100%;
-  --er: 0 100% 60%;
-  --erc: 0 0% 100%;
-  --wa: 33.5 100% 49.2%;
-  --wac: 0 0% 100%;
-  --in: 207.1 60.8% 52.9%;
-  --inc: 0 0% 100%;
-  --rounded-box: 0.25rem;
-  --rounded-btn: 0.25rem;
-  --rounded-badge: 0.25rem;
-  --animation-btn: 0.25s;
-  --animation-input: 0.2s;
-  --btn-text-case: auto;
-  --btn-focus-scale: 0.95;
-  --border-btn: initial;
-  --tab-border: initial;
-  --tab-radius: initial;
-}
-</style>

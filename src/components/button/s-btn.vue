@@ -1,14 +1,15 @@
 <template>
   <component :is="tag" v-bind="attributes" ref="submitBtn" :class="classes">
     <span v-if="props.loading" class="loading loading-spinner"></span>
-    <Icon v-else-if="props.icon" :icon="props.icon" />
+    <Icon v-else-if="props.icon" :icon="props.icon" :class="props.iconClass" />
     <slot />
+    <Icon v-if="props.iconRight" :icon="props.iconRight" :class="props.iconClass" />
   </component>
 </template>
 
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { computed, useAttrs } from "vue";
+import { computed, useAttrs, PropType } from "vue";
 
 const attrs = useAttrs();
 
@@ -21,16 +22,8 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  ghost: {
-    type: Boolean,
-    default: false,
-  },
-  noan: {
-    type: Boolean,
-    default: true,
-  },
   size: {
-    type: String,
+    type: String as PropType<"xs" | "sm" | "lg">,
     default: "",
   },
   to: {
@@ -42,6 +35,14 @@ const props = defineProps({
     default: "",
   },
   icon: {
+    type: String,
+    default: "",
+  },
+  iconRight: {
+    type: String,
+    default: "",
+  },
+  iconClass: {
     type: String,
     default: "",
   },
@@ -58,6 +59,9 @@ const tag = computed(() => (props.href ? "a" : "button"));
 const classes = computed(() => {
   const classes = ["btn"];
   if (props.loading) classes.push("pointer-events-none");
+  if (props.size === "xs") classes.push("btn-xs");
+  if (props.size === "sm") classes.push("btn-sm");
+  if (props.size === "lg") classes.push("btn-lg");
   return classes.join(" ");
 });
 </script>
