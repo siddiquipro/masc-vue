@@ -124,7 +124,7 @@ const dataValue = useVModel(props, "modelValue");
 
 const fieldClass = computed(() => {
   const cls = [];
-  if (props.readonly) cls.push("readonly");
+  if (props.readonly) cls.push("s-readonly");
   return cls.join(" ");
 });
 

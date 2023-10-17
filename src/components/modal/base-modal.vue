@@ -1,6 +1,6 @@
 <template>
   <dialog class="modal" :class="isOpen && isReady ? 'modal-open' : ''">
-    <div class="flex flex-col bg-base-100" :class="modalBoxClass">
+    <div class="flex flex-col bg-base-100" :class="modalBoxClass" :style="contentStyle">
       <slot></slot>
     </div>
     <div class="modal-backdrop bg-black bg-opacity-30" @click="isOpen = false"></div>
@@ -22,6 +22,10 @@ const props = defineProps({
     type: String,
     default: "center",
   },
+  width: {
+    type: String,
+    default: "450px",
+  },
 });
 
 //ensure component is mounted for transition to work in case of v-if
@@ -33,6 +37,12 @@ const modalBoxClass = computed(() => {
   if (props.position === "top") return "modal-top";
   if (props.position === "bottom") return "modal-bottom";
   return "modal-box";
+});
+
+const contentStyle = computed(() => {
+  if (props.position === "top" || props.position === "bottom") return {};
+
+  return { maxWidth: props.width };
 });
 
 const isOpen = useVModel(props, "modelValue", emits);
@@ -57,6 +67,7 @@ onMounted(() => init());
   transition-delay: 0.1s;
   opacity: 0;
   height: 100%;
+  width: 100%;
 }
 .modal-right {
   right: 0;
@@ -72,8 +83,7 @@ onMounted(() => init());
   padding: 0;
   border-radius: 0.25rem;
   max-height: 100vh;
-  max-width: initial;
-  width: initial;
+  width: 100%;
   transition: all 0.3s;
   transform: translateY(100%);
 }

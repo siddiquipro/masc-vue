@@ -57,3 +57,12 @@ body {
 .s-card .s-table th {
   font-weight: 600;
 }
+
+/*readonly css */
+.s-readonly .input,
+.s-readonly .textarea,
+.s-readonly .select,
+.s-readonly .radio,
+.s-readonly .checkbox {
+  background-color: hsl(var(--b2) / 0.25);
+}

@@ -25,17 +25,41 @@
       <SCard title="Modal">
         <div class="flex gap-4">
           <SBtn @click="ds.open = true">Open Modal</SBtn>
-          <SBtn @click="ds.openRight = true">Open Right Side Modal</SBtn>
+          <SBtn @click="ds.right = true">Open Right Side Modal</SBtn>
+          <SBtn @click="ds.left = true">Open left Side Modal</SBtn>
+          <SBtn @click="ds.top = true">Open Top Modal</SBtn>
+          <SBtn @click="ds.bottom = true">Open Bottom Modal</SBtn>
 
           <SModal title="Hello Modal" v-model="ds.open" footer>
-            <div class="w-full min-w-[400px] p-6">
+            <div class="w-full p-6">
               <p>This is modal content</p>
             </div>
           </SModal>
 
-          <SModal title="Hello Modal" v-model="ds.openRight" footer position="right">
+          <SModal title="Hello Modal" v-model="ds.right" footer position="right" width="800px">
             <div class="w-full p-6 flex-1">
               <p>This is modal on the right</p>
+              <p>This is modal content</p>
+            </div>
+          </SModal>
+
+          <SModal title="Hello Modal" v-model="ds.left" footer position="left">
+            <div class="w-full p-6 flex-1">
+              <p>This is modal on the left</p>
+              <p>This is modal content</p>
+            </div>
+          </SModal>
+
+          <SModal title="Hello Modal" v-model="ds.top" footer position="top">
+            <div class="w-full p-6 flex-1">
+              <p>This is modal on the top</p>
+              <p>This is modal content</p>
+            </div>
+          </SModal>
+
+          <SModal title="Hello Modal" v-model="ds.bottom" footer position="bottom">
+            <div class="w-full p-6 flex-1">
+              <p>This is modal on the bottom</p>
               <p>This is modal content</p>
             </div>
           </SModal>
@@ -93,7 +117,7 @@ async function openAlert() {
   notify.alert("This is the message for alert", "Alert Title");
 }
 
-const ds = reactive({ open: false, openRight: false });
+const ds = reactive({ open: false, right: false, left: false, top: false, bottom: false });
 </script>
 
 <style>

@@ -1,5 +1,5 @@
 <template>
-  <BaseModal v-model="ds.open" :position="props.position">
+  <BaseModal v-model="ds.open" :position="props.position" :width="width">
     <div class="flex items-center justify-between pl-4 pr-2 py-2 border-b" v-if="props.title">
       <div class="text-lg flex-1 font-semibold">{{ title }}</div>
       <a class="btn btn-ghost btn-circle btn-sm" @click="updateParent(false)" v-if="props.closeIcon">
@@ -7,7 +7,7 @@
       </a>
     </div>
     <slot>
-      <div class="min-h-[6rem] min-w-[20rem] grid items-center">
+      <div class="min-h-[6rem] grid items-center">
         <div class="p-4" v-html="props.msg"></div>
       </div>
     </slot>
@@ -80,6 +80,11 @@ const props = defineProps({
   title: {
     type: String,
     default: "",
+  },
+
+  width: {
+    type: String,
+    default: "450px",
   },
 
   footer: {

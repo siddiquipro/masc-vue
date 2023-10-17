@@ -2,7 +2,7 @@
   <SCard title="Form" class="relative">
     <sForm class="grid gap-4" v-slot="{ reset }" @submit="onSubmit">
       <div v-for="col in config.columns">
-        <sField :options="opts" v-bind="col" size="sm" v-model="ds.obj[col.field]" />
+        <sField readonly :options="opts" v-bind="col" size="sm" v-model="ds.obj[col.field]" />
       </div>
 
       <sField label="Age" type="number" v-model="ds.user.name.age" :validator="onValidate" required />
@@ -23,11 +23,11 @@ import sField from "../../components/formitem/s-field.vue";
 import { reactive } from "vue";
 
 const notify = useNotify();
-const ds: any = reactive({ obj: { boolean: null, checkbox: [] }, user: { name: { age: "" } } });
+const ds: any = reactive({ obj: { boolean: null, checkbox: ["val1", "val5"] }, user: { name: { age: "" } } });
 
 const opts: any[] = [];
 for (let i = 1; i <= 10; i++) {
-  opts.push({ value: `Value ${i}`, text: `Text ${i}` });
+  opts.push({ value: `val${i}`, text: `Text ${i}` });
 }
 
 function onValidate(val: any) {
@@ -60,7 +60,7 @@ const config = {
     { field: "radioc", label: "This is label for type RADIO", type: "radio" },
     { field: "dated", required: true, label: "This is label for type DATE", type: "date" },
     { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean" },
-    { field: "checkbox", readonly: true, label: "This is label for type CHECKBOX", type: "checkbox" },
+    { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox" },
     { field: "select", label: "This is label for type SELECT", required: true, type: "select" },
   ],
 };
