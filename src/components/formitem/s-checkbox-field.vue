@@ -1,8 +1,8 @@
 <template>
   <div class="flex gap-4" :class="rows ? 'flex-col' : ''">
     <div v-for="r in options" class="flex gap-2 items-center">
-      <input type="checkbox" :class="classes" v-model="selValue" :id="key + r.value" :value="r.value" />
-      <label :for="key + r.value" class="cursor-pointer text-sm">
+      <label :for="key + r.value" class="cursor-pointer text-sm flex items-center gap-2">
+        <input type="checkbox" v-bind="$attrs" :class="classes" v-model="selValue" :id="key + r.value" :value="r.value" />
         <slot name="label" :option="r">{{ r.text }}</slot>
       </label>
     </div>

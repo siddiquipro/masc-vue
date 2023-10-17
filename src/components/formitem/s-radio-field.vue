@@ -3,7 +3,7 @@
     <div v-for="r in options" class="flex gap-6 items-center flex-wrap">
       <div class="block">
         <label class="cursor-pointer flex items-center gap-2">
-          <input type="radio" :name="key" :value="r.value" class="radio radio-primary" :class="getClasses" v-model="selValue" />
+          <input type="radio" v-bind="$attrs" :name="key" :value="r.value" class="radio radio-primary" :class="getClasses" v-model="selValue" />
           <slot :row="r"> {{ r.text }} </slot>
         </label>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <form class="block relative w-full has-addons" @submit.prevent="searchNow()">
     <sBtn type="sbmit" class="left-0 input-icon opacity-70" icon="mdi:search" />
-    <input :class="getClasses" v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
+    <input :class="getClasses" v-bind="$attrs" v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
     <sBtn type="button" class="right-0 input-icon" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
   </form>
 </template>

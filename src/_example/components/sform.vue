@@ -58,9 +58,9 @@ const config = {
     // { field: "search", label: "This is label for type SEARCH", type: "search" },
     { field: "textareab", label: "This is label for type TEXTAREA", type: "textarea", hello: "world" },
     { field: "radioc", label: "This is label for type RADIO", type: "radio" },
-    { field: "dated", label: "This is label for type DATE", type: "date" },
+    { field: "dated", required: true, label: "This is label for type DATE", type: "date" },
     { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean" },
-    { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox" },
+    { field: "checkbox", readonly: true, label: "This is label for type CHECKBOX", type: "checkbox" },
     { field: "select", label: "This is label for type SELECT", required: true, type: "select" },
   ],
 };

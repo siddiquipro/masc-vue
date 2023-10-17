@@ -4,6 +4,7 @@
       type="checkbox"
       class="checkbox checkbox-primary"
       :class="getClasses"
+      v-bind="$attrs"
       v-model="selValue"
       :true-value="trueValue"
       :false-value="falseValue"

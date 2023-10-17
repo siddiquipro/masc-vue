@@ -1,5 +1,13 @@
 <template>
-  <textarea v-model="value" :placeholder="placeholder" :class="getClasses" class="textarea w-full" :type="props.type" :readonly="props.readonly" />
+  <textarea
+    v-model="value"
+    v-bind="$attrs"
+    :placeholder="placeholder"
+    :class="getClasses"
+    class="textarea w-full"
+    :type="props.type"
+    :readonly="props.readonly"
+  />
 </template>
 
 <script setup lang="ts">

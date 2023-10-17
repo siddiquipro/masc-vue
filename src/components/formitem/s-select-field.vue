@@ -1,5 +1,5 @@
 <template>
-  <select class="select w-full" :class="getClasses" v-model="dataValue" :disabled="props.readonly">
+  <select class="select w-full" v-bind="$attrs" :class="getClasses" v-model="dataValue" :disabled="props.readonly">
     <option v-for="o in ds.options" :data-before="o.text" :value="o.value">
       {{ o.text }}
     </option>
