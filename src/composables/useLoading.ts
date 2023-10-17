@@ -15,12 +15,7 @@ class Loading {
     }
     const data = createComponent(LoadingComponent, propsData, parentContainer);
 
-    return {
-      ctx: data.instance,
-      hide: () => {
-        data.remove();
-      },
-    };
+    return { hide: () => data.remove() };
   }
 }
 

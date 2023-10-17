@@ -2,7 +2,7 @@
   <div class="datepicker relative w-full">
     <div class="relative w-full ignore">
       <input type="text" readonly :value="displayFormat" v-bind="$attrs" @focus="open" class="input ignore w-full pr-10" />
-      <div class="h-full w-10 flex items-center justify-center absolute top-0 right-0 cursor-pointer" @click="open">
+      <div class="h-full w-10 flex items-center justify-center absolute top-0 right-0 cursor-pointer ignore" @click="open">
         <icon icon="mdi:calendar-month" class="opacity-75"></icon>
       </div>
     </div>

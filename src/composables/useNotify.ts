@@ -2,34 +2,34 @@ import { useModal } from "./useModal";
 import { useLoading } from "./useLoading";
 import { useToast } from "./useToast";
 
-class Notify {
-  toast = useToast();
-  modal = useModal();
-  loading = useLoading();
+const toast = useToast();
+const modal = useModal();
+const loading = useLoading();
 
+class Notify {
   success(msg: any, options = {}) {
     const opts = { ...options, type: "success", msg: this.getMsg(msg) };
-    this.toast.open(opts);
+    toast.open(opts);
   }
 
   info(msg: any, options = {}) {
-    this.toast.open({ ...options, type: "info", msg: this.getMsg(msg) });
+    toast.open({ ...options, type: "info", msg: this.getMsg(msg) });
   }
 
   warning(msg: any, options = {}) {
-    this.toast.open({ ...options, type: "warning", msg: this.getMsg(msg) });
+    toast.open({ ...options, type: "warning", msg: this.getMsg(msg) });
   }
 
   error(msg: any, options = {}) {
-    this.toast.open({ ...options, type: "error", msg: this.getMsg(msg) });
+    toast.open({ ...options, type: "error", msg: this.getMsg(msg) });
   }
 
   async confirm(msg: any, title = "Confirm", confirmBtnText = "Confirm") {
-    return await this.modal.open({ title, msg, confirmBtnText });
+    return await modal.open({ title, msg, confirmBtnText });
   }
 
   async alert(msg: any, title = "Alert", confirmBtnText = "OK") {
-    return await this.modal.open({ title, msg, cancelBtn: false, confirmBtnText });
+    return await modal.open({ title, msg, cancelBtn: false, confirmBtnText });
   }
 
   getMsg(msg: any) {
@@ -45,8 +45,12 @@ class Notify {
     if (msg.data && typeof msg.data.error === "string") return msg.data.error;
     return defaultMsg;
   }
+
+  loading = loading;
 }
 
+const notify = new Notify();
+
 export function useNotify() {
-  return new Notify();
+  return notify;
 }
