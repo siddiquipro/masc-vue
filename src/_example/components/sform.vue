@@ -1,21 +1,15 @@
 <template>
   <SCard title="Form" class="relative">
-    <sForm class="grid gap-4" :data="ds.obj" v-slot="{ clearError }" @submit="onSubmit">
+    <sForm class="grid gap-4" :data="ds.obj" v-slot="{ reset }" @submit="onSubmit">
       <div v-for="col in config.columns">
-        <sField
-          :label="col.label"
-          :type="col.type"
-          :help="col.help"
-          :prop="col.field"
-          :options="opts"
-          :required="col.required"
-          v-model="ds.obj[col.field]"
-        />
+        <sField :label="col.label" :type="col.type" :help="col.help" :options="opts" :required="col.required" v-model="ds.obj[col.field]" />
       </div>
+
+      <sField label="Age" type="number" v-model="ds.user.name.age" :validator="onValidate" required />
 
       <div class="flex gap-4 mt-4">
         <s-btn type="submit" class="px-10 btn-primary">Submit</s-btn>
-        <s-btn type="button" class="px-10 btn-ghost" @click="clearError()">Clear</s-btn>
+        <s-btn type="button" class="px-10 btn-ghost" @click="reset()">Clear</s-btn>
       </div>
     </sForm>
   </SCard>
@@ -29,11 +23,17 @@ import sField from "../../components/formitem/s-field.vue";
 import { reactive } from "vue";
 
 const notify = useNotify();
-const ds: any = reactive({ obj: {} });
+const ds: any = reactive({ obj: {}, user: { name: { age: "" } } });
 
 const opts: any[] = [];
 for (let i = 1; i <= 10; i++) {
   opts.push({ value: `Value ${i}`, text: `Text ${i}` });
+}
+
+function onValidate(val: any) {
+  if (!val) return "Age is required by law";
+  if (val < 18) return "Age must be greater than 18";
+  return "";
 }
 
 const config = {
@@ -44,10 +44,6 @@ const config = {
       label: "This is label for type TEXT",
       required: true,
       type: "text",
-      info: "",
-      errorMsg: "",
-      validation: "",
-      classes: "",
     },
     {
       field: "email",
@@ -55,18 +51,14 @@ const config = {
       label: "Your email address",
       required: true,
       type: "email",
-      info: "",
-      errorMsg: "",
-      validation: "",
-      classes: "",
     },
-    // { field: "search", label: "This is label for type SEARCH", type: "search", info: "", errorMsg: "", validation: "", classes: "" },
-    // { field: "textareab", label: "This is label for type TEXTAREA", type: "textarea", info: "", errorMsg: "", validation: "", classes: "" },
-    // { field: "radioc", label: "This is label for type RADIO", type: "radio", info: "", errorMsg: "", validation: "", classes: "" },
-    // { field: "dated", label: "This is label for type DATE", type: "date", info: "", errorMsg: "", validation: "", classes: "" },
-    // { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean", info: "", errorMsg: "", validation: "", classes: "" },
-    // { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox", info: "", errorMsg: "", validation: "", classes: "" },
-    { field: "select", label: "This is label for type SELECT", required: true, type: "select", info: "", errorMsg: "", validation: "", classes: "" },
+    // { field: "search", label: "This is label for type SEARCH", type: "search" },
+    // { field: "textareab", label: "This is label for type TEXTAREA", type: "textarea" },
+    // { field: "radioc", label: "This is label for type RADIO", type: "radio" },
+    // { field: "dated", label: "This is label for type DATE", type: "date" },
+    // { field: "boolean", label: "This is label for type BOOLEAN", type: "boolean" },
+    // { field: "checkbox", label: "This is label for type CHECKBOX", type: "checkbox" },
+    // { field: "select", label: "This is label for type SELECT", required: true, type: "select" },
   ],
 };
 

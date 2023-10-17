@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar bg-base-100 h-14 min-h-0 sticky inset-0 z-10 shadow-md">
-    <div class="flex gap-4 flex-1" :class="wrapClass">
+  <nav class="bg-base-100 min-h-0 sticky inset-0 z-20 shadow">
+    <div class="flex items-center h-14 gap-4 flex-1 max-w-7xl mx-auto px-4" :class="wrapClass">
       <slot name="toggle"> </slot>
       <slot name="title">
         <div class="flex-none" v-if="props.title">

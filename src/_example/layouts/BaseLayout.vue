@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="transition">
-      <SAppbar title="MASC Components" class="shadow-sm">
+      <SAppbar title="MASC Components">
         <template #toggle>
           <SBtn class="btn-ghost text-2xl btn-circle" icon="mdi:menu" @click="openSideBar = !openSideBar" />
         </template>
@@ -11,7 +11,7 @@
         <SBtn class="btn-ghost" icon="mdi:contact"> Contact </SBtn>
       </SAppbar>
 
-      <div class="max-w-4xl mx-auto h-full w-full">
+      <div class="max-w-7xl mx-auto h-full w-full">
         <slot></slot>
       </div>
     </div>

@@ -1,83 +1,47 @@
 <template>
   <form @submit.prevent="onSubmit" novalidate>
-    <slot :clearError="clearError"></slot>
+    <slot :reset="onReset"></slot>
   </form>
 </template>
 
 <script lang="ts" setup>
 import { formContextKey } from "./constants";
-import { provide, reactive, watch } from "vue";
-import { getRegExpression } from "../../utils/helpers";
+import { provide, reactive, ref } from "vue";
 
-const emailRegEx = getRegExpression("email");
 const emits = defineEmits(["submit"]);
 
-const props = defineProps({
-  data: {
-    type: Object,
-    default: () => ({}),
-  },
-});
-
 const fields: any[] = [];
-const ds: any = reactive({ errors: {} });
-const hasError = () => Object.values(ds.errors).some((v) => v);
+const isDirty = ref(false);
 
-function addField(field: any) {
-  fields.push(field);
+//add field to form context
+function addField(field: any, validateField: Function, reset: Function) {
+  fields.push({ ...field, validateField, reset });
 }
 
-function validateField(field: any, value: any) {
-  const prop = field.prop;
-  const label = field.label || field.prop;
-  ds.errors[prop] = "";
-
-  //required check
-  if (field.required && !value) {
-    ds.errors[prop] = `${label} is required`;
-    return false;
-  }
-
-  //email type check
-  if (field.type === "email" && !emailRegEx.test(value)) {
-    ds.errors[prop] = `${label} is not a valid email address`;
-    return false;
-  }
-
-  return true;
-}
-
-function validateForm(data: any) {
+//validate form fields
+function validateForm() {
   let hasError = false;
   for (const field of fields) {
-    const valid = validateField(field, data[field.prop]);
+    const valid = field.validateField();
     if (!valid) hasError = true;
   }
+
+  isDirty.value = hasError;
   return !hasError;
 }
 
-function clearError(prop: string | null = null) {
-  if (prop) return (ds.errors[prop] = "");
-
-  //clear all errors
-  for (const key of Object.keys(ds.errors)) {
-    ds.errors[key] = "";
+function onReset() {
+  isDirty.value = false;
+  for (const field of fields) {
+    field.reset();
   }
-  return;
 }
 
 function onSubmit() {
-  const valid = validateForm(props.data);
+  const valid = validateForm();
   if (!valid) return;
-  emits("submit", props.data);
+  emits("submit");
 }
 
-provide(formContextKey, reactive({ errors: ds.errors, clearError, addField }));
-
-function onValueChange(newData: any) {
-  if (!hasError()) return;
-  validateForm(newData);
-}
-
-watch(() => props.data, onValueChange, { deep: true });
+provide(formContextKey, reactive({ onReset, addField }));
 </script>

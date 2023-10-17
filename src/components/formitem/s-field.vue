@@ -6,15 +6,15 @@
         <span v-if="required"> * </span>
       </span>
     </div>
-    <div class="flex-1" :class="inputClass">
-      <TextareaField v-if="type === 'textarea'" v-bind="$attrs" :readonly="readonly" />
-      <BoolField v-else-if="type === 'boolean'" v-bind="$attrs" :readonly="readonly" />
-      <CheckboxField v-else-if="type === 'checkbox'" v-bind="$attrs" :readonly="readonly" />
-      <SelectField v-else-if="type === 'select'" v-bind="$attrs" :readonly="readonly" />
-      <RadioField v-else-if="type === 'radio'" v-bind="$attrs" :readonly="readonly" />
-      <DateField v-else-if="type === 'date'" v-bind="$attrs" :readonly="readonly" />
-      <SearchField v-else-if="type === 'search'" v-bind="$attrs" :readonly="readonly" />
-      <TextField v-else v-bind="$attrs" :type="type" :readonly="readonly" />
+    <div class="flex-1" :class="fieldClass">
+      <TextareaField v-model="dataValue" v-if="type === 'textarea'" v-bind="$attrs" :size="size" :readonly="readonly" />
+      <BoolField v-model="dataValue" v-else-if="type === 'boolean'" v-bind="$attrs" :size="size" :readonly="readonly" />
+      <CheckboxField v-model="dataValue" v-else-if="type === 'checkbox'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
+      <SelectField v-model="dataValue" v-else-if="type === 'select'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
+      <RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="$attrs" :size="size" :readonly="readonly" :options="options" />
+      <DateField v-model="dataValue" v-else-if="type === 'date'" v-bind="$attrs" :size="size" :readonly="readonly" />
+      <SearchField v-model="dataValue" v-else-if="type === 'search'" v-bind="$attrs" :size="size" :readonly="readonly" />
+      <TextField v-model="dataValue" v-else v-bind="$attrs" :type="type" :size="size" :readonly="readonly" />
     </div>
     <div class="-mt-1">
       <div class="text-[0.85em] text-base-content text-opacity-80 help-text" v-if="props.help" v-text="props.help" />
@@ -32,10 +32,16 @@ import RadioField from "./s-radio-field.vue";
 import DateField from "./s-date-field.vue";
 import CheckboxField from "./s-checkbox-field.vue";
 import SearchField from "./s-search-field.vue";
-import { computed, inject, onMounted } from "vue";
+import { PropType, computed, inject, onMounted, ref, watch } from "vue";
 import { formContextKey } from "../form/constants";
+import { useVModel } from "@vueuse/core";
+import { validateData } from "./validator";
 
 const props = defineProps({
+  modelValue: {
+    type: [String, Number, Boolean, Array, Object] as PropType<any>,
+    default: "",
+  },
   type: {
     type: String,
     default: "text",
@@ -68,44 +74,77 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  options: {
+    type: Array,
+    default: () => [],
+  },
+  size: {
+    type: String as PropType<"xs" | "sm" | "lg" | "">,
+    default: "",
+  },
+  pattern: {
+    type: String,
+    default: "",
+  },
+  patternMessage: {
+    type: String,
+    default: "",
+  },
+  validator: {
+    type: Function as PropType<Function | null>,
+    default: null,
+  },
 });
 
-const noBorderFor = ["radio", "boolean", "checkbox"];
-const inputClass = computed(() => {
+const initialValue = props.modelValue;
+const dataValue = useVModel(props, "modelValue");
+
+const fieldClass = computed(() => {
   const cls = [];
   if (props.readonly) cls.push("readonly");
-  if (props.horizontal) return cls.join(" ");
-  if (!noBorderFor.includes(props.type)) cls.push("");
   return cls.join(" ");
 });
 
 const wrapperClass = computed(() => {
   if (!props.horizontal) return "flex-col gap-1";
-  const cls = ["items-center"];
+  const cls = ["items-center horizontal"];
   if (props.type == "box") cls.push("border-b");
   return cls.join(" ");
 });
 
 const formContext: any = inject(formContextKey, undefined);
-
-const errorMsg = computed(() => {
-  if (!formContext || !formContext.errors) return "";
-  // const field = formContext.fields.find((f: any) => f.prop === props.prop);
-  // return field ? field.error : "";
-  // return formContext.errors;
-  return formContext.errors[props.prop];
-});
+const isDirty = ref(false);
+const errorMsg = ref("");
 
 function addToFormContext() {
   if (!formContext || !formContext.addField) return;
-  formContext.addField(props);
+  formContext.addField(props, validateField, reset);
+}
+
+function validateField() {
+  const error = validateData(props, dataValue.value);
+  errorMsg.value = error;
+  isDirty.value = error ? true : false;
+  return !isDirty.value;
+}
+
+function reset() {
+  errorMsg.value = "";
+  dataValue.value = initialValue;
 }
 
 onMounted(() => addToFormContext());
+
+function onValueChange() {
+  if (!isDirty.value) return;
+  validateField();
+}
+
+watch(() => dataValue.value, onValueChange, { deep: true });
 </script>
 
 <style>
-.lab {
+.horizontal .s-label {
   flex: 0 0 35%;
 }
 
