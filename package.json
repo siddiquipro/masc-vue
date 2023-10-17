@@ -1,6 +1,7 @@
 {
   "name": "masc-vue",
-  "version": "0.1.7",
+  "private": false,
+  "version": "0.1.8",
   "type": "module",
   "files": [
     "dist"
@@ -47,5 +48,24 @@
     "vite": "^4.4.11",
     "vite-plugin-dts": "^3.6.0",
     "vue-tsc": "^1.8.15"
-  }
+  },
+  "homepage": "https://masc-vue.netlify.app",
+  "bugs": {
+    "url": "https://github.com/mohammadsiddiqui/masc/issues",
+    "email": "masiddiqui91@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammadsiddiqui/masc.git",
+    "directory": "src"
+  },
+  "author": "Mohammad Siddiqui",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "tailwindcss",
+    "daisyui",
+    "components",
+    "form"
+  ]
 }
