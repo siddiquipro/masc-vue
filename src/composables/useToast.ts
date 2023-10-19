@@ -4,6 +4,7 @@ import { createComponent } from "../utils/renderer";
 export interface toastOptions {
   msg: string;
   type?: string;
+  duration?: number;
 }
 
 const OPTS: any = {
@@ -22,16 +23,14 @@ async function initializeToast() {
 }
 
 class Toast {
-  private onAddCallback: any;
-
   public async open(options: toastOptions) {
     if (typeof options === "string") options = { msg: options };
 
-    if (!this.onAddCallback) await initializeToast();
+    if (!OPTS.onAddCallback) await initializeToast();
 
     const type = options.type || "info";
     const message = options.msg || "";
-    const opts = { duration: 5000 };
+    const opts = { duration: options.duration || 5000 };
     OPTS.onAddCallback(type, message, opts);
   }
 }

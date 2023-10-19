@@ -1,5 +1,12 @@
 <template>
   <SCard title="Alerts">
+    <template #actions>
+      <SBtn class="px-10 btn-info" @click="showData()"> Info</SBtn>
+      <SBtn class="px-10 btn-success" @click="showData('success')">Success</SBtn>
+      <SBtn class="px-10 btn-warning" @click="showData('error')">Error</SBtn>
+      <SBtn class="px-10 btn-error" @click="showData('warning')">Warning</SBtn>
+    </template>
+
     <div class="flex gap-4">
       <SBtn class="px-10 btn-info" @click="showData()"> Info</SBtn>
       <SBtn class="px-10 btn-success" @click="showData('success')">Success</SBtn>

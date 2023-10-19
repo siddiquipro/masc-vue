@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-base-100 border rounded s-card">
-    <div class="bar px-4 py-2 border-b gap-6">
+  <div class="bg-base-100 rounded s-card" :class="props.border ? 'border' : ''">
+    <div v-if="props.title" :class="headerClass">
       <div class="font-semibold" v-html="props.title"></div>
       <slot name="full"></slot>
       <div class="flex gap-4 items-center">
@@ -23,6 +23,14 @@ const props = defineProps({
   compact: {
     type: Boolean,
     default: false,
+  },
+  border: {
+    type: Boolean,
+    default: true,
+  },
+  headerClass: {
+    type: String,
+    default: "flex items-center justify-between px-4 py-2 border-b gap-6",
   },
 });
 </script>
