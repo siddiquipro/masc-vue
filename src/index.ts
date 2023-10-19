@@ -1,9 +1,9 @@
 import * as components from "./components";
-import "./css/index.css";
 import "./css/app.css";
 import { App } from "vue";
 
 import tooltip from "./directives/tooltip";
+import mascPlugin from "./tailwind/masc-plugin";
 
 export default {
   install(app: App) {
@@ -21,3 +21,5 @@ export { useWait, getObjectValue } from "./utils/helpers";
 export { formatBoolean, formatDate } from "./utils/formatters";
 
 export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, SModal, SIcon, SField, SForm, SDropdown } from "./components";
+
+export { mascPlugin };
