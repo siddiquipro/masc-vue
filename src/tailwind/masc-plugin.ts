@@ -37,20 +37,38 @@ const mascPlugin = plugin(function ({ addBase, addComponents }) {
 
   //2. extend daisyui classes
   addComponents({
-    ".btn,.input,.select": { "@apply min-h-[initial] h-10": {} },
-    ".btn-circle": { "@apply w-10 h-10": {} },
+    ".btn,.input,.select": {
+      "@apply min-h-[initial] h-10": {},
+    },
+    ".btn-circle": {
+      "@apply w-10 h-10": {},
+    },
     ".input,.select,.textarea": {
       "@apply px-3 focus:outline-none focus-visible:outline-none focus-within:outline-none ring-1 ring-base-300 focus:ring-primary": {},
     },
-    ".btn-xs,.input-xs,.select-xs": { "@apply h-6": {} },
-    ".btn-circle.btn-xs": { "@apply w-6 h-6": {} },
-    ".btn-sm,.input-sm,.select-sm": { "@apply h-8": {} },
-    ".btn-circle.btn-sm": { "@apply w-8 h-8": {} },
-    ".btn-lg": { "@apply h-14": {} },
-    ".btn-circle .btn-lg": { "@apply w-14 h-14": {} },
-    ".dropdown-content": { "@apply min-w-full z-10": {} },
+    ".btn-xs,.input-xs,.select-xs": {
+      "@apply h-6": {},
+    },
+    ".btn-circle.btn-xs": {
+      "@apply w-6 h-6": {},
+    },
+    ".btn-sm,.input-sm,.select-sm": {
+      "@apply h-8": {},
+    },
+    ".btn-circle.btn-sm": {
+      "@apply w-8 h-8": {},
+    },
+    ".btn-lg": {
+      "@apply h-14": {},
+    },
+    ".btn-circle.btn-lg": {
+      "@apply w-14 h-14": {},
+    },
+    ".dropdown-content": {
+      "@apply min-w-full z-10": {},
+    },
     ".dropdown-menu": {
-      "@apply bg-base-100 mt-2 divide-y rounded-md  shadow-2xl ring-1 ring-black ring-opacity-10 focus:outline-none": {},
+      "@apply bg-base-100 mt-2 divide-y rounded-md shadow-2xl ring-1 ring-black ring-opacity-10 focus:outline-none": {},
     },
   });
 });

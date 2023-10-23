@@ -22,6 +22,7 @@
 import icon from "../icon/icon.vue";
 import { computed, ref } from "vue";
 import { isDefined } from "../../utils/helpers";
+
 const props = defineProps(["field", "label", "type", "filterable", "options", "filters"]);
 const hasFilter = computed(() => isDefined(props.filterable));
 const emits = defineEmits(["onFilter"]);
