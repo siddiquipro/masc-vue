@@ -1,10 +1,12 @@
 <template>
-  <dialog class="modal" :class="isOpen && isReady ? 'modal-open' : ''">
-    <div class="flex flex-col bg-base-100" :class="modalBoxClass" :style="contentStyle">
-      <slot></slot>
-    </div>
-    <div class="modal-backdrop bg-black bg-opacity-30" @click="isOpen = false"></div>
-  </dialog>
+	<dialog class="modal" :class="isOpen && isReady ? 'modal-open' : ''">
+		<Transition v-bind="contentTransition" :appear="true">
+			<div class="flex flex-col bg-base-100" v-if="isOpen" :class="modalBoxClass" :style="contentStyle">
+				<slot></slot>
+			</div>
+		</Transition>
+		<div class="modal-backdrop bg-black bg-opacity-30" @click="isOpen = false"></div>
+	</dialog>
 </template>
 
 <script setup lang="ts">
@@ -14,42 +16,50 @@ import { useWait } from "../../utils/helpers";
 
 const emits = defineEmits(["update:modelValue"]);
 const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
-  position: {
-    type: String,
-    default: "center",
-  },
-  width: {
-    type: String,
-    default: "450px",
-  },
+	modelValue: {
+		type: Boolean,
+		default: false,
+	},
+	position: {
+		type: String,
+		default: "center",
+	},
+	width: {
+		type: String,
+		default: "450px",
+	},
 });
 
 //ensure component is mounted for transition to work in case of v-if
 const isReady = ref(false);
 
+const contentTransition = computed(() => {
+	if (props.position === "right") return { name: "s-slide-right" };
+	if (props.position === "left") return { name: "s-slide-left" };
+	if (props.position === "top") return { name: "s-slide-up" };
+	if (props.position === "bottom") return { name: "s-slide-down" };
+	return { name: "s-slide-down" };
+});
+
 const modalBoxClass = computed(() => {
-  if (props.position === "right") return "modal-right";
-  if (props.position === "left") return "modal-left";
-  if (props.position === "top") return "modal-top";
-  if (props.position === "bottom") return "modal-bottom";
-  return "modal-box";
+	if (props.position === "right") return "modal-right";
+	if (props.position === "left") return "modal-left";
+	if (props.position === "top") return "modal-top";
+	if (props.position === "bottom") return "modal-bottom";
+	return "modal-box";
 });
 
 const contentStyle = computed(() => {
-  if (props.position === "top" || props.position === "bottom") return {};
+	if (props.position === "top" || props.position === "bottom") return {};
 
-  return { maxWidth: props.width };
+	return { maxWidth: props.width };
 });
 
 const isOpen = useVModel(props, "modelValue", emits);
 
 const init = async () => {
-  await useWait(10);
-  isReady.value = true;
+	await useWait(10);
+	isReady.value = true;
 };
 
 onMounted(() => init());
@@ -58,73 +68,74 @@ onMounted(() => init());
 <style scoped>
 .modal-right,
 .modal-left {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  max-height: 100%;
-  border-radius: 0;
-  transition: transform 0.3s;
-  transition-delay: 0.1s;
-  opacity: 0;
-  height: 100%;
-  width: 100%;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	max-height: 100%;
+	border-radius: 0;
+	height: 100%;
+	width: 100%;
 }
 .modal-right {
-  right: 0;
-  transform: translateX(100%);
+	right: 0;
 }
 
 .modal-left {
-  left: 0;
-  transform: translateX(-100%);
+	left: 0;
 }
 
 .modal-box {
-  padding: 0;
-  border-radius: 0.25rem;
-  max-height: 100vh;
-  width: 100%;
-  transition: all 0.3s;
-  transform: translateY(100%);
+	padding: 0;
+	border-radius: 0.25rem;
+	max-height: 100vh;
+	width: 100%;
 }
 
 .modal-top,
 .modal-bottom {
-  place-items: initial;
-  position: fixed;
-  right: 0;
-  left: 0;
-  width: 100%;
-  border-radius: 0;
-  transition: transform 0.3s;
-  transition-delay: 0.1s;
-  opacity: 0;
-  transform: translateY(-100%);
+	place-items: initial;
+	position: fixed;
+	right: 0;
+	left: 0;
+	width: 100%;
+	border-radius: 0;
 }
 
 .modal-top {
-  top: 0;
-  transform: translateY(-100%);
+	top: 0;
 }
 
 .modal-bottom {
-  bottom: 0;
-  transform: translateY(100%);
+	bottom: 0;
 }
 
-.modal-open .modal-top,
-.modal-open .modal-bottom {
-  opacity: 1;
-  transform: translateY(0);
+.s-slide-up-enter-active,
+.s-slide-up-leave-active,
+.s-slide-down-enter-active,
+.s-slide-down-leave-active {
+	transition: transform 0.3s ease;
+}
+.s-slide-down-enter-from,
+.s-slide-down-leave-to {
+	transform: translateY(100vh) !important;
+}
+.s-slide-up-enter-from,
+.s-slide-up-leave-to {
+	transform: translateY(-100vh) !important;
 }
 
-.modal-open .modal-left,
-.modal-open .modal-right {
-  opacity: 1;
-  transform: translateX(0);
+.s-slide-right-enter-active,
+.s-slide-right-leave-active,
+.s-slide-left-enter-active,
+.s-slide-left-leave-active {
+	transition: transform 0.3s ease;
 }
-
-.modal-open .modal-box {
-  transform: translateY(0);
+.s-slide-right-enter-from,
+.s-slide-right-leave-to {
+	transform: translateX(100vw) !important;
+}
+.s-slide-left-enter-from,
+.s-slide-left-leave-to {
+	transform: translateX(-100vw) !important;
 }
 </style>

@@ -6,13 +6,13 @@ import tooltip from "./directives/tooltip";
 import mascPlugin from "./tailwind/masc-plugin";
 
 export default {
-  install(app: App) {
-    app.directive("tooltip", tooltip);
-    const entries = Object.entries(components.default);
-    entries.forEach(([componentName, component]) => {
-      app.component(componentName, component);
-    });
-  },
+	install(app: App) {
+		app.directive("tooltip", tooltip);
+		const entries = Object.entries(components.default);
+		entries.forEach(([componentName, component]) => {
+			app.component(componentName, component);
+		});
+	},
 };
 
 export { useLoading } from "./composables/useLoading";
@@ -22,4 +22,4 @@ export { formatBoolean, formatDate } from "./utils/formatters";
 
 export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, SModal, SIcon, SField, SForm, SDropdown } from "./components";
 
-export { mascPlugin };
+export { mascPlugin, tooltip };

@@ -20,6 +20,7 @@ export default defineConfig({
 		rollupOptions: {
 			external: ["vue", "@vueuse/core", "tippy.js", "@iconify/vue"],
 			output: {
+				exports: "named",
 				globals: {
 					"vue": "Vue",
 					"@vueuse/core": "VueUse",
