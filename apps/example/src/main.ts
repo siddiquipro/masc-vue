@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 
-import masc from "../index";
+import masc from "masc-vue";
+import "masc-vue/style.css";
 
 import "./main.css";
 import App from "./App.vue";
