@@ -11,7 +11,8 @@
 		"build": "turbo run build",
 		"test": "turbo run test",
 		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"release": "pnpm --filter masc-vue release"
 	},
 	"devDependencies": {
 		"turbo": "*"
