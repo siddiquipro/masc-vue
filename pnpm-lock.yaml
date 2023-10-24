@@ -12,7 +12,7 @@ importers:
         specifier: '*'
         version: 1.10.16
 
-  apps/example:
+  example:
     dependencies:
       vue:
         specifier: ^3.3.4
@@ -28,8 +28,8 @@ importers:
         specifier: ^3.9.1
         version: 3.9.3
       masc-vue:
-        specifier: '*'
-        version: link:../../packages/masc
+        specifier: workspace:*
+        version: link:../packages/masc
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
