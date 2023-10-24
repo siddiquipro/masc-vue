@@ -6,6 +6,8 @@
 		"moduleResolution": "Node",
 		"strict": true,
 		"jsx": "preserve",
+		"noUnusedLocals": true,
+		"strictNullChecks": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"esModuleInterop": true,
