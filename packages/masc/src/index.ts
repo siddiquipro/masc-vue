@@ -20,6 +20,6 @@ export { useNotify } from "./composables/useNotify";
 export { useWait, getObjectValue } from "./utils/helpers";
 export { formatBoolean, formatDate } from "./utils/formatters";
 
-export { SCard, SBtn, SAppbar, SPagination, STable, STableColumn, SModal, SIcon, SField, SForm, SDropdown } from "./components";
+export * from "./components";
 
 export { mascPlugin, tooltip };

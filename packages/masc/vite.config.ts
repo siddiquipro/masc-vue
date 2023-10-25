@@ -18,13 +18,12 @@ export default defineConfig({
 			fileName: (format) => `${name}.${format}.js`,
 		},
 		rollupOptions: {
-			external: ["vue", "@vueuse/core", "tippy.js", "@iconify/vue"],
+			external: ["vue", "@vueuse/core", "@iconify/vue"],
 			output: {
 				exports: "named",
 				globals: {
 					"vue": "Vue",
 					"@vueuse/core": "VueUse",
-					"tippy.js": "tippy",
 					"@iconify/vue": "IconifyVue",
 				},
 			},

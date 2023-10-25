@@ -1,21 +1,24 @@
 <template>
-  <div class="container mx-auto grid gap-6 py-10">
-    <div class="text-xl font-semibold">MASC Vue Component</div>
+	<div class="container mx-auto grid gap-6 py-10">
+		<div class="text-xl font-semibold">MASC Vue Component</div>
 
-    <buttons />
-    <alert />
+		<div>
+			<tooltip />
+		</div>
+		<buttons />
+		<alert />
 
-    <dropdown />
-    <stable />
+		<dropdown />
+		<stable />
 
-    <smodal />
-    <sconfirm />
+		<smodal />
+		<sconfirm />
 
-    <sloading />
-    <sicon />
+		<sloading />
+		<sicon />
 
-    <sform />
-  </div>
+		<sform />
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -29,4 +32,5 @@ import smodal from "./components/smodal.vue";
 import sloading from "./components/sloading.vue";
 import sicon from "./components/sicon.vue";
 import sconfirm from "./components/sconfirm.vue";
+import tooltip from "./components/tooltip.vue";
 </script>

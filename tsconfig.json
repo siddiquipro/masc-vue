@@ -17,7 +17,7 @@
 	},
 	"references": [
 		{
-			"path": "apps/example"
+			"path": "example"
 		},
 		{
 			"path": "packages/masc"
