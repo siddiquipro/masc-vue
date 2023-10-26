@@ -7,7 +7,7 @@
 			<SBtn class="btn-lg" icon="mdi:content-save"> Large </SBtn>
 			<SBtn class="btn-primary"> Primary Button </SBtn>
 			<SBtn loading class="btn-primary"> Loading </SBtn>
-			<SBtn class="btn-primary" href="http://google.com" target="_blank" icon="mdi:link"> Button as Link </SBtn>
+			<SBtn class="btn-primary" href="https://masc-vue.netlify.app/" target="_blank" icon="mdi:link"> Button as Link </SBtn>
 		</div>
 	</s-card>
 </template>
