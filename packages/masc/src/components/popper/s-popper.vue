@@ -178,6 +178,7 @@ const closePopper = async () => {
 };
 
 const togglePopper = () => {
+	if (props.hover) return;
 	isOpen.value ? closePopper() : openPopper();
 };
 
