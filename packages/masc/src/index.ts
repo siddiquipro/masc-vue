@@ -8,10 +8,10 @@ import mascPlugin from "./tailwind/masc-plugin";
 export default {
 	install(app: App) {
 		app.directive("tooltip", tooltip);
-		const entries = Object.entries(components.default);
-		entries.forEach(([componentName, component]) => {
+		for (const [componentName, component] of Object.entries(components)) {
+			console.debug(`Registering ${componentName}`);
 			app.component(componentName, component);
-		});
+		}
 	},
 };
 

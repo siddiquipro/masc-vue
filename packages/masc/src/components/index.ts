@@ -1,14 +1,10 @@
-import SCard from "./card/s-card.vue";
-import SBtn from "./button/s-btn.vue";
-import SAppbar from "./appbar/s-appbar.vue";
-import { STable, SPagination, STableColumn } from "./table";
-import { SModal } from "./modal";
-import { SIcon } from "./icon";
-import { SField } from "./formitem";
-import { SForm } from "./form";
-import { SDropdown } from "./dropdown";
-import { SPopper } from "./popper";
-
-export default { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm, SDropdown, SPopper };
-
-export { SBtn, SCard, SAppbar, STable, SPagination, STableColumn, SModal, SIcon, SField, SForm, SDropdown, SPopper };
+export { SCard } from "./card";
+export { SBtn } from "./button";
+export { SAppbar } from "./appbar";
+export { STable, SPagination, STableColumn } from "./table";
+export { SModal } from "./modal";
+export { SIcon } from "./icon";
+export { SField } from "./formitem";
+export { SForm } from "./form";
+export { SDropdown } from "./dropdown";
+export { SPopper } from "./popper";
