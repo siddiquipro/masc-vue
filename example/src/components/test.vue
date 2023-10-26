@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const msg = "Hello World!";
+const msg = "Vue3 UI components based on daisyui.";
 </script>
 
 <style scoped></style>
