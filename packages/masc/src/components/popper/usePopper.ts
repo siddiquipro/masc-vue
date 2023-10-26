@@ -55,7 +55,15 @@ export function usePopper({ arrowPadding, emit, locked, offsetDistance, offsetSk
 
 	const initializePopper = async () => {
 		await nextTick();
-		state.popperInstance = createPopper(triggerNode.value, popperNode.value, {
+
+		const actTriggerNode = triggerNode.value.children[0];
+
+		console.log("actTriggerNode", actTriggerNode);
+
+		//match the width of the trigger element and the popper element
+		popperNode.value.style.width = `${actTriggerNode.clientWidth}px`;
+
+		state.popperInstance = createPopper(actTriggerNode, popperNode.value, {
 			placement: placement.value,
 			strategy: "fixed",
 			modifiers: [

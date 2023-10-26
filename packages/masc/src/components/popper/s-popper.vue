@@ -5,7 +5,7 @@
 			<slot />
 		</div>
 		<Transition name="fade">
-			<div @click="!interactive && closePopper()" v-if="shouldShowPopper" class="s-popper" :class="props.class" ref="popperNode">
+			<div @click="!interactive && closePopper()" v-if="shouldShowPopper" class="s-popper z-10" :class="props.class" ref="popperNode">
 				<slot name="content" :close="close" :isOpen="modifiedIsOpen">
 					{{ content }}
 				</slot>
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { useDebounceFn, onClickOutside } from "@vueuse/core";
-import { ref, computed, defineProps, useSlots, toRefs, watch, watchEffect, onMounted } from "vue";
+import { ref, computed, defineProps, toRefs, watch, watchEffect } from "vue";
 import { usePopper } from "./usePopper";
 import SArrow from "./s-arrow.vue";
 
@@ -34,33 +34,8 @@ const props = defineProps({
 	placement: {
 		type: String,
 		default: "bottom",
-		validator: function (value: string) {
-			return [
-				"auto",
-				"auto-start",
-				"auto-end",
-				"top",
-				"top-start",
-				"top-end",
-				"bottom",
-				"bottom-start",
-				"bottom-end",
-				"right",
-				"right-start",
-				"right-end",
-				"left",
-				"left-start",
-				"left-end",
-			].includes(value);
-		},
 	},
-	/**
-	 * Disables automatically closing the popover when the user clicks away from it
-	 */
-	disableClickAway: {
-		type: Boolean,
-		default: false,
-	},
+
 	/**
 	 * Offset in pixels along the trigger element
 	 */
@@ -159,18 +134,7 @@ const popperNode = ref(null);
 const triggerNode = ref(null);
 const modifiedIsOpen = ref(false);
 
-const slots = useSlots();
-
-onMounted(() => {
-	const children = slots && slots.default ? slots.default() : [];
-
-	if (children && children.length > 1) {
-		return console.error(`[Popper]: The <Popper> component expects only one child element at its root. You passed ${children.length} child nodes.`);
-	}
-});
-
-const { arrowPadding, closeDelay, content, disableClickAway, disabled, interactive, locked, offsetDistance, offsetSkid, openDelay, placement, show } =
-	toRefs(props);
+const { arrowPadding, closeDelay, content, disabled, interactive, locked, offsetDistance, offsetSkid, openDelay, placement, show } = toRefs(props);
 
 const { isOpen, open, close } = usePopper({
 	arrowPadding,
@@ -186,7 +150,7 @@ const { isOpen, open, close } = usePopper({
 const manualMode = computed(() => show.value !== null);
 const invalid = computed(() => disabled.value);
 const shouldShowPopper = computed(() => isOpen.value && !invalid.value);
-const enableClickAway = computed(() => !disableClickAway.value && !manualMode.value);
+const enableClickAway = computed(() => !manualMode.value);
 
 // Add an invisible border to keep the Popper open when hovering from the trigger into it
 const interactiveStyle = computed(() => {
@@ -264,7 +228,7 @@ watchEffect(() => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity 0.2s ease;
+	transition: opacity 0.25s ease;
 }
 
 .fade-enter-from,

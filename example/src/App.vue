@@ -2,9 +2,10 @@
 	<div class="container mx-auto grid gap-6 py-10">
 		<div class="text-xl font-semibold">MASC Vue Component</div>
 
-		<div>
-			<tooltip />
-		</div>
+		<Test />
+
+		<tooltip />
+
 		<buttons />
 		<alert />
 
@@ -33,4 +34,5 @@ import sloading from "./components/sloading.vue";
 import sicon from "./components/sicon.vue";
 import sconfirm from "./components/sconfirm.vue";
 import tooltip from "./components/tooltip.vue";
+import Test from "./components/test.vue";
 </script>
