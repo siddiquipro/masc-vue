@@ -58,8 +58,6 @@ export function usePopper({ arrowPadding, emit, locked, offsetDistance, offsetSk
 
 		const actTriggerNode = triggerNode.value.children[0];
 
-		console.log("actTriggerNode", actTriggerNode);
-
 		//match the width of the trigger element and the popper element
 		popperNode.value.style.width = `${actTriggerNode.clientWidth}px`;
 

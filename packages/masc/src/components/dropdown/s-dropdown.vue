@@ -1,13 +1,21 @@
 <template>
-  <div class="dropdown dropdown-hover">
-    <slot tabindex="0"></slot>
-
-    <div tabindex="0" class="dropdown-content">
-      <div class="dropdown-menu">
-        <slot name="content"></slot>
-      </div>
-    </div>
-  </div>
+	<s-popper hover :distance="props.distance" arrow class="bg-base-100 rounded shadow-2xl">
+		<slot tabindex="0"></slot>
+		<template #content="{ close }">
+			<div @click="close">
+				<slot name="content" :close="close"></slot>
+			</div>
+		</template>
+	</s-popper>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import sPopper from "../popper/s-popper.vue";
+
+const props = defineProps({
+	distance: {
+		type: String,
+		default: "10",
+	},
+});
+</script>
