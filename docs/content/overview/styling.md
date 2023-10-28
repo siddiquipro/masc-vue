@@ -5,7 +5,7 @@ description: MASC uses daisy ui and talwind for styling.
 
 # Styling
 
-MASC uses daisy ui and talwind for styling
+Built with `daisyui` and `tailwindcss`, providing a powerful and flexible styling solution that allows you to easily customize the look and feel of your components. `daisyui` provides a set of pre-built components and utilities that work seamlessly with `tailwindcss`, making it easy to create beautiful and responsive user interfaces.
 
 ## Styling overview
 
@@ -34,6 +34,7 @@ import { SBtn, ... } from "masc-vue";
 MASC Vue is designed to encapsulate styling to DaisyUI and/or Tailwind css, while ensuring you retain complete control over styling.
 
 ::: info
-Daisy UI: [Daisy UI](https://daisyui.com/) <br/>
+Daisy UI: [Daisy UI](https://daisyui.com/)
+
 Tailwind CSS: [Tailwind CSS](https://tailwindcss.com/)
 :::
