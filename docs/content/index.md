@@ -5,7 +5,7 @@ layout: home
 hero:
   name: MASC Vue
   text: Based on Daisy UI
-  tagline: Simple javascript componets for rich apps. <br>Tailwind css plugin for customization.
+  tagline: Simple javascript components for rich apps. <br>Tailwind css plugin for customization.
   image:
     src: /logo.svg
     alt: MASC Vue
