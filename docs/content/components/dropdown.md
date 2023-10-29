@@ -13,17 +13,19 @@ The `s-dropdown` component is a versatile dropdown component in the `masc-vue` c
 
 To use the `s-dropdown` component, you need to import it and place it in your Vue template. Here's a basic example:
 
-<s-comp>
-  <s-dropdown>
-    <s-btn class="btn-primary px-10">DropDown Button</s-btn> 
-    <template v-slot:content>
-      <ul class="menu p-2">
-        <li v-for="item in 10">
-          <a @click="onClick(item)">Item {{ item }}</a>
-        </li>
-      </ul>
-    </template>
-  </s-dropdown>
+<s-comp> 
+  <div class="w-auto">
+    <s-dropdown style="width:250px">
+      <s-btn class="btn-primary w-full" >DropDown Button</s-btn> 
+      <template v-slot:content>
+        <ul class="menu p-2">
+          <li v-for="item in 10">
+            <a @click="onClick(item)">Item {{ item }}</a>
+          </li>
+        </ul>
+      </template>
+    </s-dropdown>
+  </div>
 </s-comp>
 
 ```vue
