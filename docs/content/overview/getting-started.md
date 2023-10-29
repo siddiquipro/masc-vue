@@ -12,12 +12,14 @@ A quick tutorial to get you up and running with MASC Vue.
 
 In this quick tutorial, we will install and style the [Button](../components/button) component.
 
-### 1. Install the library
+### 1. Install the package
 
 Install the component from your command line.
 
 ```bash
-npm install masc-vue
+pnpm add masc-vue
+# yarn add masc-vue
+# npm i masc-vue
 ```
 
 ### 2. Import the parts
