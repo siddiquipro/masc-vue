@@ -1,6 +1,6 @@
 ---
 title: Pagination Component Documentation
-description: The field component is a versatile input field component from the masc-vue component library. It allows you to create various types of input fields, including text, textarea, boolean, checkbox, select, radio, date, and search fields. This component is designed to be highly customizable and is intended for use in forms and data input scenarios.
+description: The pagination component provides pagination controls for managing and displaying a large dataset in a paginated manner
 ---
 
 # Pagination Component
