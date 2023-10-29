@@ -60,6 +60,15 @@ The `s-popper` component accepts the following props:
 | `locked`         | Boolean          | `false`    | Lock the popper in place; it will not flip dynamically when it runs out of space. |
 | `content`        | String           | `null`     | The content of the popper. If specified, it will be used as the content.          |
 
+## Slots
+
+The `s-popper` component accepts the following slots:
+
+| Slot Name | Description                          |
+| --------- | ------------------------------------ |
+| `default` | default slot for the popover trigger |
+| `content` | slot for the popover content.        |
+
 ## Events
 
 The `s-popper` component emits the following events:
