@@ -12,9 +12,7 @@ export default {
 	enhanceApp({ app }) {
 		// Register masc components
 		for (const [name, comp] of Object.entries(components)) {
-			console.log(name);
 			if (!name.startsWith("S")) continue;
-
 			const component = comp as any;
 			app.component(name, component);
 		}

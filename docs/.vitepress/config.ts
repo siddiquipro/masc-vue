@@ -5,10 +5,13 @@ import sidebar from "./sidebar";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+	lang: "en-US",
 	title: "MASC",
-	description: "MASC Vue Components based on daisyui and tailwindcss",
+	description: "MASC Vue 3 Components based on daisyui and tailwindcss",
 	srcDir: "content",
+	head: [["link", { rel: "icon", href: "/logo.svg" }]],
 	themeConfig: {
+		logo: "/logo.svg",
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{ text: "Docs", link: "/overview/getting-started" },
@@ -29,4 +32,5 @@ export default defineConfig({
 	sitemap: {
 		hostname: "https://masc-vue.netlify.app",
 	},
+	appearance: "dark",
 });

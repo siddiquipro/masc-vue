@@ -1,6 +1,6 @@
 const overview = {
 	text: "Overview",
-	collapsed: true,
+	collapsed: false,
 	items: [
 		{ text: "Introduction", link: "/overview/introduction" },
 		{ text: "Getting Started", link: "/overview/getting-started" },
@@ -11,7 +11,7 @@ const overview = {
 
 const components = {
 	text: "Components",
-	collapsed: true,
+	collapsed: false,
 	items: [
 		{ text: "Appbar", link: "/components/appbar" },
 		{ text: "Button", link: "/components/button" },
