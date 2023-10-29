@@ -1,6 +1,6 @@
 import "./tailwind.postcss";
-import "./app.css";
 import "masc-vue/style.css";
+import "./app.css";
 
 import DefaultTheme from "vitepress/theme";
 import { type Theme } from "vitepress";
