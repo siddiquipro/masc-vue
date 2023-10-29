@@ -1,6 +1,11 @@
+---
+title: Button Component
+description: The Button Component is a versatile component for creating buttons in your Vue 3 application. It provides options for various attributes and slots to customize the appearance and behavior of the button.
+---
+
 # Button Component
 
-The Button Component is a versatile component for creating buttons in your Vue 3 application. It provides options for various attributes and slots to customize the appearance and behavior of the button.
+The `s-btn` Component is a versatile component for creating buttons in your Vue 3 application. It provides options for various attributes and slots to customize the appearance and behavior of the button.
 
 ## Registration
 

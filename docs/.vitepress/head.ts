@@ -2,6 +2,9 @@ import { HeadConfig } from "vitepress";
 
 export default [
 	["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+	["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
+	["link", { rel: "apple-touch-icon", href: "/logo.png" }],
+	["meta", { name: "image", href: "/logo.png" }],
 	["meta", { name: "viewport", content: "width=device-width, initial-scale=1.0" }],
 	["meta", { name: "keywords", content: "masc, masc-vue, masc-vue-components, masc-vue-3, masc-vue-3-components, daisyui vue" }],
 	["meta", { name: "author", content: "Mohammad Siddiqui" }],

@@ -1,3 +1,8 @@
+---
+title: Appbar Component
+description: The appbar component is a flexible and customizable component designed for building navigation bars in your Vue 3 application.
+---
+
 # Appbar
 
 The `s-appbar` component is a flexible and customizable component designed for building navigation bars in your Vue 3 application. It provides slots for various elements such as a toggle button, title, and additional content, allowing you to create navigation bars tailored to your specific needs.

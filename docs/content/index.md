@@ -1,6 +1,8 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+title: MASC Vue Components
+description: MASC Vue 3 rich component library based on daisyui and tailwindcss.
 
 hero:
   name: MASC Vue

@@ -7,8 +7,9 @@ import head from "./head";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	lang: "en-US",
-	title: "MASC",
-	description: "MASC Vue 3 Components based on daisyui and tailwindcss",
+	title: "MASC Vue Components",
+	description:
+		"MASC Vue 3 Components are open-source UI component library for building high-quality, design systems and web apps using vue, daisyui and tailwindcss",
 	srcDir: "content",
 	head: head,
 	themeConfig: {

@@ -1,6 +1,6 @@
 ---
 title: Styling
-description: MASC uses daisy ui and talwind for styling.
+description: MASC Vue uses daisy ui and talwind for styling.
 ---
 
 # Styling
