@@ -7,7 +7,7 @@ import head from "./head";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	lang: "en-US",
-	title: "MASC Vue Components",
+	title: "MASC Vue",
 	description:
 		"MASC Vue 3 Components are open-source UI component library for building high-quality, design systems and web apps using vue, daisyui and tailwindcss",
 	srcDir: "content",
@@ -34,7 +34,7 @@ export default defineConfig({
 
 		footer: {
 			message: "Released under the MIT License.",
-			copyright: "Copyright © 2019-present Mohammad Siddiqui",
+			copyright: "Copyright © 2023-present Mohammad Siddiqui",
 		},
 	},
 	vite: {
