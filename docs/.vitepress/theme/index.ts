@@ -1,10 +1,12 @@
 import "./tailwind.postcss";
+import "masc-vue/style.css";
 import "./app.css";
+
 import DefaultTheme from "vitepress/theme";
 import { type Theme } from "vitepress";
 import * as components from "masc-vue";
 
-import test from "../../components/test.vue";
+import SComp from "../../components/s-comp.vue";
 
 export default {
 	extends: DefaultTheme,
@@ -18,6 +20,6 @@ export default {
 		}
 
 		// Register custom components
-		app.component("test", test);
+		app.component("s-comp", SComp);
 	},
 } satisfies Theme;

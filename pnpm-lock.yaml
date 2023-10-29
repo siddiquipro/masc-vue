@@ -21,7 +21,7 @@ importers:
         specifier: ^3.9.4
         version: 3.9.4
       masc-vue:
-        specifier: ^0.1.10
+        specifier: workspace:*
         version: link:../packages/masc
       postcss:
         specifier: ^8.4.31
