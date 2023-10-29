@@ -1,19 +1,19 @@
 .VPNav .menu {
-  flex-direction: row;
-  gap: 1rem;
+	flex-direction: row;
+	gap: 1rem;
 }
 
 @media screen and (max-width: 719px) {
-  .VPNav .menu {
-    flex-direction: column;
-  }
+	.VPNav .menu {
+		flex-direction: column;
+	}
 }
 
 .link {
-  text-decoration-line: initial;
+	text-decoration-line: initial;
 }
 
 .VPImage.image-src {
-  height: 150px;
-  color: inherit;
+	height: 150px;
+	color: inherit;
 }
