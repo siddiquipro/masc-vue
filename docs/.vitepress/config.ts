@@ -26,4 +26,7 @@ export default defineConfig({
 			},
 		},
 	},
+	sitemap: {
+		hostname: "https://masc-vue.netlify.app",
+	},
 });
