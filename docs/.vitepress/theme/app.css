@@ -17,3 +17,7 @@
 	height: 150px;
 	color: inherit;
 }
+
+.radio {
+	border: 1px solid #ccc;
+}
