@@ -12,7 +12,7 @@ import { SBtn } from "masc-vue";
 
 ## Usage
 
-To use the Button Component, you can include it in your Vue templates and customize it as needed.
+To use the `s-btn` Component, you can include it in your Vue templates and customize it as needed.
 
 <s-btn class="btn-primary px-10" icon="mdi:home"> Home </s-btn>
 
@@ -149,7 +149,7 @@ import { SBtn } from "masc-vue";
 
 ## Slots
 
-The Vue 3 Button Component supports the following slots for customization:
+The `s-btn` Component supports the following slots for customization:
 
 | Slot Name    | Description                             |
 | ------------ | --------------------------------------- |
