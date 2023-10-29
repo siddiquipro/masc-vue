@@ -8,7 +8,7 @@ The `s-appbar` component is a flexible and customizable component designed for b
 import { SAppbar } from "masc-vue";
 ```
 
-## Example
+## Usage
 
 <div class="vp-raw">
   <s-appbar title="Awesome App" wrapClass="bg-primary text-white">
