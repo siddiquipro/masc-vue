@@ -6,7 +6,7 @@ name: Button
 
 # Getting started
 
-A quick tutorial to get you up and running with Radix Primitives.
+A quick tutorial to get you up and running with MASC Vue.
 
 ## Implementing a Button
 
@@ -40,6 +40,7 @@ Add classes as desired.
 
 ```vue
 <template>
+	<s-btn>Default Button</s-btn>
 	<s-btn class="btn-primary px-10">Primary Button</s-btn>
 </template>
 ```
