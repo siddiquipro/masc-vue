@@ -7,17 +7,19 @@ import * as components from "masc-vue";
 import test from "../../components/test.vue";
 
 export default {
-  extends: DefaultTheme,
+	extends: DefaultTheme,
 
-  enhanceApp({ app }) {
-    // Register masc components
-    for (const [name, comp] of Object.entries(components)) {
-      if (!name.startsWith("S")) continue;
-      const component = comp as any;
-      app.component(name, component);
-    }
+	enhanceApp({ app }) {
+		// Register masc components
+		for (const [name, comp] of Object.entries(components)) {
+			console.log(name);
+			if (!name.startsWith("S")) continue;
 
-    // Register custom components
-    app.component("test", test);
-  },
+			const component = comp as any;
+			app.component(name, component);
+		}
+
+		// Register custom components
+		app.component("test", test);
+	},
 } satisfies Theme;

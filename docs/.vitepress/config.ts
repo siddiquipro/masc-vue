@@ -1,6 +1,7 @@
 import { defineConfig, postcssIsolateStyles } from "vitepress";
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
+import sidebar from "./sidebar";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,24 +15,7 @@ export default defineConfig({
 			{ text: "Components", link: "/components/button" },
 		],
 
-		sidebar: [
-			{
-				text: "Overview",
-				collapsed: false,
-				items: [
-					{ text: "Introduction", link: "/overview/introduction" },
-					{ text: "Getting Started", link: "/overview/getting-started" },
-					{ text: "Installation", link: "/overview/installation" },
-					{ text: "Styling", link: "/overview/styling" },
-				],
-			},
-
-			{
-				text: "Components",
-				collapsed: false,
-				items: [{ text: "Button", link: "/components/button" }],
-			},
-		],
+		sidebar: sidebar,
 
 		socialLinks: [{ icon: "github", link: "https://github.com/mohammadsiddiqui/masc-vue" }],
 	},
