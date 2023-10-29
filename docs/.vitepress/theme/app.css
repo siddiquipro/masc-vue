@@ -21,3 +21,8 @@
 .radio {
 	border: 1px solid #ccc;
 }
+
+.modal-box {
+	--tw-text-opacity: 1;
+	color: hsl(var(--bc) / var(--tw-text-opacity));
+}
