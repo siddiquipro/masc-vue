@@ -2,6 +2,7 @@ import { defineConfig, postcssIsolateStyles } from "vitepress";
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
 import sidebar from "./sidebar";
+import head from "./head";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
 	title: "MASC",
 	description: "MASC Vue 3 Components based on daisyui and tailwindcss",
 	srcDir: "content",
-	head: [["link", { rel: "icon", href: "/logo.svg" }]],
+	head: head,
 	themeConfig: {
 		logo: "/logo.svg",
 		// https://vitepress.dev/reference/default-theme-config
@@ -20,7 +21,20 @@ export default defineConfig({
 
 		sidebar: sidebar,
 
-		socialLinks: [{ icon: "github", link: "https://github.com/mohammadsiddiqui/masc-vue" }],
+		socialLinks: [
+			{ icon: "github", link: "https://github.com/mohammadsiddiqui/masc-vue" },
+			{
+				icon: {
+					svg: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M4 10v4h2v-3h1v3h1v-4H4m5 0v5h2v-1h2v-4H9m3 1v2h-1v-2h1m2-1v4h2v-3h1v3h1v-3h1v3h1v-4h-6M3 9h18v6h-9v1H8v-1H3V9Z"/></svg>',
+				},
+				link: "https://www.npmjs.com/package/masc-vue",
+			},
+		],
+
+		footer: {
+			message: "Released under the MIT License.",
+			copyright: "Copyright © 2019-present Mohammad Siddiqui",
+		},
 	},
 	vite: {
 		css: {
