@@ -99,23 +99,3 @@ async function startLoading() {
 ```
 
 In this example, we've used the `useLoading` composable to show and hide a full-page loading indicator with custom timing.
-
-This concludes the documentation for the `useLoading` composable in the `masc-vue` component library.
-
-```
-
-Please replace `'masc-vue'` with the actual import path for your component library if it's different.
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```

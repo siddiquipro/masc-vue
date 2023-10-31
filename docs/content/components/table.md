@@ -149,7 +149,6 @@ The `s-table-column` component accepts the following props:
 
 | Prop         | Type                           | Default  | Description                                            |
 | ------------ | ------------------------------ | -------- | ------------------------------------------------------ |
-| `row`        | Object                         |          | The data object for the current row.                   |
 | `field`      | String                         | `""`     | The field name from the row data.                      |
 | `display`    | String                         | `""`     | The display field name to use (if different).          |
 | `type`       | String                         | `"text"` | The type of content (e.g., "text", "date", "boolean"). |
