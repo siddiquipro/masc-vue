@@ -1,4 +1,5 @@
 import { HeadConfig } from "vitepress";
+import packageJson from "../../packages/masc/package.json";
 
 export default [
 	["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
@@ -23,7 +24,7 @@ export default [
 	["meta", { name: "twitter:image", content: "https://masc-vue.netlify.app/logo.png" }],
 	["meta", { name: "twitter:url", content: "https://masc-vue.netlify.app" }],
 	["meta", { name: "twitter:label1", content: "Version" }],
-	["meta", { name: "twitter:data1", content: "0.0.1" }],
+	["meta", { name: "twitter:data1", content: packageJson.version }],
 	["meta", { name: "twitter:label2", content: "License" }],
 	["meta", { name: "twitter:data2", content: "MIT" }],
 	["meta", { name: "twitter:label3", content: "Github" }],
