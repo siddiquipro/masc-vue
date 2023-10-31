@@ -1,7 +1,7 @@
 {
 	"name": "masc-vue",
 	"private": false,
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"source": "src/index.ts",
 	"main": "./dist/index.umd.js",
 	"module": "./dist/index.es.js",
@@ -24,7 +24,8 @@
 		"dev": "vue-tsc --noEmit && vite build -w",
 		"build": "vue-tsc --noEmit && vite build",
 		"typecheck": "vue-tsc --noEmit",
-		"release": "pnpm build && release-it"
+		"releaseit": "pnpm build && release-it",
+		"release": "pnpm run build && npm publish --access=public"
 	},
 	"dependencies": {
 		"@iconify/vue": "^4.1.1",
