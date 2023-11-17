@@ -1,20 +1,19 @@
 <template>
-	<dialog class="modal" :class="isOpen && isReady ? 'modal-open' : ''">
-		<Transition v-bind="contentTransition" :appear="true">
-			<div class="flex flex-col bg-base-100" v-if="isOpen" :class="modalBoxClass" :style="contentStyle">
+	<dialog class="modal" :class="show ? 'modal-open' : ''">
+		<Transition v-bind="contentTransition" appear>
+			<div class="flex flex-col bg-base-100" v-if="show" :class="modalBoxClass" :style="contentStyle">
 				<slot></slot>
 			</div>
 		</Transition>
-		<div class="modal-backdrop bg-black bg-opacity-30" @click="isOpen = false"></div>
+		<div class="modal-backdrop bg-black bg-opacity-30 backdrop-blur-sm" @click="startClose"></div>
 	</dialog>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
-import { useVModel } from "@vueuse/core";
+import { computed, ref, watch } from "vue";
 import { useWait } from "../../utils/helpers";
 
-const emits = defineEmits(["update:modelValue"]);
+const emits = defineEmits(["update:modelValue", "closed", "opened"]);
 const props = defineProps({
 	modelValue: {
 		type: Boolean,
@@ -31,7 +30,29 @@ const props = defineProps({
 });
 
 //ensure component is mounted for transition to work in case of v-if
-const isReady = ref(false);
+const show = ref(false);
+
+async function startOpen() {
+	if (show.value) return;
+	emits("update:modelValue", true);
+	await useWait(5);
+	show.value = true;
+	emits("opened");
+}
+
+async function startClose() {
+	if (!show.value) return;
+	show.value = false;
+	await useWait(300);
+	emits("update:modelValue", false);
+	emits("closed");
+}
+
+watch(
+	() => props.modelValue,
+	(val) => (val ? startOpen() : startClose()),
+	{ immediate: true },
+);
 
 const contentTransition = computed(() => {
 	if (props.position === "right") return { name: "s-slide-right" };
@@ -54,15 +75,6 @@ const contentStyle = computed(() => {
 
 	return { maxWidth: props.width };
 });
-
-const isOpen = useVModel(props, "modelValue", emits);
-
-const init = async () => {
-	await useWait(10);
-	isReady.value = true;
-};
-
-onMounted(() => init());
 </script>
 
 <style scoped>

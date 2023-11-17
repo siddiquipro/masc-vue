@@ -9,7 +9,6 @@ export default {
 	install(app: App) {
 		app.directive("tooltip", tooltip);
 		for (const [componentName, component] of Object.entries(components)) {
-			console.debug(`Registering ${componentName}`);
 			app.component(componentName, component);
 		}
 	},

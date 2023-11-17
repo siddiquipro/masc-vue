@@ -21,7 +21,7 @@
 		"dist"
 	],
 	"scripts": {
-		"dev": "vue-tsc --noEmit && vite build -w",
+		"dev": "vite build -w",
 		"build": "vue-tsc --noEmit && vite build",
 		"typecheck": "vue-tsc --noEmit",
 		"releaseit": "pnpm build && release-it",
