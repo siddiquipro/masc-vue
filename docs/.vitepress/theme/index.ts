@@ -1,4 +1,4 @@
-import "./base.css";
+import "./tailwind.postcss";
 import "./app.css";
 import "masc-vue/style.css";
 
