@@ -51,12 +51,12 @@
 	},
 	"homepage": "https://masc-vue.netlify.app",
 	"bugs": {
-		"url": "https://github.com/mohammadsiddiqui/masc/issues",
+		"url": "https://github.com/mohammadsiddiqui/masc-vue/issues",
 		"email": "masiddiqui91@gmail.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mohammadsiddiqui/masc.git",
+		"url": "https://github.com/mohammadsiddiqui/masc-vue.git",
 		"directory": "src"
 	},
 	"author": "Mohammad Siddiqui",

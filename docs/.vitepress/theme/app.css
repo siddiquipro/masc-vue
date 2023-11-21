@@ -31,3 +31,7 @@ body {
 	color: var(--vp-c-text-1);
 	background-color: var(--vp-c-bg);
 }
+
+.input {
+	border-style: solid;
+}
