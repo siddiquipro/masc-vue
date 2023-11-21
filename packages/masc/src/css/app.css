@@ -1,30 +1,26 @@
-body {
-  background-color: #ebf1f5;
-}
-
 /* table css */
 .s-table {
-  display: table;
-  border-collapse: collapse;
-  width: 100%;
-  text-align: left;
-  border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
-  font-size: 0.9em;
-  color: hsl(var(--bc) / 0.85);
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
+	text-align: left;
+	border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
+	font-size: 0.9em;
+	color: hsl(var(--bc) / 0.85);
 }
 
 .s-table thead {
-  background-color: hsl(var(--b3) / 0.25);
+	background-color: hsl(var(--b3) / 0.25);
 }
 
 .s-table td,
 .s-table th {
-  border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
-  padding: 5px;
+	border: 1px solid hsl(var(--b2) / var(--tw-bg-opacity));
+	padding: 5px;
 }
 
 .s-card .s-table th {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 /*readonly css */
@@ -33,5 +29,5 @@ body {
 .s-readonly .select,
 .s-readonly .radio,
 .s-readonly .checkbox {
-  background-color: hsl(var(--b2) / 0.25);
+	background-color: hsl(var(--b2) / 0.25);
 }
