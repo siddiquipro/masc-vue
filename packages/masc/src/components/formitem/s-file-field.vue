@@ -26,7 +26,7 @@ import { PropType, computed } from "vue";
 
 const props = defineProps({
 	modelValue: {
-		type: [File] as PropType<File | null>,
+		type: Object as PropType<any>,
 		default: null,
 	},
 	required: {
