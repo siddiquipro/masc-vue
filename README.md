@@ -1,6 +1,6 @@
 # masc-vue
 
-(WIP) Vue3 UI components based on [daisyui](https://github.com/saadeghi/daisyui).
+Vue 3 UI components based on [daisyui](https://github.com/saadeghi/daisyui).
 
 ## Usage
 
