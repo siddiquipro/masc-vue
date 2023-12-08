@@ -5,7 +5,7 @@
 				<slot></slot>
 			</div>
 		</Transition>
-		<div class="modal-backdrop bg-black bg-opacity-30 backdrop-blur-sm" @click="startClose"></div>
+		<div class="modal-backdrop bg-black bg-opacity-30 backdrop-blur-sm" @click="onBackDropClick"></div>
 	</dialog>
 </template>
 
@@ -27,10 +27,19 @@ const props = defineProps({
 		type: String,
 		default: "450px",
 	},
+	persist: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 //ensure component is mounted for transition to work in case of v-if
 const show = ref(false);
+
+function onBackDropClick() {
+	if (props.persist) return;
+	emits("update:modelValue", false);
+}
 
 async function startOpen() {
 	if (show.value) return;

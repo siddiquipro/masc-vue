@@ -65,8 +65,8 @@ const mascPlugin = plugin(function ({ addBase, addComponents }) {
 		".btn-circle.btn-sm": {
 			"@apply w-8 h-8": {},
 		},
-		".btn-lg": {
-			"@apply h-14": {},
+		".btn-lg,.input-lg,.select-lg": {
+			"@apply h-12": {},
 		},
 		".btn-circle.btn-lg": {
 			"@apply w-14 h-14": {},

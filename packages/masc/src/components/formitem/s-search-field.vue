@@ -62,7 +62,11 @@ function clearValue() {
 	searchNow("");
 }
 
-onMounted(() => setFocus());
+onMounted(() => {
+	setTimeout(() => {
+		setFocus();
+	}, 500);
+});
 
 const value = useVModel(props, "modelValue", emits);
 

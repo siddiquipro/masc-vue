@@ -1,5 +1,5 @@
 <template>
-	<BaseModal v-model="ds.open" :position="props.position" :width="width" @closed="onClosed" @opened="onOpened">
+	<BaseModal v-model="ds.open" :position="props.position" :width="width" @closed="onClosed" @opened="onOpened" :persist="props.persist">
 		<div class="flex items-center justify-between pl-4 pr-2 py-2 border-b" v-if="props.title">
 			<div class="text-lg flex-1 font-semibold">{{ title }}</div>
 			<a class="btn btn-ghost btn-circle btn-sm" @click="onCancel" v-if="props.closeIcon">
