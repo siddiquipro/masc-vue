@@ -2,49 +2,52 @@ import { getRegExpression } from "../../utils/helpers";
 const emailRegEx = getRegExpression("email");
 
 export function validateData(props: any, value: any) {
-  const label = props.label || "This field";
-  if (props.readonly) return "";
+	const label = props.label || "This field";
+	if (props.readonly) return "";
 
-  // if custom validation passed
-  if (typeof props.validator === "function") return props.validator(value, props);
+	// if custom validation passed
+	if (typeof props.validator === "function") return props.validator(value, props);
 
-  //required check
-  if (!requiredCheck(props, value)) return `${label} is required`;
+	// if not required and empty value then return no error
+	if (!props.required && !value) return "";
 
-  //email type check
-  if (!emailCheck(props, value)) return `${label} is not a valid email address`;
+	//required check
+	if (!requiredCheck(props, value)) return `${label} is required`;
 
-  //pattern validation
-  if (!validatePattern(props, value)) return props.patternMessage || `${label} is not in valid format`;
+	//email type check
+	if (!emailCheck(props, value)) return `${label} is not a valid email address`;
 
-  return "";
+	//pattern validation
+	if (!validatePattern(props, value)) return props.patternMessage || `${label} is not in valid format`;
+
+	return "";
 }
 
 //required check
 function requiredCheck(props: any, value: any) {
-  const { required, type } = props;
-  if (!required) return true;
-  if (type === "number" && value === 0) return true;
-  if (value) return true;
-  return false;
+	const { required, type } = props;
+	if (!required) return true;
+	if (type === "number" && value === 0) return true;
+	if (value) return true;
+	return false;
 }
 
 //pattern validation
 function validatePattern(props: any, value: any) {
-  const { pattern } = props;
-  if (!pattern) return true;
-  try {
-    const regEx = new RegExp(pattern);
-    if (regEx.test(value)) return true;
-  } catch (error) {
-    console.error('Invalid pattern provided in "pattern" prop ', error);
-  }
-  return false;
+	const { pattern } = props;
+	if (!pattern) return true;
+	try {
+		const regEx = new RegExp(pattern);
+		if (regEx.test(value)) return true;
+	} catch (error) {
+		console.error('Invalid pattern provided in "pattern" prop ', error);
+	}
+	return false;
 }
 
 function emailCheck(props: any, value: any) {
-  const { type } = props;
-  if (type !== "email") return true;
-  if (emailRegEx.test(value)) return true;
-  return false;
+	const { type } = props;
+	if (type !== "email") return true;
+	if (emailRegEx.test(value)) return true;
+	return false;
 }
