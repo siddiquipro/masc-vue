@@ -15,12 +15,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(row, i) in data" :key="i" @click="onRowClick(row, i)" :class="row.rowClass">
-					<td v-if="selectable">
-						<checkboxField :name="keyInst" v-model="row.isSelected" @change="setSelected" />
-					</td>
-					<component v-for="(h, c) in slotData" :key="i + c" :is="h" :row="row"></component>
-				</tr>
+				<template v-for="(row, i) in data" :key="i">
+					<tr @click="onRowClick(row, i)" :class="row.rowClass">
+						<td v-if="selectable">
+							<checkboxField :name="keyInst" v-model="row.isSelected" @change="setSelected" />
+						</td>
+
+						<component
+							v-for="(h, c) in slotData"
+							:key="i + c"
+							:is="h"
+							:row="row"
+							:index="i"
+							:expanded="expandedRows === i"
+							@onExpand="onExpandCol"
+						></component>
+					</tr>
+
+					<tr v-if="expandedRows === i" :key="i">
+						<td :colspan="colCount">
+							<slot name="expanded" :row="row" :index="i"> </slot>
+						</td>
+					</tr>
+				</template>
 				<tr v-if="slotData && slotData.length > 0 && (!data || data.length == 0)">
 					<td :colspan="colCount" class="text-center">
 						<div class="py-3">{{ props.noDataText }}</div>
@@ -48,7 +65,7 @@
 <script setup lang="ts">
 import TableHead from "./s-table-head.vue";
 import TableFilter from "./s-table-filter.vue";
-import { computed, useSlots } from "vue";
+import { computed, useSlots, ref } from "vue";
 import type { PropType } from "vue";
 import sPagination from "./s-pagination.vue";
 import { useVModel } from "@vueuse/core";
@@ -57,7 +74,7 @@ import checkboxField from "../formitem/s-checkbox-field.vue";
 
 const keyInst = genRandom();
 
-const emits = defineEmits(["onPageChange", "onPerPageChange", "onFilter", "update:selected"]);
+const emits = defineEmits(["onPageChange", "onPerPageChange", "onFilter", "update:selected", "onExpand"]);
 
 const props = defineProps({
 	data: {
@@ -96,6 +113,7 @@ const props = defineProps({
 
 const selectedRows = useVModel(props, "selected", emits);
 const metaData = useVModel(props, "meta", emits);
+const expandedRows = ref<number | null>(null);
 
 const colCount = computed(() => slotData.value.length + (props.selectable ? 1 : 0));
 
@@ -115,10 +133,24 @@ const slotData = computed(() => {
 	return cols;
 });
 
+const isExpand = computed(() => {
+	const match = slotData.value.find((x) => x.props && isDefined(x.props.type) && x.props.type === "expand");
+	return match ? true : false;
+});
+
 const hasFilter = computed(() => {
 	const match = slotData.value.find((x) => x.props && isDefined(x.props.filterable));
 	return match ? true : false;
 });
+
+function onExpandCol(row: any, index: number) {
+	if (!isExpand.value) return;
+	if (expandedRows.value === index) expandedRows.value = null;
+	else {
+		expandedRows.value = index;
+		emits("onExpand", row, index);
+	}
+}
 
 function onRowClick(row: any, index: number) {
 	if (typeof props.onRowSelect !== "function") return false;
