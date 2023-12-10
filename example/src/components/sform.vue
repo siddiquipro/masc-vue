@@ -10,6 +10,7 @@
 					:options="col.opts"
 					:required="col.required"
 					v-model="ds.obj[col.field]"
+					@update="onChange(ds.obj[col.field])"
 				/>
 			</div>
 
@@ -28,6 +29,10 @@ import { reactive } from "vue";
 
 const notify = useNotify();
 const ds: any = reactive({ obj: {} });
+
+const onChange = (val: any) => {
+	console.log("onChange", val);
+};
 
 const config = {
 	columns: [

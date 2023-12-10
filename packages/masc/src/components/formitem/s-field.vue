@@ -112,6 +112,8 @@ const props = defineProps({
 	},
 });
 
+const emits = defineEmits(["update:modelValue", "update"]);
+
 const attrs = useAttrs();
 
 const bProps = computed(() => ({
@@ -161,7 +163,8 @@ function reset() {
 
 onMounted(() => addToFormContext());
 
-function onValueChange() {
+function onValueChange(newValue: any, oldValue: any) {
+	if (newValue !== oldValue) emits("update", dataValue.value);
 	if (!isDirty.value) return;
 	validateField();
 }

@@ -28,7 +28,7 @@ const props = defineProps({
 	},
 	triggerFocus: {
 		type: Boolean,
-		default: false,
+		default: true,
 	},
 	clearable: {
 		type: Boolean,
@@ -63,6 +63,8 @@ function clearValue() {
 }
 
 onMounted(() => {
+	if (!props.triggerFocus) return;
+
 	setTimeout(() => {
 		setFocus();
 	}, 500);
@@ -102,5 +104,6 @@ const getClasses = computed(() => {
 	border: 0;
 	background: transparent;
 	font-size: 1em;
+	z-index: 1;
 }
 </style>
