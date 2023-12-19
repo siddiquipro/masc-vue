@@ -19,7 +19,7 @@
 				<slot></slot>
 			</RadioField>
 
-			<DateField v-model="dataValue" v-else-if="type === 'date'" v-bind="bProps" />
+			<DateField v-model="dataValue" v-else-if="type === 'datepicker'" v-bind="bProps" />
 
 			<SearchField v-model="dataValue" v-else-if="type === 'search'" v-bind="bProps" />
 

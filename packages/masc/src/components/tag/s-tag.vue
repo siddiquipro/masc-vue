@@ -1,13 +1,13 @@
 <template>
-	<span :class="classes">
+	<span :class="classes" v-if="show">
 		<slot>{{ props.label }}</slot>
-		<icon icon="mdi:close" class="text-lg cursor-pointer" v-if="props.closable" @click="onClose" />
+		<icon icon="mdi:close" class="cursor-pointer ml-1" v-if="props.closable" @click="onClose" />
 	</span>
 </template>
 
 <script setup lang="ts">
 import icon from "../icon/icon.vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 const props = defineProps({
 	closable: {
@@ -37,19 +37,18 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close"]);
+const show = ref(true);
 
 const onClose = () => {
+	show.value = false;
 	emit("close");
 };
 
 const classes = computed(() => {
-	const cls = ["border px-2"];
+	const cls = ["inline-flex items-center px-2 border"];
 
 	if (props.rounded) cls.push("rounded-full");
 	else cls.push("rounded");
-
-	if (props.closable) cls.push("inline-flex items-center justify-between gap-2");
-	else cls.push("inline-block text-center");
 
 	if (props.outline) cls.push("badge-outline");
 
@@ -59,8 +58,9 @@ const classes = computed(() => {
 	else if (props.type === "warning") cls.push("badge-warning");
 	else if (props.type === "error") cls.push("badge-error");
 
-	if (props.size === "large" || props.size === "lg") cls.push("py-1");
-	else cls.push("text-sm py-[2px]");
+	if (props.size === "large" || props.size === "lg") cls.push("text-sm py-0.5");
+	else cls.push("text-xs py-[2px] leading-[1.25]");
+
 	return cls.join(" ");
 });
 </script>
