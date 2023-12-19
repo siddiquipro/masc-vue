@@ -1,6 +1,12 @@
 <template>
 	<div>
 		<div>{{ msg }}</div>
+		<div class="flex gap-4 py-4">
+			<s-tag label="Default" closable rounded />
+			<s-tag type="primary" label="Primary" closable />
+			<s-tag type="success" label="Success" closable />
+			<s-tag type="error" label="Error" closable />
+		</div>
 
 		<s-btn @click="open = true">Open Modal</s-btn>
 

@@ -8,3 +8,4 @@ export { SField } from "./formitem";
 export { SForm } from "./form";
 export { SDropdown } from "./dropdown";
 export { SPopper } from "./popper";
+export { STag } from "./tag";
