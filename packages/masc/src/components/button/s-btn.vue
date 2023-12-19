@@ -43,7 +43,7 @@ const props = defineProps({
 	iconClass: {
 		type: String,
 		default: "",
-	},
+	}
 });
 
 const attributes = computed(() => {

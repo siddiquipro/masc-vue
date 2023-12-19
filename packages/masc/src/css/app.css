@@ -1,3 +1,48 @@
+:root {
+	--shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
+	--bg-light: #f5f7fa;
+}
+
+.sel-shadow {
+	box-shadow: var(--shadow-light);
+}
+
+.bg-light {
+	background-color: var(--bg-light);
+}
+
+/* input css */
+.has-addons-left,
+.has-addons-right {
+	position: relative;
+}
+
+.has-addons-left input {
+	padding-left: 2em;
+}
+
+.has-addons-right input {
+	padding-right: 2em;
+}
+
+.input-icon {
+	position: absolute;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+}
+
+.input-icon button {
+	height: 100%;
+	outline: 0;
+	border: 0;
+	background: transparent;
+	font-size: 1em;
+	z-index: 1;
+}
+
 /* table css */
 .s-table {
 	display: table;

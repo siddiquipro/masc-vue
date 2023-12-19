@@ -2,16 +2,8 @@
 	<SCard title="Form" class="relative">
 		<sForm class="grid gap-3" :data="ds.obj" v-slot="{ clearError }" @submit="onSubmit">
 			<div v-for="col in config.columns">
-				<sField
-					:label="col.label"
-					:type="col.type"
-					:help="col.help"
-					:prop="col.field"
-					:options="col.opts"
-					:required="col.required"
-					v-model="ds.obj[col.field]"
-					@update="onChange(ds.obj[col.field])"
-				/>
+				<sField :label="col.label" :type="col.type" :help="col.help" :prop="col.field" :options="col.opts" :required="col.required"
+					v-model="ds.obj[col.field]" @update="onChange(ds.obj[col.field])" />
 			</div>
 
 			<div class="flex gap-4 mt-4">
@@ -28,7 +20,11 @@ import { useNotify } from "masc-vue";
 import { reactive } from "vue";
 
 const notify = useNotify();
-const ds: any = reactive({ obj: {} });
+const ds: any = reactive({
+	obj: {
+		checkbox: []
+	}
+});
 
 const onChange = (val: any) => {
 	console.log("onChange", val);

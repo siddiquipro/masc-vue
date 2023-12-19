@@ -25,6 +25,10 @@
 
 			<FileField v-model="dataValue" v-else-if="type === 'file'" v-bind="bProps" />
 
+			<div class="w-full" v-else-if="type === 'custom'">
+				<slot></slot>
+			</div>
+
 			<TextField v-model="dataValue" v-else v-bind="bProps" :type="type" />
 		</div>
 		<div class="-mt-1">
@@ -63,6 +67,10 @@ const props = defineProps({
 		default: "",
 	},
 	prop: {
+		type: String,
+		default: "",
+	},
+	name: {
 		type: String,
 		default: "",
 	},
@@ -118,6 +126,8 @@ const attrs = useAttrs();
 
 const bProps = computed(() => ({
 	...attrs,
+	"data-prop": props.name || props.prop,
+	name: props.name || props.prop,
 	size: props.size,
 	disabled: props.disabled,
 	readonly: props.readonly,

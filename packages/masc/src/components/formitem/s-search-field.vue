@@ -1,13 +1,13 @@
 <template>
-	<form class="inline-flex relative w-full has-addons" @submit.prevent="searchNow()">
-		<div class="left-0 input-icon">
-			<sBtn type="sbmit" class="opacity-70" icon="mdi:search" />
+	<form class="inline-flex relative w-full has-addons-left has-addons-right" @submit.prevent="searchNow()">
+		<div class="input-icon left-0 top-0">
+			<sBtn type="sbmit" class="opacity-70 btn-link text-base-content" icon="mdi:search" />
 		</div>
 
 		<input :class="getClasses" v-bind="$attrs" v-model="value" :placeholder="placeholder" class="w-full input" ref="input" />
 
-		<div class="input-icon right-0">
-			<sBtn type="button" icon="mdi:close" @click.prevent="clearValue" v-if="value" />
+		<div class="input-icon right-0 top-0">
+			<sBtn type="button" icon="mdi:close" class="btn-link text-base-content" @click.prevent="clearValue" v-if="value" />
 		</div>
 	</form>
 </template>
@@ -83,27 +83,4 @@ const getClasses = computed(() => {
 });
 </script>
 
-<style scoped>
-.has-addons input {
-	padding-left: 2em;
-	padding-right: 2em;
-}
-
-.input-icon {
-	position: absolute;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 2em;
-}
-
-.input-icon button {
-	height: 100%;
-	outline: 0;
-	border: 0;
-	background: transparent;
-	font-size: 1em;
-	z-index: 1;
-}
-</style>
+ 
