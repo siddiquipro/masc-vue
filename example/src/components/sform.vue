@@ -2,8 +2,17 @@
 	<SCard title="Form" class="relative">
 		<sForm class="grid gap-3" :data="ds.obj" v-slot="{ clearError }" @submit="onSubmit">
 			<div v-for="col in config.columns">
-				<sField :label="col.label" :type="col.type" :help="col.help" :prop="col.field" :options="col.opts" :required="col.required"
-					v-model="ds.obj[col.field]" @update="onChange(ds.obj[col.field])" />
+				<sField
+					:label="col.label"
+					:type="col.type"
+					:help="col.help"
+					:prop="col.field"
+					:options="col.opts"
+					:required="col.required"
+					v-model="ds.obj[col.field]"
+					:multiple="col.multiple"
+					@update="onChange(ds.obj[col.field])"
+				/>
 			</div>
 
 			<div class="flex gap-4 mt-4">
@@ -22,13 +31,23 @@ import { reactive } from "vue";
 const notify = useNotify();
 const ds: any = reactive({
 	obj: {
-		checkbox: []
-	}
+		checkbox: [],
+	},
 });
 
 const onChange = (val: any) => {
 	console.log("onChange", val);
 };
+
+const items = [
+	{ text: "Yes", value: "yes" },
+	{ text: "No", value: "no" },
+	{ text: "May Be", value: "maybe" },
+];
+
+for (let i = 0; i < 50; i++) {
+	items.push({ text: `Option ${i}`, value: `item-${i}` });
+}
 
 const config = {
 	columns: [
@@ -68,11 +87,8 @@ const config = {
 			label: "Are you sure?",
 			required: true,
 			type: "select",
-			opts: [
-				{ text: "Yes", value: "yes" },
-				{ text: "No", value: "no" },
-				{ text: "May Be", value: "maybe" },
-			],
+			multiple: true,
+			opts: items,
 		},
 		{
 			field: "radioc",

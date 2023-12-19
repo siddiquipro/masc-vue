@@ -69,7 +69,7 @@ const mascPlugin = plugin(function ({ addBase, addComponents }) {
 			"@apply h-12": {},
 		},
 		".btn-circle.btn-lg": {
-			"@apply w-14 h-14": {},
+			"@apply w-12 h-12": {},
 		},
 		".dropdown-content": {
 			"@apply min-w-full z-10": {},

@@ -17,11 +17,11 @@
 	position: relative;
 }
 
-.has-addons-left input {
+.has-addons-left .input {
 	padding-left: 2em;
 }
 
-.has-addons-right input {
+.has-addons-right .input {
 	padding-right: 2em;
 }
 

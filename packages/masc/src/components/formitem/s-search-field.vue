@@ -67,7 +67,7 @@ onMounted(() => {
 
 	setTimeout(() => {
 		setFocus();
-	}, 500);
+	}, 300);
 });
 
 const value = useVModel(props, "modelValue", emits);
@@ -82,5 +82,3 @@ const getClasses = computed(() => {
 	return cls.join(" ");
 });
 </script>
-
- 
