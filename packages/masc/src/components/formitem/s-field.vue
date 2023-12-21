@@ -15,6 +15,8 @@
 
 			<SelectField v-model="dataValue" v-else-if="type === 'select'" v-bind="bProps" :options="options" />
 
+			<ComboboxField v-model="dataValue" v-else-if="type === 'combobox'" v-bind="bProps" :options="options" />
+
 			<RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="bProps" :options="options">
 				<slot></slot>
 			</RadioField>
@@ -48,6 +50,7 @@ import DateField from "./s-date-field.vue";
 import CheckboxField from "./s-checkbox-field.vue";
 import SearchField from "./s-search-field.vue";
 import FileField from "./s-file-field.vue";
+import ComboboxField from "./s-combobox-field.vue";
 import { PropType, computed, inject, onMounted, ref, watch, useAttrs } from "vue";
 import { formContextKey } from "../form/constants";
 import { useVModel } from "@vueuse/core";
@@ -56,7 +59,6 @@ import { validateData } from "./validator";
 const props = defineProps({
 	modelValue: {
 		type: [String, Number, Boolean, Array, Object] as PropType<any>,
-		default: "",
 	},
 	type: {
 		type: String,
@@ -127,11 +129,11 @@ const attrs = useAttrs();
 const bProps = computed(() => ({
 	...attrs,
 	"data-prop": props.name || props.prop,
-	name: props.name || props.prop,
-	size: props.size,
-	disabled: props.disabled,
-	readonly: props.readonly,
-	required: props.required,
+	"name": props.name || props.prop,
+	"size": props.size,
+	"disabled": props.disabled,
+	"readonly": props.readonly,
+	"required": props.required,
 }));
 
 const initialValue = props.modelValue;

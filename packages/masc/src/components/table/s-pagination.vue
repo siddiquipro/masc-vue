@@ -6,12 +6,12 @@
 				<option v-for="(p, i) in rowsPerPage" :key="i" :value="p">{{ p }} per page</option>
 			</select>
 		</div>
-		<div class="flex-1 flex items-center">
-			<a class="flex-none btn btn-sm btn-ghost btn-circle" @click="pageChanged(page - 1)">
+		<div class="flex-1 flex items-center justify-center gap-4">
+			<a class="btn btn-sm btn-ghost btn-circle" @click="pageChanged(page - 1)">
 				<icon icon="mdi:chevron-left" height="22" />
 			</a>
 
-			<ul class="flex-1 flex justify-center items-center gap-4">
+			<ul class="flex justify-center items-center gap-4">
 				<li v-for="(item, i) in visiblePages" :key="i">
 					<span v-if="!item.page">&hellip;</span>
 					<a v-else-if="item.page === page" class="btn btn-sm btn-primary btn-circle">{{ item.page }}</a>

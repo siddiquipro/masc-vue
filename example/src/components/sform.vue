@@ -52,6 +52,21 @@ for (let i = 0; i < 50; i++) {
 const config = {
 	columns: [
 		{
+			field: "combobox",
+			label: "Select an option multiples",
+			required: true,
+			type: "combobox",
+			multiple: true,
+			opts: items,
+		},
+		{
+			field: "select",
+			label: "Are you sure?",
+			required: true,
+			type: "select",
+			opts: items,
+		},
+		{
 			field: "texta",
 			help: "Please provide something useful",
 			label: "Your Name",
@@ -82,14 +97,6 @@ const config = {
 			type: "date",
 		},
 
-		{
-			field: "select",
-			label: "Are you sure?",
-			required: true,
-			type: "select",
-			multiple: true,
-			opts: items,
-		},
 		{
 			field: "radioc",
 			label: "Confirm your choice",
