@@ -17,9 +17,7 @@
 
 			<ComboboxField v-model="dataValue" v-else-if="type === 'combobox'" v-bind="bProps" :options="options" />
 
-			<RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="bProps" :options="options">
-				<slot></slot>
-			</RadioField>
+			<RadioField v-model="dataValue" v-else-if="type === 'radio'" v-bind="bProps" :options="options" />
 
 			<DateField v-model="dataValue" v-else-if="type === 'datepicker'" v-bind="bProps" />
 

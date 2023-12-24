@@ -2,6 +2,8 @@
 	<div class="container mx-auto grid gap-6 py-10">
 		<div class="text-xl font-semibold">MASC Vue Component</div>
 
+		<s-text-field label="Text" />
+
 		<Test />
 
 		<tooltip />

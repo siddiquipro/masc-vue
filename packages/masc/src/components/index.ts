@@ -9,3 +9,14 @@ export { SForm } from "./form";
 export { SDropdown } from "./dropdown";
 export { SPopper } from "./popper";
 export { STag } from "./tag";
+
+export { STextField } from "./formitem";
+export { STextareaField } from "./formitem";
+export { SSelectField } from "./formitem";
+export { SBoolField } from "./formitem";
+export { SRadioField } from "./formitem";
+export { SDateField } from "./formitem";
+export { SCheckboxField } from "./formitem";
+export { SSearchField } from "./formitem";
+export { SFileField } from "./formitem";
+export { SComboboxField } from "./formitem";
