@@ -25,8 +25,7 @@ const props = defineProps({
 		default: "",
 	},
 	value: {
-		type: String,
-		default: "",
+		type: [String, Boolean, Number],
 	},
 	options: {
 		type: Array,
