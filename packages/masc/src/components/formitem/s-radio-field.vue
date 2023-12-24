@@ -2,10 +2,10 @@
 	<div class="flex flex-wrap gap-4" :class="rows ? 'flex-col' : ''">
 		<div v-for="r in options" class="flex gap-6 items-center flex-wrap">
 			<div class="block">
-				<label class="cursor-pointer flex items-center gap-2">
+				<label class="cursor-pointer flex items-center gap-2 w-full">
 					<input type="radio" v-bind="$attrs" :name="key" :value="r.value" class="radio radio-primary" :class="getClasses" v-model="selValue" />
 					<slot :row="r">
-						<div v-html="r.text"></div>
+						<div class="w-full" v-html="r.text"></div>
 					</slot>
 				</label>
 			</div>
