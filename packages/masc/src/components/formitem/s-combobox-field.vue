@@ -2,23 +2,24 @@
 	<div class="relative">
 		<s-popper offsetDistance="3" class="w-full" :show="show" ref="target">
 			<div class="has-addons-right">
-				<div ref="input" :class="multiClass" @click="onFocus" class="input w-full flex items-center gap-2 flex-wrap py-2" v-if="props.multiple">
+				<div ref="input" :class="multiClass" @click="openPopper" class="input w-full flex items-center gap-2 flex-wrap py-2" v-if="props.multiple">
 					<s-tag v-for="opt in selMultipleValue" class="bg-base-200 shrink-0" :key="opt" closable @close="removeItem(opt)">
 						{{ opt.text }}
 					</s-tag>
 				</div>
-				<input type="text" class="input w-full" :class="getClasses" v-else v-bind="$attrs" :value="selValue" readonly @focus="onFocus" />
+				<input type="text" class="input w-full" :class="getClasses" v-else v-bind="$attrs" :value="selValue" readonly @focus="openPopper" />
 
-				<div class="input-icon right-0 top-0 z-10">
-					<s-icon icon="mdi:chevron-down" class="opacity-70" />
+				<div class="input-icon right-0 top-0 z-[1]">
+					<s-icon v-if="props.clearable && dataValue" icon="mdi:close" class="opacity-70 cursor-pointer" @click="dataValue = ''" />
+					<s-icon v-else icon="mdi:chevron-down" class="opacity-70" />
 				</div>
 			</div>
 
-			<template #content="x">
-				<div class="bg-base-100 sel-shadow rounded border border-base-200">
+			<template #content>
+				<div class="bg-base-100 sel-shadow rounded border border-base-200 z-10">
 					<div class="p-2 border-b flex items-center gap-2">
 						<s-icon icon="mdi:magnify" class="opacity-50" />
-						<input class="h-6 w-full outline-none text-sm" v-model="search" placeholder="Search..." />
+						<input ref="searchInputEL" class="h-6 w-full outline-none text-sm" v-model="search" placeholder="Search..." />
 					</div>
 					<ul class="max-h-64 overflow-y-auto p-2 scroll">
 						<li v-for="opt in filteredOptions" class="text-sm hover:bg-base-200 hover:bg-opacity-40 rounded">
@@ -28,7 +29,7 @@
 								role="option"
 								:data-option="opt.text"
 								:data-value="opt.value"
-								@click.stop="setSelection(opt, x)"
+								@click="setSelection(opt)"
 							>
 								<span :class="isSelected(opt) ? 'text-primary font-semibold' : ''">{{ opt.text }}</span>
 								<span class="absolute top-0 right-2 h-full grid items-center">
@@ -85,6 +86,10 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	clearable: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const ds: any = reactive({ options: [] });
@@ -92,9 +97,13 @@ const search = ref("");
 const show = ref(false);
 const input = ref<HTMLElement | null>(null);
 const target = ref<HTMLElement | null>(null);
+const searchInputEL = ref<HTMLElement | null>(null);
 
-const onFocus = () => {
+const openPopper = () => {
 	show.value = true;
+	setTimeout(() => {
+		searchInputEL.value?.focus();
+	}, 100);
 };
 
 const closePopper = () => {
@@ -105,20 +114,22 @@ onClickOutside(target, () => closePopper());
 
 const selMultipleValue = computed(() => {
 	if (!Array.isArray(dataValue.value)) return [];
-	return dataValue.value.map((x: any) => {
-		return ds.options.find((y: any) => y.value === x);
-	});
+	return dataValue.value
+		.map((x: any) => {
+			return ds.options.find((y: any) => y && y.value === x);
+		})
+		.filter((x: any) => x);
 });
 
 const selValue = computed(() => {
 	if (props.multiple) return "";
-	const opt = ds.options.find((x: any) => x.value === dataValue.value);
+	const opt = ds.options.find((x: any) => x && x.value === dataValue.value);
 	return opt ? opt.text : "";
 });
 
 const filteredOptions = computed(() => {
 	if (!search.value) return ds.options;
-	return ds.options.filter((x: any) => x.text.toLowerCase().includes(search.value.toLowerCase()));
+	return ds.options.filter((x: any) => x && x.text.toLowerCase().includes(search.value.toLowerCase()));
 });
 
 function isSelected(opt: any) {
@@ -126,10 +137,10 @@ function isSelected(opt: any) {
 	return opt && opt.value === dataValue.value;
 }
 
-function setSelection(opt: any, slotProp: any) {
+function setSelection(opt: any) {
 	if (props.multiple) return setMultipleSelection(opt);
 	dataValue.value = opt.value;
-	if (slotProp && slotProp.close) slotProp.close();
+	closePopper();
 }
 
 function setMultipleSelection(opt: any) {

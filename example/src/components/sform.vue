@@ -11,6 +11,7 @@
 					:required="col.required"
 					v-model="ds.obj[col.field]"
 					:multiple="col.multiple"
+					clearable
 					@update="onChange(ds.obj[col.field])"
 				/>
 			</div>
@@ -57,6 +58,13 @@ const config = {
 			required: true,
 			type: "combobox",
 			multiple: true,
+			opts: items,
+		},
+		{
+			field: "combobox2",
+			label: "Select single option",
+			required: true,
+			type: "combobox",
 			opts: items,
 		},
 		{

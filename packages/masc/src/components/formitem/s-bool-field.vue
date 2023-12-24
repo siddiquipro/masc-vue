@@ -2,7 +2,7 @@
 	<label class="flex items-center cursor-pointer">
 		<input
 			type="checkbox"
-			class="checkbox checkbox-primary"
+			class="toggle toggle-primary"
 			:class="getClasses"
 			v-bind="$attrs"
 			v-model="selValue"
@@ -30,11 +30,11 @@ const props = defineProps({
 		default: "",
 	},
 	trueValue: {
-		type: [String, Number],
+		type: [String, Number, Boolean],
 		default: 1,
 	},
 	falseValue: {
-		type: [String, Number],
+		type: [String, Number, Boolean],
 		default: 0,
 	},
 	size: {
@@ -47,9 +47,9 @@ const selValue = useVModel(props, "modelValue", emits);
 
 const getClasses = computed(() => {
 	const cls = [];
-	if (props.size === "xs") cls.push("checkbox-xs");
-	if (props.size === "sm") cls.push("checkbox-sm");
-	if (props.size === "lg") cls.push("checkbox-lg");
+	if (props.size === "xs") cls.push("toggle-xs");
+	if (props.size === "sm") cls.push("toggle-sm");
+	if (props.size === "lg") cls.push("toggle-lg");
 
 	return cls.join(" ");
 });

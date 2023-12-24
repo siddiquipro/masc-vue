@@ -20,16 +20,14 @@ const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
 	modelValue: {
-		type: String,
-		default: "",
+		type: [String, Boolean, Number],
 	},
 	text: {
 		type: String,
 		default: "",
 	},
 	value: {
-		type: String,
-		default: "",
+		type: [String, Boolean, Number],
 	},
 	options: {
 		type: Array,
