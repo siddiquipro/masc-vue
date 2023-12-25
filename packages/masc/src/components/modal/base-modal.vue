@@ -110,6 +110,7 @@ const contentStyle = computed(() => {
 	border-radius: 0.25rem;
 	max-height: 100vh;
 	width: 100%;
+	transform: none;
 }
 
 .modal-top,

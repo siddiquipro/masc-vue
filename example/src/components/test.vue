@@ -15,7 +15,7 @@
 				<p>This is modal content</p>
 				<p>This is modal on</p>
 
-				<s-field label="Name" v-model="name" type="search" size="lg" />
+				<s-field label="Name" v-model="name2" type="combobox" :options="options" />
 
 				<s-btn @click="user = open">Add user</s-btn>
 			</div>
@@ -25,8 +25,7 @@
 			<div class="w-[400px] max-w-lg p-6 flex-1">
 				<p>This is modal content</p>
 				<p>This is modal on</p>
-
-				<s-field label="Name" v-model="name2" />
+				<s-field label="Name" v-model="name" type="search" size="lg" />
 			</div>
 		</s-modal>
 	</div>
@@ -40,6 +39,12 @@ const open = ref(false);
 const user = ref(false);
 const name = ref("");
 const name2 = ref("");
+
+const options = [
+	{ text: "Yes", value: "yes" },
+	{ text: "No", value: "no" },
+	{ text: "May Be", value: "maybe" },
+];
 </script>
 
 <style scoped></style>

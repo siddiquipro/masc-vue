@@ -176,6 +176,8 @@ const getClasses = computed(() => {
 	if (props.size === "sm") cls.push("input-sm");
 	if (props.size === "lg") cls.push("input-lg");
 
+	if (show.value) cls.push("border-primary ring-1 ring-primary");
+
 	return cls.join(" ");
 });
 
