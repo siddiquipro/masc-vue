@@ -10,8 +10,8 @@
 				<input type="text" class="input w-full" :class="getClasses" v-else v-bind="$attrs" :value="selValue" readonly @focus="openPopper" />
 
 				<div class="input-icon right-0 top-0 z-[1]">
-					<s-icon v-if="props.clearable && dataValue" icon="mdi:close" class="opacity-70 cursor-pointer" @click="dataValue = ''" />
-					<s-icon v-else icon="mdi:chevron-down" class="opacity-70" />
+					<s-icon v-if="props.clearable && dataValue" icon="mdi:close" class="opacity-70 cursor-pointer" @click="onClearValue" />
+					<s-icon v-else icon="mdi:chevron-down" class="opacity-70 cursor-pointer" @click="openPopper" />
 				</div>
 			</div>
 
@@ -20,6 +20,10 @@
 					<div class="p-2 border-b flex items-center gap-2">
 						<s-icon icon="mdi:magnify" class="opacity-50" />
 						<input ref="searchInputEL" class="h-6 w-full outline-none text-sm" v-model="search" placeholder="Search..." />
+
+						<div v-if="props.clearInToolbar">
+							<s-icon icon="mdi:delete" class="opacity-70 cursor-pointer" @click="onClearValue" />
+						</div>
 					</div>
 					<ul class="max-h-64 overflow-y-auto p-2 scroll">
 						<li v-for="opt in filteredOptions" class="text-sm hover:bg-base-200 hover:bg-opacity-40 rounded">
@@ -90,6 +94,10 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	clearInToolbar: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const ds: any = reactive({ options: [] });
@@ -111,6 +119,11 @@ const closePopper = () => {
 };
 
 onClickOutside(target, () => closePopper());
+
+const onClearValue = () => {
+	dataValue.value = null as any;
+	closePopper();
+};
 
 const selMultipleValue = computed(() => {
 	if (!Array.isArray(dataValue.value)) return [];
