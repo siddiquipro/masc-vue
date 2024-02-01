@@ -5,6 +5,7 @@ import "masc-vue/style.css";
 import DefaultTheme from "vitepress/theme";
 import { type Theme } from "vitepress";
 import * as components from "masc-vue";
+import { tooltip } from "masc-vue";
 
 import SComp from "../../components/s-comp.vue";
 
@@ -21,5 +22,7 @@ export default {
 
 		// Register custom components
 		app.component("s-comp", SComp);
+
+		app.directive("tooltip", tooltip);
 	},
 } satisfies Theme;

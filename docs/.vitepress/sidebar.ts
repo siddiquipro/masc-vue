@@ -27,6 +27,12 @@ const components = {
 	],
 };
 
+const directives = {
+	text: "Directives",
+	collapsed: true,
+	items: [{ text: "Tooltip", link: "/directives/tooltip" }],
+};
+
 const composables = {
 	text: "Composables",
 	collapsed: true,
@@ -43,4 +49,4 @@ const extras = {
 	items: [{ text: "Helpers", link: "/extras/helpers" }],
 };
 
-export default [overview, components, composables, extras];
+export default [overview, components, directives, composables, extras];
