@@ -1,21 +1,21 @@
 <template>
-	<nav class="flex items-center font-semibold px-4 py-1 text-sm gap-4">
-		<div>Total: {{ total }}</div>
-		<div class="w-32">
+	<nav class="flex items-center font-semibold px-4 py-1 text-sm gap-4 s-pagination">
+		<div v-if="showTotal" class="s-pagination-total">Total: {{ total }}</div>
+		<div class="w-32 s-pagination-per-page">
 			<select class="select select-sm w-full" :value="perPage" @change="perPageChanged">
 				<option v-for="(p, i) in rowsPerPage" :key="i" :value="p">{{ p }} per page</option>
 			</select>
 		</div>
-		<div class="flex-1 flex items-center justify-center gap-4">
+		<div class="flex-1 flex items-center justify-center gap-4 s-pagination-pages">
 			<a class="btn btn-sm btn-ghost btn-circle" @click="pageChanged(page - 1)">
 				<icon icon="mdi:chevron-left" height="22" />
 			</a>
 
-			<ul class="flex justify-center items-center gap-4">
+			<ul class="flex justify-center items-center gap-4 s-pagination-list">
 				<li v-for="(item, i) in visiblePages" :key="i">
 					<span v-if="!item.page">&hellip;</span>
-					<a v-else-if="item.page === page" class="btn btn-sm btn-primary btn-circle">{{ item.page }}</a>
-					<a v-else class="btn btn-sm btn-circle" @click="pageChanged(item.page)">{{ item.page }}</a>
+					<a v-else-if="item.page === page" class="btn btn-sm btn-primary btn-circle s-pagination-btn s-pagination-active">{{ item.page }}</a>
+					<a v-else class="btn btn-sm btn-circle s-pagination-btn" @click="pageChanged(item.page)">{{ item.page }}</a>
 				</li>
 			</ul>
 
@@ -31,6 +31,14 @@ import { computed } from "vue";
 import icon from "../icon/icon.vue";
 
 const props = defineProps({
+	showTotal: {
+		type: Boolean,
+		default: true,
+	},
+	showPerPage: {
+		type: Boolean,
+		default: true,
+	},
 	total: {
 		type: Number,
 		default: 0,
