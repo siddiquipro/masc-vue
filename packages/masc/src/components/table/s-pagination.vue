@@ -1,7 +1,7 @@
 <template>
 	<nav class="flex items-center font-semibold px-4 py-1 text-sm gap-4 s-pagination">
 		<div v-if="showTotal" class="s-pagination-total">Total: {{ total }}</div>
-		<div class="w-32 s-pagination-per-page">
+		<div v-if="showPerPage" class="w-32 s-pagination-per-page">
 			<select class="select select-sm w-full" :value="perPage" @change="perPageChanged">
 				<option v-for="(p, i) in rowsPerPage" :key="i" :value="p">{{ p }} per page</option>
 			</select>
