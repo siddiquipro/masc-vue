@@ -40,7 +40,9 @@
 				</template>
 				<tr v-if="slotData && slotData.length > 0 && (!data || data.length == 0)">
 					<td :colspan="colCount" class="text-center">
-						<div class="py-3">{{ props.noDataText }}</div>
+						<slot name="no-data">
+							<div class="py-3 s-no-data">{{ props.noDataText }}</div>
+						</slot>
 					</td>
 				</tr>
 			</tbody>
@@ -120,15 +122,17 @@ const colCount = computed(() => slotData.value.length + (props.selectable ? 1 : 
 const slotData = computed(() => {
 	const slots = useSlots();
 	const temps = slots && slots.default ? slots.default() : [];
-
-	const cols = [];
-	for (const col of temps) {
-		const children: any = col.children;
-		if (children && children.length > 0) {
-			cols.push(...children);
-		} else {
+	const cols: any[] = [];
+	const addToCols = (slotCols: any) => {
+		for (const col of slotCols) {
+			if (col.type.name !== "STableColumn") continue;
 			cols.push(col);
 		}
+	};
+
+	for (const col of temps) {
+		const children: any = col.children;
+		children?.length ? addToCols(children) : addToCols([col]);
 	}
 	return cols;
 });

@@ -1,7 +1,7 @@
 {
 	"name": "masc-vue",
 	"private": false,
-	"version": "0.3.2",
+	"version": "0.4.0",
 	"source": "src/index.ts",
 	"main": "./dist/index.umd.js",
 	"module": "./dist/index.es.js",
@@ -52,12 +52,12 @@
 	},
 	"homepage": "https://masc-vue.netlify.app",
 	"bugs": {
-		"url": "https://github.com/mohammadsiddiqui/masc-vue/issues",
+		"url": "https://github.com/siddiquipro/masc-vue/issues",
 		"email": "masiddiqui91@gmail.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mohammadsiddiqui/masc-vue.git",
+		"url": "https://github.com/siddiquipro/masc-vue.git",
 		"directory": "src"
 	},
 	"author": "Mohammad Siddiqui",

@@ -35,4 +35,4 @@ One of our main goals is to provide the best possible developer experience. We p
 
 To file issues, request features, and contribute, check out my GitHub.
 
-[GitHub repo](https://github.com/mohammadsiddiqui/masc-vue)
+[GitHub repo](https://github.com/siddiquipro/masc-vue)

@@ -15,6 +15,8 @@ import { getObjectValue } from "../../utils/helpers";
 import { formatDate, formatBoolean } from "../../utils/formatters";
 import icon from "../icon/icon.vue";
 
+defineOptions({ name: "STableColumn" });
+
 const emits = defineEmits(["onExpand"]);
 
 const props = defineProps({

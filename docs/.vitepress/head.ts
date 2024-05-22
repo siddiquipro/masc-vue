@@ -28,7 +28,7 @@ export default [
 	["meta", { name: "twitter:label2", content: "License" }],
 	["meta", { name: "twitter:data2", content: "MIT" }],
 	["meta", { name: "twitter:label3", content: "Github" }],
-	["meta", { name: "twitter:data3", content: "https://github.com/mohammadsiddiqui" }],
+	["meta", { name: "twitter:data3", content: "https://github.com/siddiquipro" }],
 	["meta", { name: "twitter:label4", content: "NPM" }],
 	["meta", { name: "twitter:data4", content: "https://www.npmjs.com/package/masc-vue" }],
 ] satisfies HeadConfig[];
