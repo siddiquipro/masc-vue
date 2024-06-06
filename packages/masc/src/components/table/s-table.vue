@@ -7,7 +7,7 @@
 					<th v-if="selectable">
 						<checkboxField :name="keyInst + 'ALL'" @change="onSelectALLChange" />
 					</th>
-					<TableHead v-for="(h, i) in slotData" :key="i" v-bind="h.props"></TableHead>
+					<TableHead v-for="(h, i) in slotData" :key="i" v-bind="h.props" @on-sort="onSortCol(h)"></TableHead>
 				</tr>
 				<tr v-if="hasFilter">
 					<th v-if="selectable"></th>
@@ -29,6 +29,7 @@
 							:index="i"
 							:expanded="expandedRows === i"
 							@onExpand="onExpandCol"
+							@onSort="onSortCol"
 						></component>
 					</tr>
 
@@ -76,7 +77,7 @@ import checkboxField from "../formitem/s-checkbox-field.vue";
 
 const keyInst = genRandom();
 
-const emits = defineEmits(["onPageChange", "onPerPageChange", "onFilter", "update:selected", "onExpand"]);
+const emits = defineEmits(["onPageChange", "onPerPageChange", "onFilter", "update:selected", "onExpand", "onSort"]);
 
 const props = defineProps({
 	data: {
@@ -159,6 +160,10 @@ function onExpandCol(row: any, index: number) {
 function onRowClick(row: any, index: number) {
 	if (typeof props.onRowSelect !== "function") return false;
 	props.onRowSelect(row, index);
+}
+
+function onSortCol(val: any) {
+	emits("onSort", val);
 }
 
 function onFilter(val: any) {
