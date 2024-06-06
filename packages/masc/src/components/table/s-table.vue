@@ -125,8 +125,7 @@ const slotData = computed(() => {
 	const cols: any[] = [];
 	const addToCols = (slotCols: any) => {
 		for (const col of slotCols) {
-			if (col.type.name !== "STableColumn") continue;
-			cols.push(col);
+			if (col?.type?.name === "STableColumn") cols.push(col);
 		}
 	};
 
