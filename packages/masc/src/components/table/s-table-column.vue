@@ -21,7 +21,8 @@ const emits = defineEmits(["onExpand"]);
 
 const props = defineProps({
 	row: {
-		type: Object,
+		type: Object as PropType<Record<string, any>>,
+		default: () => ({}),
 	},
 	index: {
 		type: Number,
@@ -61,6 +62,10 @@ const props = defineProps({
 	options: {
 		type: Array as PropType<any[]>,
 		default: () => [],
+	},
+	sortable: {
+		type: Boolean,
+		default: false,
 	},
 });
 

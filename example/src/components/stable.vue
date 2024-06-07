@@ -1,13 +1,13 @@
 <template>
 	<s-card title="Table">
-		<s-table :data="data" :meta="meta" @on-expand="onExpand">
+		<s-table :data="data" :meta="meta" @on-expand="onExpand" @on-sort="onSort">
 			<s-table-column type="expand" />
-			<s-table-column field="name" label="Name" filterable :options="options" />
-			<s-table-column field="email" label="Email" />
+			<s-table-column field="name" label="Name" filterable :options="options" :sortable="true" />
+			<s-table-column field="email" label="Email" :sortable="true" />
 			<s-table-column field="new" label="New User?" type="boolean" />
 			<s-table-column field="date" label="Date" type="date" class="text-center" />
-			<s-table-column v-slot="props">
-				<s-btn class="btn-xs w-full" @click="onEdit(props.row)">Edit</s-btn>
+			<s-table-column v-slot="{ row }">
+				<s-btn class="btn-xs w-full" @click="onEdit(row.abc)">Edit</s-btn>
 			</s-table-column>
 
 			<template #expanded="{ row }">
@@ -63,6 +63,10 @@ function onExpand(row: any, index: any) {
 	console.log(`Expanding  row event`, row, index);
 }
 
+function onSort() {
+	console.log("onSort", meta.value.sort);
+}
+
 const data = computed(() => {
 	const start = Number(meta.value.page || 1);
 	const count = Number(meta.value.perPage || 10);
@@ -80,5 +84,5 @@ const data = computed(() => {
 	return rows;
 });
 
-const meta = ref({ total: 100, perPage: 10, page: 1 });
+const meta = ref({ total: 100, perPage: 10, page: 1, sort: { field: "name", order: "desc" } });
 </script>

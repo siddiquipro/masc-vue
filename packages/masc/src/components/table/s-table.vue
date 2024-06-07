@@ -7,7 +7,7 @@
 					<th v-if="selectable">
 						<checkboxField :name="keyInst + 'ALL'" @change="onSelectALLChange" />
 					</th>
-					<TableHead v-for="(h, i) in slotData" :key="i" v-bind="h.props" @on-sort="onSortCol(h)"></TableHead>
+					<TableHead v-for="(h, i) in slotData" :key="i" v-bind="h.props" :meta="metaData" @onSort="onSortCol"></TableHead>
 				</tr>
 				<tr v-if="hasFilter">
 					<th v-if="selectable"></th>
@@ -126,7 +126,9 @@ const slotData = computed(() => {
 	const cols: any[] = [];
 	const addToCols = (slotCols: any) => {
 		for (const col of slotCols) {
-			if (col?.type?.name === "STableColumn") cols.push(col);
+			if (col?.type?.name === "STableColumn") {
+				cols.push(col);
+			}
 		}
 	};
 
@@ -162,6 +164,7 @@ function onRowClick(row: any, index: number) {
 }
 
 function onSortCol(val: any) {
+	metaData.value.sort = val;
 	emits("onSort", val);
 }
 
