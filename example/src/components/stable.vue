@@ -1,6 +1,6 @@
 <template>
 	<s-card title="Table">
-		<s-table :data="data" :meta="meta" @on-expand="onExpand" @on-sort="onSort">
+		<s-table :data="data" v-model:selected="selected" selectable :meta="meta" @on-expand="onExpand" @on-sort="onSort">
 			<s-table-column type="expand" />
 			<s-table-column field="name" label="Name" filterable :options="options" :sortable="true" />
 			<s-table-column field="email" label="Email" :sortable="true" />
@@ -49,6 +49,8 @@ const options = ref([
 	{ text: "New User?", value: "new" },
 	{ text: "Date", value: "date" },
 ]);
+
+const selected = ref([]);
 
 setTimeout(() => {
 	options.value.push({ text: "New Column", value: "new_column" });

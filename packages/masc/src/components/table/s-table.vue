@@ -1,11 +1,19 @@
 <template>
 	<div class="w-full overflow-x-auto">
-		<div v-if="selectable && selectedRows.length" class="font-semibold tag is-warning w1">{{ selectedRows.length }} rows selected</div>
+		<div v-if="selectable && selectedRows.length && showSelectedText" class="font-semibold tag is-warning w1">
+			{{ selectedRows.length }} rows selected
+		</div>
 		<table class="s-table w-full">
 			<thead>
 				<tr>
 					<th v-if="selectable">
-						<checkboxField :name="keyInst + 'ALL'" @change="onSelectALLChange" />
+						<checkboxField
+							size="sm"
+							:checked="isFullSelected"
+							:indeterminate="isPartialSelected"
+							:name="keyInst + 'ALL'"
+							@change="onSelectALLChange"
+						/>
 					</th>
 					<TableHead v-for="(h, i) in slotData" :key="i" v-bind="h.props" :meta="metaData" @onSort="onSortCol"></TableHead>
 				</tr>
@@ -17,8 +25,8 @@
 			<tbody>
 				<template v-for="(row, i) in data" :key="i">
 					<tr @click="onRowClick(row, i)" :class="row.rowClass">
-						<td v-if="selectable">
-							<checkboxField :name="keyInst" v-model="row.isSelected" @change="setSelected" />
+						<td v-if="selectable" class="w-2 text-center">
+							<checkboxField size="sm" :name="keyInst" v-model="row.isSelected" @change="setSelected" />
 						</td>
 
 						<component
@@ -95,6 +103,10 @@ const props = defineProps({
 	selected: {
 		type: Array,
 		default: () => [],
+	},
+	showSelectedText: {
+		type: Boolean,
+		default: false,
 	},
 	onRowSelect: {
 		type: Function,
@@ -182,6 +194,9 @@ function perPageChanged(val: number) {
 	metaData.value.page = 1;
 	emits("onPerPageChange", val);
 }
+
+const isFullSelected = computed(() => props.data.length === selectedRows.value.length);
+const isPartialSelected = computed(() => selectedRows.value.length > 0 && !isFullSelected.value);
 
 function setSelected() {
 	selectedRows.value = props.data.filter((x) => x.isSelected);
