@@ -44,4 +44,5 @@ export default function tooltip(el: HTMLElement, binding: any) {
 	// Set up event listeners to show and hide the tooltip
 	useEventListener(el, "mouseenter", showPopper);
 	useEventListener(el, "mouseleave", removePopper);
+	useEventListener(el, "mousedown", removePopper);
 }
