@@ -3,7 +3,7 @@
 		<div v-for="r in options" class="flex gap-6 items-center flex-wrap">
 			<div class="block">
 				<label class="cursor-pointer flex items-center gap-2 w-full">
-					<input type="radio" v-bind="$attrs" :name="name" :value="r.value" class="radio radio-primary" :class="getClasses" v-model="selValue" />
+					<input type="radio" v-bind="attrs" :value="r.value" class="radio radio-primary" :class="getClasses" v-model="selValue" />
 					<slot :row="r">
 						<div class="w-full" v-html="r.text"></div>
 					</slot>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType } from "vue";
+import { computed, PropType, useAttrs } from "vue";
 import { useVModel } from "@vueuse/core";
 const emits = defineEmits(["update:modelValue"]);
 
@@ -41,10 +41,13 @@ const props = defineProps({
 		type: String as PropType<"xs" | "sm" | "lg">,
 		default: "",
 	},
-	name: {
-		type: String,
-		default: "",
-	},
+});
+
+const attrs = computed(() => {
+	const attrs = Object.assign({}, useAttrs());
+	if (attrs.name) return attrs;
+	attrs.name = Math.random().toString(36).substring(2) + Date.now().toString(36);
+	return attrs;
 });
 
 const selValue = useVModel(props, "modelValue", emits);
