@@ -22,7 +22,7 @@
 						<input ref="searchInputEL" class="h-6 w-full outline-none text-sm" v-model="search" placeholder="Search..." />
 
 						<div v-if="props.clearInToolbar">
-							<s-icon icon="mdi:delete" class="opacity-70 cursor-pointer" @click="onClearValue" />
+							<s-icon icon="mdi:delete" class="opacity-70 cursor-pointer" @click="onClearSearch" />
 						</div>
 					</div>
 					<ul class="max-h-64 overflow-y-auto p-2 scroll">
@@ -123,6 +123,10 @@ onClickOutside(target, () => closePopper());
 const onClearValue = () => {
 	dataValue.value = null as any;
 	closePopper();
+};
+
+const onClearSearch = () => {
+	search.value = "";
 };
 
 const selMultipleValue = computed(() => {
