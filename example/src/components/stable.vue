@@ -1,8 +1,9 @@
 <template>
 	<s-card title="Table">
-		<s-table :data="data" v-model:selected="selected" selectable :meta="meta" @on-expand="onExpand" @on-sort="onSort">
+		<s-table :data="data" v-model:selected="selected" selectable :meta="meta" @on-expand="onExpand"
+			@on-sort="onSort">
 			<s-table-column type="expand" />
-			<s-table-column field="name" label="Name" filterable :options="options" :sortable="true" />
+			<s-table-column field="name" label="Name" filterable :options="options" sanitize :sortable="true" />
 			<s-table-column field="email" label="Email" :sortable="true" />
 			<s-table-column field="new" label="New User?" type="boolean" />
 			<s-table-column field="date" label="Date" type="date" class="text-center" />

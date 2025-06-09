@@ -11,6 +11,8 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
+import DOMPurify from 'dompurify'
+
 import { getObjectValue } from "../../utils/helpers";
 import { formatDate, formatBoolean } from "../../utils/formatters";
 import icon from "../icon/icon.vue";
@@ -42,6 +44,10 @@ const props = defineProps({
 	type: {
 		type: String,
 		default: "",
+	},
+	sanitize: {
+		type: Boolean,
+		default: false,
 	},
 	btnText: {
 		type: String,
@@ -81,9 +87,16 @@ const onColumnClick = () => {
 const displayValue = computed(() => {
 	const value = getObjectValue(props.row, props.display || props.field);
 	const type = props.type || "text";
-	if (type === "date") return formatDate(value);
-	if (type === "boolean") return formatBoolean(value);
-	if (type === "onlyYes") return formatBoolean(value, "");
-	return value || "";
+	let rawValue = "";
+	if (type === "date") rawValue = formatDate(value);
+	else if (type === "boolean") rawValue = formatBoolean(value);
+	else if (type === "onlyYes") rawValue = formatBoolean(value, "");
+	else rawValue = value || "";
+	console.log("sanitize", props.sanitize);
+	if (props.sanitize) {
+		console.log("sanitize", rawValue);
+		return DOMPurify.sanitize(rawValue);
+	}
+	return rawValue;
 });
 </script>
