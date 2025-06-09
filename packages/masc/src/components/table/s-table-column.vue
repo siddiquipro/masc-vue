@@ -92,9 +92,7 @@ const displayValue = computed(() => {
 	else if (type === "boolean") rawValue = formatBoolean(value);
 	else if (type === "onlyYes") rawValue = formatBoolean(value, "");
 	else rawValue = value || "";
-	console.log("sanitize", props.sanitize);
 	if (props.sanitize) {
-		console.log("sanitize", rawValue);
 		return DOMPurify.sanitize(rawValue);
 	}
 	return rawValue;
