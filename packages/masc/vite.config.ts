@@ -16,6 +16,7 @@ export default defineConfig({
 			entry: resolve(__dirname, "src/index.ts"),
 			name: name,
 			fileName: (format) => `${name}.${format}.js`,
+			cssFileName: "style",
 		},
 		rollupOptions: {
 			external: ["vue", "@vueuse/core", "@iconify/vue"],
